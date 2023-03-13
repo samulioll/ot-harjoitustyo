@@ -1,0 +1,109 @@
+    poistettu file1.txt ja muutettu nimi file2.txt -> file22.txt
+
+ tiedostoja/file2.txt                 | 0
+ tiedostoja/{file1.txt => file22.txt} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit f7545057ddd1cf6ed66709bec1b1c126799c4260
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 14:02:07 2023 +0200
+
+    lisätty kansio tiedostoja
+
+ tiedostoja/file1.txt | 0
+ tiedostoja/file2.txt | 0
+ tiedostoja/file3.txt | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 9202ad73dde8babe3a6236b8e2b2f932e5759051
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:57:50 2023 +0200
+
+    muutettu eka.txt ja kolmas.txt
+
+ eka.txt    | 2 +-
+ kolmas.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 80824ccbd687932e17000e7f48e7fd7c54b9e6ff
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:56:24 2023 +0200
+
+    nimi vaihdettu tiedosto.txt -> eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit be509e65ffe79ced6e1bb2a4dec7f4879bcec1fe
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:55:18 2023 +0200
+
+    poistettu toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 13ce1f25f609e85600c082516aaf1c4ce1ceb60e
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:53:41 2023 +0200
+
+    edited text in tiedosto.txt
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d6317649912210a01b92bdb7bf77c745ea51a5a2
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:51:54 2023 +0200
+
+    added text to tiedosto.txt
+
+ tiedosto.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 9fbfd90ce86a302805a215f90dc45c71dfd9519b
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:48:14 2023 +0200
+
+    luotu kansio stuff
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2d830e77cb6208e6f3e0df0dd5d38f1249558ebd
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:47:31 2023 +0200
+
+    muokattu toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit d6811c54006f05fb7778f058712fc6bde7386a7d
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:46:28 2023 +0200
+
+    luotu kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b18d106922f62568c39794b062c028f78063b149
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:44:52 2023 +0200
+
+    muokattu tiedosto.txt ja luotu toinen.txt
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 9ca68baccb824990b0af06d83f239768896ec9e5
+Author: Samuli Ollikainen <sam.ollikainen@gmail.com>
+Date:   Mon Mar 13 13:42:25 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
