@@ -1,11 +1,9 @@
-# READ ME
+# Ohjelmistotekniikka, harjoitustyö
 
-## Tekstin muotoilu
+## Tehtävät
 
-### Lihavointi
+###Viikko 1
 
-Jos haluat **lihavoida** tekstiä, käytä ** sanan molemmin puolin. 
+[komentorivi.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
 
-### Kursivointi
-
-Jos haluat *kursivoida* tekstiä, käytä * sanan molemmin puolin.
+[gitlog.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
