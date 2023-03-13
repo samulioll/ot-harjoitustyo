@@ -2,7 +2,7 @@
 
 ## Tehtävät
 
-###Viikko 1
+### Viikko 1
 
 [komentorivi.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
 
