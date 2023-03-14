@@ -2,6 +2,8 @@
 
 ## Harjoitustyö
 
+[Tuntikirjanpito](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+
 ## Tehtävät
 
 ### Viikko 1
