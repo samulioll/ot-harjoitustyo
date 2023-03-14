@@ -10,6 +10,8 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 
 ## Käyttöliittymäluonnos
 
+![](.kuvat/ui_start.png)
+
 ## Toiminnallisuus
 
 ### Pelin tekninen  perusidea
