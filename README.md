@@ -12,4 +12,7 @@
 
 [gitlog.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
 
+### Viikko 2
+
+[testikattavuusraportti](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/viikko2/testikattavuusraportti.png)
 
