@@ -10,7 +10,7 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 
 ## Käyttöliittymäluonnos
 
-![](.kuvat/ui_start.png)
+![Alkuvalikko](./kuvat/ui_start.png) ![Päävalikko](./kuvat/ui_main_menu.png) ![Pelinäkymä](./kuvat/ui_game.png)
 
 ## Toiminnallisuus
 
