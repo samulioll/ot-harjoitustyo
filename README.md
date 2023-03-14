@@ -1,5 +1,7 @@
 # Ohjelmistotekniikka, harjoitustyö
 
+## Harjoitustyö
+
 ## Tehtävät
 
 ### Viikko 1
@@ -8,4 +10,4 @@
 
 [gitlog.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
 
-EPÄSYNKRONOITU
+
