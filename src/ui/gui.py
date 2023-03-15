@@ -14,7 +14,7 @@ class Screen:
         pygame.init()
     
 
-    def game_view(self, player, level):
+    def game_view(self, player, level_matrix):
         """
         Main game view. Inputs are inspected and sent to game logic to check validity. Then the screen is updated.
         """
@@ -24,7 +24,6 @@ class Screen:
         self.dragging = False
         self.selected = None
         self.offset = 0
-        level_matrix = level
         board = Board(level_matrix)
 
         # Game loop

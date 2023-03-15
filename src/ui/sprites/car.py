@@ -22,4 +22,11 @@ class Car(pygame.sprite.Sprite):
 
         # Set other relevant info
         self.name = image_file
+        text = ""
+        for char in self.name:
+            if char.isalpha():
+                text += char
+        self.id = text.capitalize()[:-1]
         self.height = self.rect.h
+        self.width = self.rect.w
+        self.move_axis = "x" if self.width > self.height else "y"

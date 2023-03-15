@@ -27,6 +27,9 @@ class Board:
         self._initialize_sprites(level_layout)
     
     def _initialize_sprites(self, level_layout):
+        """
+        Create the collection of sprites and their locations at the start.
+        """
         self.board = Background("background", 300, 300)
         self.background.add(self.board)
 
@@ -77,176 +80,27 @@ class Board:
 
     def move_car(self, selected, mouse_pos, offset, game_logic):
         """
-        Change the selected car's coordinates.
+        Change the selected car's coordinates if not outside of board and not colliding with other cars.
         """
-
-        if selected == "Red":
-            sel = self.red2x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
+        others = pygame.sprite.Group()
+        for car in self.cars:
+            if car.id != selected:
+                others.add(car)
+            else:
+                sel = car
+        if sel.move_axis == "x":
             new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 700:
+            if 300 <= new_pos <= (900 - sel.width):
                 old_pos = sel.rect.x
                 sel.rect.x = mouse_pos[0] - offset[0]
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.x = old_pos
-
-        elif selected == "Blue":
-            sel = self.blue2x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
-
-        elif selected == "Orange":
-            sel = self.orange2x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
-
-        elif selected == "Magenta":
-            sel = self.magenta2x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
-
-        elif selected == "Brown":
-            sel = self.brown2x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
-
-        elif selected == "White":
-            sel = self.white3x1
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= 600:
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
-
-        elif selected == "Purple":
-            sel = self.purple1x2
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
-
-        elif selected == "Black":
-            sel = self.black1x2
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
-
-        elif selected == "Lime":
-            sel = self.lime1x2
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 700:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
-
-        elif selected == "Grey":
-            sel = self.grey1x3
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 600:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
-
-        elif selected == "Green":
-            sel = self.green1x3
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 600:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
-
-        elif selected == "Yellow":
-            sel = self.yellow1x3
-            others = pygame.sprite.Group()
-            for car in self.cars:
-                if car.name != sel.name:
-                    others.add(car)
-            new_pos = mouse_pos[1] - offset[1]
-            if 300 <= new_pos <= 600:
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.y = old_pos
         else:
-            pass
-    
+            new_pos = mouse_pos[1] - offset[1]
+            if 300 <= new_pos <= (900 - sel.height):
+                old_pos = sel.rect.y
+                sel.rect.y = mouse_pos[1] - offset[1]
+                colliding = pygame.sprite.spritecollide(sel, others, False)
+                if colliding:
+                    sel.rect.y = old_pos
