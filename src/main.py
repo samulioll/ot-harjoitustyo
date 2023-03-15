@@ -18,6 +18,7 @@ def main():
     pygame.init()
 
     # Draw all sprites
+    display.fill((255,255,255))
     level.all_sprites.draw(display)
 
     running = True

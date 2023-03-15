@@ -1,5 +1,6 @@
 import pygame
 from sprites.car import Car
+from sprites.background import Background
 
 class Level:
     def __init__(self, level_layout):
@@ -26,6 +27,9 @@ class Level:
         self._initialize_sprites(level_layout)
     
     def _initialize_sprites(self, level_layout):
+        self.board = Background("background", 300, 300)
+        self.background.add(self.board)
+
         for y in range(6):
             for x in range(6):
                 cell = level_layout[y][x]

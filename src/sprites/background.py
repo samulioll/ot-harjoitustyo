@@ -4,7 +4,7 @@ import pygame, os
 path_name = os.path.dirname(__file__)
 
 # Create the class for red car
-class Car(pygame.sprite.Sprite):
+class Background(pygame.sprite.Sprite):
     def __init__(self, image_file, x=0, y=0):
         super().__init__()
 
@@ -19,8 +19,3 @@ class Car(pygame.sprite.Sprite):
         # Set starting coordinates
         self.rect.x = x
         self.rect.y = y
-
-        # Set other relevant info
-        self.height = self.rect.h
-        self.width = self.rect.w
-        self.move_axis = "X" if self.width > self.height else "Y"
