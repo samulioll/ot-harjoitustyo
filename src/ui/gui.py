@@ -46,7 +46,7 @@ class Screen:
                     self.offset = 0
                 
                 if self.dragging and event.type == pygame.MOUSEMOTION:
-                    board.move_car(self.selected, pygame.mouse.get_pos(), self.offset, self.game_logic)
+                    board.move_car(self.selected, pygame.mouse.get_pos(), self.offset)
 
 
 

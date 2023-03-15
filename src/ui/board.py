@@ -78,9 +78,12 @@ class Board:
 
 
 
-    def move_car(self, selected, mouse_pos, offset, game_logic):
+    def move_car(self, selected, mouse_pos, offset):
         """
-        Change the selected car's coordinates if not outside of board and not colliding with other cars.
+        Arguments:
+            selected:   ID of selected car
+            mouse_pos:  tuple of current mouse coordinates
+            offset:     difference between clicked position and the original position of the selected car
         """
         others = pygame.sprite.Group()
         for car in self.cars:
@@ -88,7 +91,17 @@ class Board:
                 others.add(car)
             else:
                 sel = car
-        if sel.move_axis == "x":
+        # Handle movement for Red car
+        if sel.id == "Red":
+            new_pos = mouse_pos[0] - offset[0]
+            if 300 <= new_pos <= (900):
+                old_pos = sel.rect.x
+                sel.rect.x = mouse_pos[0] - offset[0]
+                colliding = pygame.sprite.spritecollide(sel, others, False)
+                if colliding:
+                    sel.rect.x = old_pos
+        # Handle movement for cars that move on x-axis
+        elif sel.move_axis == "x":
             new_pos = mouse_pos[0] - offset[0]
             if 300 <= new_pos <= (900 - sel.width):
                 old_pos = sel.rect.x
@@ -96,6 +109,7 @@ class Board:
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.x = old_pos
+        # Handle movement for cars that move on y-axis
         else:
             new_pos = mouse_pos[1] - offset[1]
             if 300 <= new_pos <= (900 - sel.height):
