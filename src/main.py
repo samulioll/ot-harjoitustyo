@@ -3,7 +3,7 @@ from level import Level
 
 level_layout = [[0,0,0,0,0,0],
                 [0,0,0,0,0,0],
-                [0,"P",0,0,0,0],
+                [0,"Red",0,"Yellow",0,0],
                 [0,0,0,0,0,0],
                 [0,0,0,0,0,0],
                 [0,0,0,0,0,0]]
@@ -13,19 +13,16 @@ def main():
     display_width = 1200
 
     display = pygame.display.set_mode((display_width, display_height))
-
     pygame.display.set_caption("RUSH HOUR")
-
     level = Level(level_layout)
-
     pygame.init()
 
+    # Draw all sprites
     level.all_sprites.draw(display)
 
     running = True
 
-
-
+    # Game loop
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

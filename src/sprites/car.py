@@ -4,13 +4,13 @@ import pygame, os
 path_name = os.path.dirname(__file__)
 
 # Create the class for red car
-class Player(pygame.sprite.Sprite):
-    def __init__(self, x=0, y=0):
+class Car(pygame.sprite.Sprite):
+    def __init__(self, image_file, x=0, y=0):
         super().__init__()
 
         # Create path to image
         self.image = pygame.image.load(
-            os.path.join(path_name, "..", "assets", "player.png")
+            os.path.join(path_name, "..", "assets", image_file+".png")
         )
 
         # Define block size
