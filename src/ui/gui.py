@@ -23,6 +23,7 @@ class Screen:
         self.solved = False
         self.dragging = False
         self.selected = None
+        self.offset = 0
         level_matrix = level
         board = Board(level_matrix)
 
@@ -34,18 +35,19 @@ class Screen:
                     self.running = False
                 
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = pygame.mouse.get_pos()
                     self.started = True
                     self.dragging = True
-                    self.selected = self.game_logic.selected(pygame.mouse.get_pos())
-                    print("Dragging:", self.dragging, self.selected)
+                    self.selected = self.game_logic.selected(mouse_pos)
+                    self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
+
                 if event.type == pygame.MOUSEBUTTONUP:
                     self.dragging = False
                     self.selected = None
-                    print("Dragging:", self.dragging, self.selected)
+                    self.offset = 0
                 
                 if self.dragging and event.type == pygame.MOUSEMOTION:
-                    print("moving")
-                    board.move_car(self.selected, pygame.mouse.get_pos())
+                    board.move_car(self.selected, pygame.mouse.get_pos(), self.offset, self.game_logic)
 
 
 

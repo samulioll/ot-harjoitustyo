@@ -6,7 +6,7 @@ level_matrix = [[0,0,0,0,0,0],
                 [0,"Red",0,"Yellow",0,0],
                 [0,0,0,0,0,0],
                 [0,0,0,0,0,0],
-                [0,0,0,0,0,0]]
+                [0,0,0,"Blue",0,0]]
 
 
 game_logic = Game(level_matrix)
