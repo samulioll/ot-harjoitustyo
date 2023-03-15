@@ -73,13 +73,38 @@ class Board:
                     self.yellow1x3 = Car("yellow1x3", x_coord, y_coord)
                     self.cars.add(self.yellow1x3)
 
-                
 
 
-
-        self.all_sprites.add(
-            self.background,
-            self.cars,
-        )
-    
+    def move_car(self, selected, mouse_pos):
+        """
+        Change the selected car's coordinates.
+        """
+        if selected == "Red":
+            print("Red old pos:", self.red2x1.rect.x)
+            self.red2x1.rect.x = mouse_pos[0]
+            print("Red new pos:", self.red2x1.rect.x)
+        elif selected == "Blue":
+            self.blue2x1.rect.x = mouse_pos[0]
+        elif selected == "Orange":
+            self.orange2x1.rect.x = mouse_pos[0]
+        elif selected == "Magenta":
+            self.magenta2x1.rect.x = mouse_pos[0]
+        elif selected == "Brown":
+            self.brown2x1.rect.x = mouse_pos[0]
+        elif selected == "White":
+            self.white3x1.rect.x = mouse_pos[0]
+        elif selected == "Purple":
+            self.purple1x2.rect.y = mouse_pos[1]
+        elif selected == "Black":
+            self.black1x2.rect.y = mouse_pos[1]
+        elif selected == "Lime":
+            self.lime1x2.rect.y = mouse_pos[1]
+        elif selected == "Grey":
+            self.grey1x3.rect.y = mouse_pos[1]
+        elif selected == "Green":
+            self.green1x3.rect.y = mouse_pos[1]
+        elif selected == "Yellow":
+            self.yellow1x3.rect.y = mouse_pos[1]
+        else:
+            pass
     

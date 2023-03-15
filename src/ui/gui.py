@@ -14,18 +14,16 @@ class Screen:
         pygame.init()
     
 
-    def game_view(self, player):
+    def game_view(self, player, level):
         """
         Main game view. Inputs are inspected and sent to game logic to check validity. Then the screen is updated.
         """
         self.running = True
         self.started = False
-        level_matrix = [[0,0,0,0,0,0],
-                        [0,0,0,0,0,0],
-                        [0,"Red",0,"Yellow",0,0],
-                        [0,0,0,0,0,0],
-                        [0,0,0,0,0,0],
-                        [0,0,0,0,0,0]]
+        self.solved = False
+        self.dragging = False
+        self.selected = None
+        level_matrix = level
         board = Board(level_matrix)
 
         # Game loop
@@ -37,18 +35,24 @@ class Screen:
                 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.started = True
-                    selected = self.game_logic.selected(pygame.mouse.get_pos())
+                    self.dragging = True
+                    self.selected = self.game_logic.selected(pygame.mouse.get_pos())
+                    print("Dragging:", self.dragging, self.selected)
+                if event.type == pygame.MOUSEBUTTONUP:
+                    self.dragging = False
+                    self.selected = None
+                    print("Dragging:", self.dragging, self.selected)
+                
+                if self.dragging and event.type == pygame.MOUSEMOTION:
+                    print("moving")
+                    board.move_car(self.selected, pygame.mouse.get_pos())
+
 
 
             # Draw screen
             self.display.fill((255,255,255))
-            board.all_sprites.draw(self.display)
+            board.background.draw(self.display)
+            board.cars.draw(self.display)
 
             pygame.display.update()
 
-
-
-
-if __name__ == "__main__":
-    test = Screen("score", "logic")
-    test.game_view("sam")
