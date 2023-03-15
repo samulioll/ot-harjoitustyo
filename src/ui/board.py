@@ -1,8 +1,8 @@
 import pygame
-from sprites.car import Car
-from sprites.background import Background
+from ui.sprites.car import Car
+from ui.sprites.background import Background
 
-class Level:
+class Board:
     def __init__(self, level_layout):
         self.cell_size = 100
         self.offset = 300
@@ -21,7 +21,7 @@ class Level:
         self.yellow1x3 = None
 
         self.background = pygame.sprite.Group()
-        self.blocks = pygame.sprite.Group()
+        self.cars = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
 
         self._initialize_sprites(level_layout)
@@ -38,40 +38,40 @@ class Level:
 
                 if cell == "Red":
                     self.red2x1 = Car("red2x1", x_coord, y_coord)
-                    self.blocks.add(self.red2x1)
+                    self.cars.add(self.red2x1)
                 elif cell == "Blue":
                     self.blue2x1 = Car("blue2x1", x_coord, y_coord)
-                    self.blocks.add(self.blue2x1)
+                    self.cars.add(self.blue2x1)
                 elif cell == "Orange":
                     self.orange2x1 = Car("orange2x1", x_coord, y_coord)
-                    self.blocks.add(self.orange2x1)
+                    self.cars.add(self.orange2x1)
                 elif cell == "Magenta":
                     self.magenta2x1 = Car("blue2x1", x_coord, y_coord)
-                    self.blocks.add(self.blue2x1)
+                    self.cars.add(self.blue2x1)
                 elif cell == "Brown":
                     self.brown2x1 = Car("brown2x1", x_coord, y_coord)
-                    self.blocks.add(self.brown2x1)
+                    self.cars.add(self.brown2x1)
                 elif cell == "White":
                     self.white3x1 = Car("white3x1", x_coord, y_coord)
-                    self.blocks.add(self.white3x1)
+                    self.cars.add(self.white3x1)
                 elif cell == "Purple":
                     self.purple1x2 = Car("purple1x2", x_coord, y_coord)
-                    self.blocks.add(self.purple1x2)
+                    self.cars.add(self.purple1x2)
                 elif cell == "Black":
                     self.black1x2 = Car("black1x2", x_coord, y_coord)
-                    self.blocks.add(self.black1x2)
+                    self.cars.add(self.black1x2)
                 elif cell == "Lime":
                     self.lime1x2 = Car("lime1x2", x_coord, y_coord)
-                    self.blocks.add(self.lime1x2)
+                    self.cars.add(self.lime1x2)
                 elif cell == "Grey":
                     self.grey1x3 = Car("grey1x3", x_coord, y_coord)
-                    self.blocks.add(self.grey1x3)
+                    self.cars.add(self.grey1x3)
                 elif cell == "Green":
                     self.green1x3 = Car("green1x3", x_coord, y_coord)
-                    self.blocks.add(self.green1x3)
+                    self.cars.add(self.green1x3)
                 elif cell == "Yellow":
                     self.yellow1x3 = Car("yellow1x3", x_coord, y_coord)
-                    self.blocks.add(self.yellow1x3)
+                    self.cars.add(self.yellow1x3)
 
                 
 
@@ -79,7 +79,7 @@ class Level:
 
         self.all_sprites.add(
             self.background,
-            self.blocks,
+            self.cars,
         )
     
     
