@@ -6,6 +6,7 @@ class Board:
     def __init__(self, level_layout):
         self.cell_size = 100
         self.offset = 300
+        self.level_layout = level_layout
 
         self.red2x1 = None
         self.blue2x1 = None
@@ -24,7 +25,7 @@ class Board:
         self.cars = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
 
-        self._initialize_sprites(level_layout)
+        self._initialize_sprites(self.level_layout)
     
 
     def _initialize_sprites(self, level_layout: list):
@@ -36,7 +37,7 @@ class Board:
 
         for y in range(6):
             for x in range(6):
-                cell = level_layout[y][x]
+                cell = self.level_layout[y][x]
                 x_coord = x * self.cell_size + self.offset
                 y_coord = y * self.cell_size + self.offset
 
@@ -92,10 +93,6 @@ class Board:
                 others.add(car)
             else:
                 sel = car
-        try:
-            test = sel
-        except:
-            return
         # Handle movement for Red car
         if sel.id == "Red":
             new_pos = mouse_pos[0] - offset[0]
@@ -123,3 +120,41 @@ class Board:
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.y = old_pos
+    
+
+    def drop_car(self, selected: str):
+        """
+        Arguments:
+            selected:   ID of selected car
+        """
+        
+        print("drop_car()")
+        for car in self.cars:
+            if car.id == selected:
+                sel = car
+        
+        if sel.move_axis == "x":
+            old_pos = sel.rect.x
+            diff = old_pos % 100
+            if diff < 50:
+                sel.rect.x = old_pos - diff
+            else:
+                sel.rect.x = old_pos + (100 - diff)
+
+        elif sel.move_axis == "y":
+            old_pos = sel.rect.y
+            diff = old_pos % 100
+            if diff < 50:
+                sel.rect.y = old_pos - diff
+            else:
+                sel.rect.y = old_pos + (100 - diff)
+        
+        for y in range(6):
+            for x in range(6):
+                cell = self.level_layout[y][x]
+                if cell == sel.id:
+                    cell = 0
+        x_cell = sel.rect.x // 100 - 3
+        y_cell = sel.rect.y // 100 - 3
+        self.level_layout[y_cell][x_cell] = sel.id
+

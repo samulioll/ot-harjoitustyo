@@ -36,16 +36,17 @@ class Screen:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     self.started = True
-                    self.dragging = True
                     self.selected = self.game_logic.selected(mouse_pos)
                     self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
 
                 if event.type == pygame.MOUSEBUTTONUP:
-                    self.dragging = False
+                    print("mouse up")
+                    if self.selected:
+                        board.drop_car(self.selected, pygame.mouse.get_pos(), self.offset)
                     self.selected = None
                     self.offset = 0
                 
-                if self.dragging and event.type == pygame.MOUSEMOTION:
+                if self.selected and event.type == pygame.MOUSEMOTION:
                     board.move_car(self.selected, pygame.mouse.get_pos(), self.offset)
 
 
