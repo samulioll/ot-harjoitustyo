@@ -77,6 +77,20 @@ class Board:
                 elif cell == "Yellow":
                     self.yellow1x3 = Car("yellow1x3", x_coord, y_coord)
                     self.cars.add(self.yellow1x3)
+        
+        for car in self.cars:
+            if car.move_axis == "x":
+                cells = car.width // 100
+                x_cell = (car.rect.x - 300) // 100
+                y_cell = (car.rect.y - 300) // 100
+                for i in range(cells):
+                    self.level_layout[y_cell][x_cell+i] = car.id
+            if car.move_axis == "y":
+                cells = car.height // 100
+                x_cell = (car.rect.x - 300) // 100
+                y_cell = (car.rect.y - 300) // 100
+                for i in range(cells):
+                    self.level_layout[y_cell+i][x_cell] = car.id
 
 
 
@@ -96,65 +110,84 @@ class Board:
         # Handle movement for Red car
         if sel.id == "Red":
             new_pos = mouse_pos[0] - offset[0]
+            old_pos = sel.rect.x
             if 300 <= new_pos <= (900):
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
+                sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on x-axis
         elif sel.move_axis == "x":
             new_pos = mouse_pos[0] - offset[0]
-            if 300 <= new_pos <= (900 - sel.width):
-                old_pos = sel.rect.x
-                sel.rect.x = mouse_pos[0] - offset[0]
+            old_pos = sel.rect.x
+            if 300 <= new_pos<= (900 - sel.width):
+                sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on y-axis
         elif sel.move_axis == "y":
             new_pos = mouse_pos[1] - offset[1]
+            old_pos = sel.rect.y
             if 300 <= new_pos <= (900 - sel.height):
-                old_pos = sel.rect.y
-                sel.rect.y = mouse_pos[1] - offset[1]
+                sel.rect.y = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.y = old_pos
     
+
 
     def drop_car(self, selected: str):
         """
         Arguments:
             selected:   ID of selected car
         """
-        
-        print("drop_car()")
         for car in self.cars:
             if car.id == selected:
-                sel = car
-        
+                sel = car     
+        # Get car info
         if sel.move_axis == "x":
+            cells = sel.width // 100
             old_pos = sel.rect.x
             diff = old_pos % 100
             if diff < 50:
                 sel.rect.x = old_pos - diff
             else:
                 sel.rect.x = old_pos + (100 - diff)
-
         elif sel.move_axis == "y":
+            cells = sel.height // 100
             old_pos = sel.rect.y
             diff = old_pos % 100
             if diff < 50:
                 sel.rect.y = old_pos - diff
             else:
                 sel.rect.y = old_pos + (100 - diff)
-        
+        # Clear old car position info from matrix
         for y in range(6):
             for x in range(6):
                 cell = self.level_layout[y][x]
                 if cell == sel.id:
                     cell = 0
+                    if sel.move_axis == "x":
+                        for i in range(cells):
+                            self.level_layout[y][x+i] = 0
+                    elif sel.move_axis == "y":
+                        for i in range(cells):
+                            self.level_layout[y+i][x] = 0
+        # Add new car position info to matrix
         x_cell = sel.rect.x // 100 - 3
         y_cell = sel.rect.y // 100 - 3
-        self.level_layout[y_cell][x_cell] = sel.id
+        if sel.id == "Red":
+            try:
+                for i in range(cells):
+                    self.level_layout[y_cell][x_cell+i] = sel.id
+            except:
+                print("Done")
+        elif sel.move_axis == "x":
+            for i in range(cells):
+                self.level_layout[y_cell][x_cell+i] = sel.id
+        elif sel.move_axis == "y":
+            for i in range(cells):
+                self.level_layout[y_cell+i][x_cell] = sel.id
+
 
