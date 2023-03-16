@@ -26,7 +26,8 @@ class Board:
 
         self._initialize_sprites(level_layout)
     
-    def _initialize_sprites(self, level_layout):
+
+    def _initialize_sprites(self, level_layout: list):
         """
         Create the collection of sprites and their locations at the start.
         """
@@ -78,7 +79,7 @@ class Board:
 
 
 
-    def move_car(self, selected, mouse_pos, offset):
+    def move_car(self, selected: str, mouse_pos: tuple, offset: int):
         """
         Arguments:
             selected:   ID of selected car
@@ -91,6 +92,10 @@ class Board:
                 others.add(car)
             else:
                 sel = car
+        try:
+            test = sel
+        except:
+            return
         # Handle movement for Red car
         if sel.id == "Red":
             new_pos = mouse_pos[0] - offset[0]
@@ -110,7 +115,7 @@ class Board:
                 if colliding:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on y-axis
-        else:
+        elif sel.move_axis == "y":
             new_pos = mouse_pos[1] - offset[1]
             if 300 <= new_pos <= (900 - sel.height):
                 old_pos = sel.rect.y
