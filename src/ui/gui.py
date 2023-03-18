@@ -40,7 +40,6 @@ class Screen:
                     self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
 
                 if event.type == pygame.MOUSEBUTTONUP:
-                    print("mouse up")
                     if self.selected:
                         board.drop_car(self.selected)
                     self.selected = None

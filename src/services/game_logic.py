@@ -1,3 +1,5 @@
+import pygame
+
 class Game:
     def __init__(self, level_matrix):
         self.matrix = level_matrix
@@ -9,13 +11,7 @@ class Game:
             clicked_y = (mouse_coords[1] - 300) // 100
             return self.matrix[clicked_y][clicked_x]
 
+    def check_movement(self, car):
+        colliding = pygame.sprite.spritecollide(car)
             
-            
 
-
-
-
-
-if __name__ == "__main__":
-    game = Game("1")
-    game.selected((350, 550))

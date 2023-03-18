@@ -84,13 +84,19 @@ class Board:
                 x_cell = (car.rect.x - 300) // 100
                 y_cell = (car.rect.y - 300) // 100
                 for i in range(cells):
-                    self.level_layout[y_cell][x_cell+i] = car.id
+                    if i > 0:
+                        self.level_layout[y_cell][x_cell+i] = car.id + "-" + str(i)
+                    else:
+                        self.level_layout[y_cell][x_cell+i] = car.id
             if car.move_axis == "y":
                 cells = car.height // 100
                 x_cell = (car.rect.x - 300) // 100
                 y_cell = (car.rect.y - 300) // 100
                 for i in range(cells):
-                    self.level_layout[y_cell+i][x_cell] = car.id
+                    if i > 0:
+                        self.level_layout[y_cell+i][x_cell] = car.id + "-" + str(i)
+                    else:
+                        self.level_layout[y_cell+i][x_cell] = car.id
 
 
 
@@ -102,14 +108,25 @@ class Board:
             offset:     difference between clicked position and the original position of the selected car
         """
         others = pygame.sprite.Group()
+        # Get car id from matrix
+        if "-" in selected:
+            parts = selected.split("-")
+            id = parts[0]
+        else:
+            id = selected
+        # add all of the cars that are ont selected to a group to detect collisions with
         for car in self.cars:
-            if car.id != selected:
+            if car.id != id:
                 others.add(car)
             else:
                 sel = car
         # Handle movement for Red car
-        if sel.id == "Red":
-            new_pos = mouse_pos[0] - offset[0]
+        if "Red" in sel.id:
+            if "1" in selected:
+                diff = offset[0] + 100
+            else:
+                diff = offset[0]
+            new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos <= (900):
                 sel.rect.x = new_pos
@@ -118,7 +135,13 @@ class Board:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on x-axis
         elif sel.move_axis == "x":
-            new_pos = mouse_pos[0] - offset[0]
+            if "1" in selected:
+                diff = offset[0] + 100
+            elif "2" in selected:
+                diff = offset[0] + 200
+            else:
+                diff = offset[0]
+            new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos<= (900 - sel.width):
                 sel.rect.x = new_pos
@@ -127,7 +150,13 @@ class Board:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on y-axis
         elif sel.move_axis == "y":
-            new_pos = mouse_pos[1] - offset[1]
+            if "1" in selected:
+                diff = offset[1] + 100
+            elif "2" in selected:
+                diff = offset[1] + 200
+            else:
+                diff = offset[1]
+            new_pos = mouse_pos[1] - diff
             old_pos = sel.rect.y
             if 300 <= new_pos <= (900 - sel.height):
                 sel.rect.y = new_pos
@@ -142,8 +171,13 @@ class Board:
         Arguments:
             selected:   ID of selected car
         """
+        if "-" in selected:
+            parts = selected.split("-")
+            id = parts[0]
+        else:
+            id = selected
         for car in self.cars:
-            if car.id == selected:
+            if car.id == id:
                 sel = car     
         # Get car info
         if sel.move_axis == "x":
@@ -166,7 +200,7 @@ class Board:
         for y in range(6):
             for x in range(6):
                 cell = self.level_layout[y][x]
-                if cell == sel.id:
+                if cell == id:
                     cell = 0
                     if sel.move_axis == "x":
                         for i in range(cells):
@@ -177,17 +211,26 @@ class Board:
         # Add new car position info to matrix
         x_cell = sel.rect.x // 100 - 3
         y_cell = sel.rect.y // 100 - 3
-        if sel.id == "Red":
+        if id == "Red":
             try:
                 for i in range(cells):
-                    self.level_layout[y_cell][x_cell+i] = sel.id
+                    if i > 0:
+                        self.level_layout[y_cell][x_cell+i] = sel.id + "-" + str(i)
+                    else:
+                        self.level_layout[y_cell][x_cell+i] = sel.id
             except:
-                print("Done")
+                print("LEVEL SOLVED")
         elif sel.move_axis == "x":
             for i in range(cells):
-                self.level_layout[y_cell][x_cell+i] = sel.id
+                if i > 0:
+                    self.level_layout[y_cell][x_cell+i] = sel.id + "-" + str(i)
+                else:
+                    self.level_layout[y_cell][x_cell+i] = sel.id
         elif sel.move_axis == "y":
             for i in range(cells):
-                self.level_layout[y_cell+i][x_cell] = sel.id
+                if i > 0:
+                    self.level_layout[y_cell+i][x_cell] = sel.id + "-" + str(i)
+                else:
+                    self.level_layout[y_cell+i][x_cell] = sel.id
 
 
