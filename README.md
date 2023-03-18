@@ -4,6 +4,8 @@
 
 [Tuntikirjanpito](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
+[changelog](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
+
 ## Tehtävät
 
 ### Viikko 1
