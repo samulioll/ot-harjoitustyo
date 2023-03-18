@@ -5,4 +5,5 @@
 | 14.3. | 2    | suunnittelu |
 | 15.3. | 5    | perustusten rakentaminen |
 | 16.3. | 2    | pelin perustoimintojen koodausta |
-| yht   | 10   | | 
+| 18.3. | 1    | pelin perustoimintojen koodausta |
+| yht   | 11   | | 
