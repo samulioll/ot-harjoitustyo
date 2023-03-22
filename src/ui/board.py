@@ -225,7 +225,7 @@ class Board:
                     else:
                         self.level_layout[y_cell][x_cell+i] = sel.id
             except:
-                print("LEVEL SOLVED")
+                return True
         elif sel.move_axis == "x":
             for i in range(cells):
                 if i > 0:
@@ -238,5 +238,8 @@ class Board:
                     self.level_layout[y_cell+i][x_cell] = sel.id + "-" + str(i)
                 else:
                     self.level_layout[y_cell+i][x_cell] = sel.id
+        return False
+    
+
 
 

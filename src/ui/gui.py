@@ -41,20 +41,37 @@ class Screen:
 
                 if event.type == pygame.MOUSEBUTTONUP:
                     if self.selected:
-                        board.drop_car(self.selected)
+                        self.solved = board.drop_car(self.selected)
                     self.selected = None
                     self.offset = 0
                 
                 if self.selected and event.type == pygame.MOUSEMOTION:
                     board.move_car(self.selected, pygame.mouse.get_pos(), self.offset)
                     
-
-
-
             # Draw screen
             self.display.fill((255,255,255))
             board.background.draw(self.display)
             board.cars.draw(self.display)
 
-            pygame.display.update()
+            # Check status
+            if self.solved:
+                self.running = False
+                print("Solved")
+                self.solved_view()
 
+            pygame.display.update()
+    
+    def solved_view(self):
+        self.running = True
+        # Loop
+        while self.running:
+            # Player inputs
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+
+            # Draw screen
+            self.display.fill((255,255,255))
+            pygame.draw.rect(self.display, (0,0,0), (300,300,600,600))
+
+            pygame.display.update()
