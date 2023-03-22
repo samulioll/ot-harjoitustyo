@@ -4,7 +4,7 @@ import pygame, os
 path_name = os.path.dirname(__file__)
 
 # Create the class for red car
-class Background(pygame.sprite.Sprite):
+class Boardbase(pygame.sprite.Sprite):
     def __init__(self, image_file, x=0, y=0):
         super().__init__()
 

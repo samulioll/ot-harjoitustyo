@@ -9,7 +9,8 @@ level_matrix = [[0,0,0,"Yellow",0,0],
                 [0,0,0,"Blue","Blue-1",0]]
 
 
-game_logic = Game(level_matrix)
+game_logic = Game()
 screen = Screen("score_service", game_logic)
 
-screen.game_view("samuli", level_matrix)
+#screen.game_view("samuli", level_matrix)
+screen.main_loop()

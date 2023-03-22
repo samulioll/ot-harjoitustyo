@@ -5,4 +5,7 @@
 - Autojen sijainnit tallessa matriisissa
 - Autoja voi siirtää klikkaamalla ja vetämällä
 	- Autojen liikkuminen noudattaa sääntöjä
- 
+
+### Viikko 2
+
+- Alkeellinen rakenne eri valikoille 
