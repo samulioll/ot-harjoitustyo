@@ -129,7 +129,7 @@ class Board:
             new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos <= (900):
-                if new_pos >= old_pos + 50:
+                if new_pos >= old_pos + 50 or new_pos <= old_pos - 50:
                     return
                 sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
@@ -146,7 +146,7 @@ class Board:
             new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos<= (900 - sel.width):
-                if new_pos >= old_pos + 50:
+                if new_pos >= old_pos + 50 or new_pos <= old_pos - 50:
                     return
                 sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
@@ -163,7 +163,7 @@ class Board:
             new_pos = mouse_pos[1] - diff
             old_pos = sel.rect.y
             if 300 <= new_pos <= (900 - sel.height):
-                if new_pos >= old_pos + 50:
+                if new_pos >= old_pos + 50 or new_pos <= old_pos - 50:
                     return
                 sel.rect.y = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
