@@ -4,15 +4,17 @@ from ui.menus import Menus
 
 class Screen:
     """
-    A class to determine what is shown on screen. For every possible screen there is a method to draw it.
+    Runs the core game loop. For every possible screen there is a method to draw it.
     """
-
     def __init__(self, score_service, game_logic):
         self.score_service = score_service
         self.game_logic = game_logic
-        self.display = pygame.display.set_mode((1200,1200))
         self.menu = Menus()
+
         self.active_profile = None
+        self.view = "profile"
+
+        self.display = pygame.display.set_mode((1200,1200))
         pygame.display.set_caption("RUSH HOUR")
         pygame.init()
     
@@ -23,15 +25,14 @@ class Screen:
         """
         # Loop
         while True:
-            if not self.active_profile:
+            if self.view == "profile":
                 self.select_profile_view()
-
-            self.main_menu_view()
-
+            elif self.view == "main":
+                self.main_menu_view()
+            elif self.view == "game":
+                self.game_view(self.active_profile)
 
             # Draw screen
-            self.display.fill((255,255,255))
-            pygame.draw.rect(self.display, (0,150,0), (300,300,600,600))
             pygame.display.update()
     
 
@@ -39,53 +40,44 @@ class Screen:
         """
         Screen where you select the active player profile.
         """
-        while not self.active_profile:
+        while self.view == "profile":
+            # Player inputs
             for event in pygame.event.get():
-                # Player inputs
                 if event.type == pygame.QUIT:
                     exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
                     self.active_profile = self.game_logic.select_profile(mouse_pos)
-                # Draw screen
-                self.display.fill((255,255,255))
-                pygame.draw.rect(self.display, (100,100,200), (300,300,600,600))
-                font = pygame.font.SysFont("Arial", 35)
-                text = font.render("Profile", True, (0,0,0))
-                self.display.blit(text, (300,300))
-                pygame.display.update()
+                    if self.active_profile:
+                        self.view = "main"
+
+            # Draw screen
+            self.menu.profile_menu_items.draw(self.display)
+            pygame.display.update()
 
     
     def main_menu_view(self):
         """
         Main menu.
         """
-        level_matrix = [[0,0,0,"Yellow",0,0],
-                [0,0,0,"Yellow-1",0,0],
-                [0,"Red","Red-1","Yellow-2",0,0],
-                [0,0,0,0,0,0],
-                [0,0,0,0,0,0],
-                [0,0,0,"Blue","Blue-1",0]]
-
         # Loop
-        while True:
+        while self.view == "main":
             # Player inputs
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()
-                
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mouse_pos = pygame.mouse.get_pos()
+                    print(mouse_pos)
                     if self.game_logic.main_menu_continue_game(mouse_pos):
-                        self.game_view("Sam", level_matrix)
+                        self.view = "game"
                     elif self.game_logic.main_menu_level_selector(mouse_pos):
                         pass
                     elif self.game_logic.main_menu_high_scores(mouse_pos):
                         pass
 
             # Draw screen
-            self.display.fill((255,255,255))
-            pygame.draw.rect(self.display, (0,0,0), (300,300,600,600))
+            self.menu.main_menu_items.draw(self.display)
             pygame.display.update()
 
 
@@ -96,7 +88,7 @@ class Screen:
         pass
 
 
-    def game_view(self, player, level_matrix):
+    def game_view(self, profile):
         """
         Main game view. Inputs are inspected and sent to game logic to check validity. Then the screen is updated.
         """
@@ -106,6 +98,12 @@ class Screen:
         self.dragging = False
         self.selected = None
         self.offset = 0
+        level_matrix = [[0,0,0,"Yellow",0,0],
+                        [0,0,0,"Yellow-1",0,0],
+                        [0,"Red","Red-1","Yellow-2",0,0],
+                        [0,0,0,0,0,0],
+                        [0,0,0,0,0,0],
+                        [0,0,0,"Blue","Blue-1",0]]
         board = Board(level_matrix)
 
         # Game loop

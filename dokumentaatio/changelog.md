@@ -8,4 +8,5 @@
 
 ### Viikko 2
 
-- Alkeellinen rakenne eri valikoille 
+- Alkeellinen rakenne eri valikoille
+	- Alkeellinen graafinen ulkoasu 

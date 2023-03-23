@@ -1,6 +1,6 @@
 import pygame
 from ui.sprites.car import Car
-from ui.sprites.boardbase import Boardbase
+from ui.sprites.menu_items import Menu_item
 
 class Board:
     def __init__(self, level_layout):
@@ -32,8 +32,10 @@ class Board:
         """
         Create the collection of sprites and their locations at the start.
         """
-        self.board = Boardbase("background", 300, 300)
-        self.background.add(self.board)
+        self.backdrop = Menu_item("backdrop_1", 0, 0)
+        self.board = Menu_item("Board_1", 298, 294)
+        self.full_game_view = Menu_item("full_game_view_1", 0, 0)
+        self.background.add(self.full_game_view)
 
         for y in range(6):
             for x in range(6):
