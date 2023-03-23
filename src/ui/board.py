@@ -131,7 +131,7 @@ class Board:
             new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos <= (900):
-                if new_pos >= old_pos + 50 or new_pos <= old_pos - 50:
+                if new_pos >= old_pos + 99 or new_pos <= old_pos - 99:
                     return
                 sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
@@ -148,7 +148,7 @@ class Board:
             new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
             if 300 <= new_pos<= (900 - sel.width):
-                if new_pos >= old_pos + 50 or new_pos <= old_pos - 50:
+                if new_pos >= old_pos + 99 or new_pos <= old_pos - 99:
                     return
                 sel.rect.x = new_pos
                 colliding = pygame.sprite.spritecollide(sel, others, False)
@@ -205,10 +205,12 @@ class Board:
             else:
                 sel.rect.y = old_pos + (100 - diff)
         # Clear old car position info from matrix
+        old_pos = []
         for y in range(6):
             for x in range(6):
                 cell = self.level_layout[y][x]
                 if cell == id:
+                    old_pos.append((x,y))
                     cell = 0
                     if sel.move_axis == "x":
                         for i in range(cells):
@@ -227,7 +229,7 @@ class Board:
                     else:
                         self.level_layout[y_cell][x_cell+i] = sel.id
             except:
-                return True
+                return (True, True)
         elif sel.move_axis == "x":
             for i in range(cells):
                 if i > 0:
@@ -240,7 +242,17 @@ class Board:
                     self.level_layout[y_cell+i][x_cell] = sel.id + "-" + str(i)
                 else:
                     self.level_layout[y_cell+i][x_cell] = sel.id
-        return False
+        # Check if move happened
+        changed = False
+        new_pos = []
+        for y in range(6):
+            for x in range(6):
+                cell = self.level_layout[y][x]
+                if cell == id:
+                    new_pos.append((x,y))
+        if new_pos != old_pos:
+            changed = True
+        return (changed, False)
     
 
 

@@ -6,6 +6,7 @@ class Menus():
         self.profiles = pygame.sprite.Group()
         self.main_menu_items = pygame.sprite.Group()
         self.profile_menu_items = pygame.sprite.Group()
+        self.profiles = pygame.sprite.Group()
 
         self.initialize_main_menu()
         self.initialize_profile_selector()
@@ -27,3 +28,4 @@ class Menus():
         self.full_main_menu = Menu_item("full_main_menu_1", 0, 0)
 
         self.main_menu_items.add( self.full_main_menu)
+
