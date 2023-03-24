@@ -1,10 +1,12 @@
 import pygame, os
 
-# Path to this file's directory
 path_name = os.path.dirname(__file__)
 
-# Create the class for red car
 class Car(pygame.sprite.Sprite):
+    """
+    A class for all the cars.
+    """
+    
     def __init__(self, image_file, x=0, y=0):
         super(Car, self).__init__()
 

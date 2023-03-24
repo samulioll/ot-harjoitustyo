@@ -1,10 +1,12 @@
 import pygame, os
 
-# Path to this file's directory
 path_name = os.path.dirname(__file__)
 
-# Create the class for red car
 class Menu_item(pygame.sprite.Sprite):
+    """
+    A class for all the UI elements.
+    """
+
     def __init__(self, image_file, x=0, y=0):
         super().__init__()
 

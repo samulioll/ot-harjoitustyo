@@ -9,10 +9,7 @@ class Game:
         if 300 <= mouse_coords[0] <= 900 and 300 <= mouse_coords[1] <= 900:
             clicked_x = (mouse_coords[0] - 300) // 100
             clicked_y = (mouse_coords[1] - 300) // 100
-            return level_layout[clicked_y][clicked_x]
-
-    def check_movement(self, car):
-        colliding = pygame.sprite.spritecollide(car)
+            return level_layout[clicked_y][clicked_x] if level_layout[clicked_y][clicked_x] != 0 else None
     
     def profile_view_clicked(self, mouse_coords):
         if 305 <= mouse_coords[0] <= 565 and 545 <= mouse_coords[1] <= 670:

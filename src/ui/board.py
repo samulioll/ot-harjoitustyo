@@ -3,6 +3,10 @@ from ui.sprites.car import Car
 from ui.sprites.menu_items import Menu_item
 
 class Board:
+    """
+    Class that keeps track of what happens on the game board.
+    """
+
     def __init__(self, level_layout):
         self.cell_size = 100
         self.offset = 300
@@ -79,27 +83,6 @@ class Board:
                 elif cell == "Yellow":
                     self.yellow1x3 = Car("yellow1x3", x_coord, y_coord)
                     self.cars.add(self.yellow1x3)
-        
-        for car in self.cars:
-            if car.move_axis == "x":
-                cells = car.width // 100
-                x_cell = (car.rect.x - 300) // 100
-                y_cell = (car.rect.y - 300) // 100
-                for i in range(cells):
-                    if i > 0:
-                        self.level_layout[y_cell][x_cell+i] = car.id + "-" + str(i)
-                    else:
-                        self.level_layout[y_cell][x_cell+i] = car.id
-            if car.move_axis == "y":
-                cells = car.height // 100
-                x_cell = (car.rect.x - 300) // 100
-                y_cell = (car.rect.y - 300) // 100
-                for i in range(cells):
-                    if i > 0:
-                        self.level_layout[y_cell+i][x_cell] = car.id + "-" + str(i)
-                    else:
-                        self.level_layout[y_cell+i][x_cell] = car.id
-
 
 
     def move_car(self, selected: str, mouse_pos: tuple, offset: int):
@@ -109,7 +92,7 @@ class Board:
             mouse_pos:  tuple of current mouse coordinates
             offset:     difference between clicked position and the original position of the selected car
         """
-        others = pygame.sprite.Group()
+
         # Get car id from matrix
         if "-" in selected:
             parts = selected.split("-")
@@ -117,28 +100,15 @@ class Board:
         else:
             id = selected
         # add all of the cars that are ont selected to a group to detect collisions with
+        others = pygame.sprite.Group()
         for car in self.cars:
             if car.id != id:
                 others.add(car)
             else:
                 sel = car
-        # Handle movement for Red car
-        if "Red" in sel.id:
-            if "1" in selected:
-                diff = offset[0] + 100
-            else:
-                diff = offset[0]
-            new_pos = mouse_pos[0] - diff
-            old_pos = sel.rect.x
-            if 300 <= new_pos <= (900):
-                if new_pos >= old_pos + 99 or new_pos <= old_pos - 99:
-                    return
-                sel.rect.x = new_pos
-                colliding = pygame.sprite.spritecollide(sel, others, False)
-                if colliding:
-                    sel.rect.x = old_pos
         # Handle movement for cars that move on x-axis
-        elif sel.move_axis == "x":
+        if sel.move_axis == "x":
+            red_bonus = 200 if "Red" in sel.id else 0
             if "1" in selected:
                 diff = offset[0] + 100
             elif "2" in selected:
@@ -147,7 +117,7 @@ class Board:
                 diff = offset[0]
             new_pos = mouse_pos[0] - diff
             old_pos = sel.rect.x
-            if 300 <= new_pos<= (900 - sel.width):
+            if 300 <= new_pos<= (900 - sel.width + red_bonus):
                 if new_pos >= old_pos + 99 or new_pos <= old_pos - 99:
                     return
                 sel.rect.x = new_pos
@@ -221,7 +191,7 @@ class Board:
         # Add new car position info to matrix
         x_cell = sel.rect.x // 100 - 3
         y_cell = sel.rect.y // 100 - 3
-        if id == "Red":
+        if sel.move_axis == "x":
             try:
                 for i in range(cells):
                     if i > 0:
@@ -230,12 +200,6 @@ class Board:
                         self.level_layout[y_cell][x_cell+i] = sel.id
             except:
                 return (True, True)
-        elif sel.move_axis == "x":
-            for i in range(cells):
-                if i > 0:
-                    self.level_layout[y_cell][x_cell+i] = sel.id + "-" + str(i)
-                else:
-                    self.level_layout[y_cell][x_cell+i] = sel.id
         elif sel.move_axis == "y":
             for i in range(cells):
                 if i > 0:
