@@ -12,9 +12,9 @@
 
 ### Viikko 1
 
-[komentorivi.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/komentorivi.txt)
+[komentorivi.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
 
-[gitlog.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
+[gitlog.txt](https://github.com/samulioll/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
 
 ### Viikko 2
 
