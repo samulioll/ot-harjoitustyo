@@ -8,4 +8,5 @@
 | 18.3. | 1    | pelin perustoimintojen koodausta |
 | 22.3. | 2    | valikkojen rakentamista |
 | 23.3. | 4    | valikkojen rakentamista |
-| yht   | 17   | | 
+| 24.3. | 2    | koodin tarkistusta |
+| yht   | 19   | | 
