@@ -9,4 +9,5 @@
 | 22.3. | 2    | valikkojen rakentamista |
 | 23.3. | 4    | valikkojen rakentamista |
 | 24.3. | 2    | koodin tarkistusta |
-| yht   | 19   | | 
+| 24.3. | 3    | koodin rakenteen suunnittelua |
+| yht   | 22   | | 
