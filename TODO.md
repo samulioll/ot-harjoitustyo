@@ -8,7 +8,9 @@
 - Cars remember their new positions
 - Cars can be dragged from any part of their body
 - Rudimentary menu logic
+- Basic menu views
 
 ### To do
 
-- Manu views
+- Restructure code
+	- Separate classes for all views
