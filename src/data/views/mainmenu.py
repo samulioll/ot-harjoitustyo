@@ -13,6 +13,12 @@ class Menu(view_manager._View):
             if 260 <= mouse_pos[0] <= 565 and 470 <= mouse_pos[1] <= 525:
                 self.next = "GAME"
                 self.done = True
+            elif 390 <= mouse_pos[0] <= 560 and 680 <= mouse_pos[1] <= 720:
+                self.next = "LEVELSELECT"
+                self.done = True
+            elif 180 <= mouse_pos[0] <= 565 and 890 <= mouse_pos[1] <= 930:
+                self.next = "HIGHSCORES"
+                self.done = True
     
     def draw(self, surface):
         """ Draw screen. """

@@ -1,6 +1,6 @@
 from .engine import Engine
 from . import initialize
-from .views import mainmenu, profile, levelselect, game, postgame
+from .views import mainmenu, profile, levelselect, game, postgame, highscores
 
 def main():
     """
@@ -11,6 +11,7 @@ def main():
              "MAINMENU"    : mainmenu.Menu(),
              "LEVELSELECT" : levelselect.LevelSelect(),
              "GAME"        : game.Game(),
-             "POSTGAME"    : postgame.PostGame()}
+             "POSTGAME"    : postgame.PostGame(),
+             "HIGHSCORES"  : highscores.HighScores()}
     app.view_manager.initialize_views(views, "MAINMENU")
     app.main()
