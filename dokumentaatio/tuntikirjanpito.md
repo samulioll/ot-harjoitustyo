@@ -10,4 +10,5 @@
 | 23.3. | 4    | valikkojen rakentamista |
 | 24.3. | 2    | koodin tarkistusta |
 | 24.3. | 3    | koodin rakenteen suunnittelua |
-| yht   | 22   | | 
+| 25.3. | 2    | koodin rakenteen muuttaminen |
+| yht   | 24   | | 

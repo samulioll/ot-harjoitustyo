@@ -10,3 +10,5 @@
 
 - Alkeellinen rakenne eri valikoille
 	- Alkeellinen graafinen ulkoasu 
+- Muutettu ohjelman rakennetta
+	- Jäsennelty ohjeman osat täysin uudella tavalla
