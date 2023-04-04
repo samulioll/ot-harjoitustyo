@@ -18,4 +18,5 @@
 ### Viikko 3
 
 - Lisätty invoke komennot
-- Luotu pytest toiminnallisuus ja ensimmäinen testi
+- Luotu pytest toiminnallisuus
+- 100% testikattavuus autojen logiikalle
