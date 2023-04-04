@@ -8,7 +8,7 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 - [Changelog](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Vaativuusmäärittely](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-## Asennus
+## Installation
 
 1. Clone the repository to your computer and install the dependencies:
 ```
