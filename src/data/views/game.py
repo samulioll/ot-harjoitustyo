@@ -16,11 +16,9 @@ class Game(view_manager._View):
         self.selected = False
         self.offset = 0
         self.next = "MAINMENU"
-
+        self.board = board.Board(self.level)
         self.moves = 0
 
-    def initialize_board(self, level):
-        self.board = board.Board(level)
 
     def input_handler(self, event, profile):
         """
