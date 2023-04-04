@@ -1,24 +1,28 @@
 import pygame as pg
 from .. import view_manager
 from ..components import board
+from ..components import levels
 
 
 class Game(view_manager._View):
-    def __init__(self):
+    def __init__(self, profile):
         view_manager._View.__init__(self)
+        self.levels = levels.Levels()
+        self.profile = profile
+        
         self.level = [[0,0,0,"Yellow",0,0],
                       [0,0,0,"Yellow-1",0,0],
                       [0,"Red","Red-1","Yellow-2",0,0],
                       [0,0,0,0,0,0],
                       [0,0,0,0,0,0],
                       [0,0,0,"Blue","Blue-1",0]]
+        
         self.started = False
         self.selected = False
         self.offset = 0
         self.next = "MAINMENU"
         self.board = board.Board(self.level)
         self.moves = 0
-
 
     def input_handler(self, event, profile):
         """
