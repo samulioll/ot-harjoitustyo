@@ -21,6 +21,10 @@ class Game(view_manager._View):
         self.moves = 0
 
     def input_handler(self, event):
+        """
+        Arguments:
+            event: pygame event
+        """
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.started = True
@@ -37,7 +41,10 @@ class Game(view_manager._View):
             self.offset = 0
 
     def draw(self, surface):
-        """ Draw screen. """
+        """
+        Argument:
+            surface: pygame surface
+        """
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
 

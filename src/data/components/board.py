@@ -58,7 +58,7 @@ class Board:
                     self.cars.add(self.orange2x1)
                 elif cell == "Magenta":
                     self.magenta2x1 = Car("blue2x1", x_coord, y_coord)
-                    self.cars.add(self.blue2x1)
+                    self.cars.add(self.magenta2x1)
                 elif cell == "Brown":
                     self.brown2x1 = Car("brown2x1", x_coord, y_coord)
                     self.cars.add(self.brown2x1)
@@ -99,7 +99,7 @@ class Board:
             id = parts[0]
         else:
             id = selected
-        # add all of the cars that are ont selected to a group to detect collisions with
+        # add all of the non-selected cars to a group to detect collisions with
         others = pg.sprite.Group()
         for car in self.cars:
             if car.id != id:
@@ -125,7 +125,8 @@ class Board:
                 if colliding:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on y-axis
-        elif sel.move_axis == "y":
+        else:
+            print("MOVE AXIS Y")
             if "1" in selected:
                 diff = board_offset[1] + 100
             elif "2" in selected:
@@ -141,7 +142,6 @@ class Board:
                 colliding = pg.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.y = old_pos
-    
 
 
     def drop_car(self, selected: str):
@@ -166,7 +166,7 @@ class Board:
                 sel.rect.x = old_pos - diff
             else:
                 sel.rect.x = old_pos + (100 - diff)
-        elif sel.move_axis == "y":
+        else:
             cells = sel.height // 100
             old_pos = sel.rect.y
             diff = old_pos % 100
@@ -185,7 +185,7 @@ class Board:
                     if sel.move_axis == "x":
                         for i in range(cells):
                             self.layout[y][x+i] = 0
-                    elif sel.move_axis == "y":
+                    else:
                         for i in range(cells):
                             self.layout[y+i][x] = 0
         # Add new car position info to matrix
@@ -200,7 +200,7 @@ class Board:
                         self.layout[y_cell][x_cell+i] = sel.id
             except:
                 return (True, True)
-        elif sel.move_axis == "y":
+        else:
             for i in range(cells):
                 if i > 0:
                     self.layout[y_cell+i][x_cell] = sel.id + "-" + str(i)
@@ -219,6 +219,10 @@ class Board:
         return (changed, False)
     
     def get_selected(self, mouse_pos):
+        """
+        Arguments:
+            mouse_pos: Tuple of muose position
+        """
         x = (mouse_pos[0] - self.board_offset) // 100
         y = (mouse_pos[1] - self.board_offset) // 100
         if 0 <= x <= 5 and 0 <= y <= 5:
