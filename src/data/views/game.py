@@ -6,7 +6,12 @@ from ..components import board
 class Game(view_manager._View):
     def __init__(self):
         view_manager._View.__init__(self)
-        self.level = None
+        self.level = [[0,0,0,"Yellow",0,0],
+                      [0,0,0,"Yellow-1",0,0],
+                      [0,"Red","Red-1","Yellow-2",0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,0,0,0],
+                      [0,0,0,"Blue","Blue-1",0]]
         self.started = False
         self.selected = False
         self.offset = 0

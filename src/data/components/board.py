@@ -10,12 +10,7 @@ class Board:
     def __init__(self, level):
         self.cell_size = 100
         self.board_offset = 300
-        self.layout = [[0,0,0,"Yellow",0,0],
-                        [0,0,0,"Yellow-1",0,0],
-                        [0,"Red","Red-1","Yellow-2",0,0],
-                        [0,0,0,0,0,0],
-                        [0,0,0,0,0,0],
-                        [0,0,0,"Blue","Blue-1",0]]
+        self.layout = level
 
         self.red2x1 = None
         self.blue2x1 = None
