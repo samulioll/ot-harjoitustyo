@@ -9,9 +9,11 @@
 ### Viikko 2
 
 - Alkeellinen rakenne eri valikoille
+	- UI_element-luokka
 	- Alkeellinen graafinen ulkoasu 
 - Muutettu ohjelman rakennetta
 	- Jäsennelty ohjeman osat täysin uudella tavalla
+	- Luotu omat moduulit pelin eri näkymille, poistettu Screen-luokka
 
 ### Viikko 3
 
