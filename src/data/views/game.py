@@ -15,12 +15,14 @@ class Game(view_manager._View):
         self.started = False
         self.selected = False
         self.offset = 0
-        self.board = board.Board(self.level)
-        self.next = "POSTGAME"
+        self.next = "MAINMENU"
 
         self.moves = 0
 
-    def input_handler(self, event):
+    def initialize_board(self, level):
+        self.board = board.Board(level)
+
+    def input_handler(self, event, profile):
         """
         Arguments:
             event: pygame event
@@ -40,7 +42,7 @@ class Game(view_manager._View):
             self.selected = None
             self.offset = 0
 
-    def draw(self, surface):
+    def draw(self, surface, profile):
         """
         Argument:
             surface: pygame surface

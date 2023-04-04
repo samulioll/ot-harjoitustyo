@@ -126,7 +126,6 @@ class Board:
                     sel.rect.x = old_pos
         # Handle movement for cars that move on y-axis
         else:
-            print("MOVE AXIS Y")
             if "1" in selected:
                 diff = board_offset[1] + 100
             elif "2" in selected:
