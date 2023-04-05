@@ -23,7 +23,7 @@ class Game(view_manager._View):
         self.board = board.Board(self.level)
         self.moves = 0
 
-    def input_handler(self, event, profile):
+    def input_handler(self, event):
         """
         Arguments:
             event: pygame event
@@ -43,7 +43,7 @@ class Game(view_manager._View):
             self.selected = None
             self.offset = 0
 
-    def draw(self, surface, profile):
+    def draw(self, surface):
         """
         Argument:
             surface: pygame surface

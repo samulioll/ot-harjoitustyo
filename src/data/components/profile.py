@@ -26,18 +26,24 @@ class AllProfiles:
         usernames = []
 
         font = pg.font.SysFont("Arial", 50)
-        y = 360
+        y = 450
+        empties = 6 - len(self.profiles)
         for profile in self.profiles:
             text = font.render(profile.username, True, (color, color, color), None)
             text_rect = text.get_rect()
-            text_rect.x = 605
+            text_rect.x = 625
             text_rect.y = y
             usernames.append((text, text_rect))
             y += 100
-        
+        if empties:
+            for i in range(empties):
+                text = font.render("EMPTY SLOT", True, (color, color, color), None)
+                text_rect = text.get_rect()
+                text_rect.x = 625
+                text_rect.y = y
+                usernames.append((text, text_rect))
+                y += 100     
         return usernames
-        
-
 
 
 def load_profiles():

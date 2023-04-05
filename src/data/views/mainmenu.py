@@ -7,7 +7,7 @@ class MainMenu(view_manager._View):
         view_manager._View.__init__(self)
         self.menu = menus.Menus()
 
-    def input_handler(self, event, profile):
+    def input_handler(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 260 <= mouse_pos[0] <= 565 and 470 <= mouse_pos[1] <= 525:
@@ -20,7 +20,7 @@ class MainMenu(view_manager._View):
                 self.next = "HIGHSCORES"
                 self.done = True
     
-    def draw(self, surface, profile):
+    def draw(self, surface):
         """
         Argument:
             surface: pygame surface
