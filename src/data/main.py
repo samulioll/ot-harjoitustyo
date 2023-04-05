@@ -14,7 +14,5 @@ def main():
              "GAME"        : game.Game(),
              "POSTGAME"    : postgame.PostGame(),
              "HIGHSCORES"  : highscores.HighScores()}
-    profiles = profile.load_profiles()
     app.view_manager.initialize_views(views, "PROFILESELECT")
-    app.view_manager.initialize_profiles(profiles)
     app.main()

@@ -12,23 +12,41 @@ class Profile:
 
 class AllProfiles:
     def __init__(self):
-        self.profiles = []
+        self.profiles = {1: None, 2: None, 3: None, 4: None, 5: None, 6: None}
 
         with open(os.path.join(path_name, ".", "profiles.json"), "r+") as document:
             all_profiles = json.load(document)
+            index = 1
             for profile in all_profiles:
-                username = profile[0]
-                scores = profile[1]
-                curr_profile = Profile(username, scores)
-                self.profiles.append(curr_profile)
+                self.profiles[index] = Profile(profile[0], profile[1])
+                index += 1
+    
+
+    def add_profile(self, username):
+        index = 1
+        for slot in self.profiles:
+            if slot == None:
+                self.profiles[index] = Profile(username, {})
+                return True
+            index += 1
+        return False
+
+
+    def delete_profile(self, index):
+        pass
+
 
     def draw_users(self, color):
         usernames = []
 
         font = pg.font.SysFont("Arial", 50)
         y = 450
-        empties = 6 - len(self.profiles)
-        for profile in self.profiles:
+        empties = 0
+        for slot, profile in self.profiles.items():
+            empties += 1 if not profile else 0
+        for slot, profile in self.profiles.items():
+            if profile == None:
+                continue
             text = font.render(profile.username, True, (color, color, color), None)
             text_rect = text.get_rect()
             text_rect.x = 625

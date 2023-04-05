@@ -12,31 +12,44 @@ class ProfileSelect(view_manager._View):
         self.all_profiles = profile.AllProfiles()
 
     def input_handler(self, event):
-        #print(pg.mouse.get_pos())
+        """
+        Arguments:
+            event: pygame event
+        """
+        print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 305 <= mouse_pos[0] <= 565 and 545 <= mouse_pos[1] <= 670:
                 self.clicked = "SELECT"
+            
             else:
                 pass
 
             if self.clicked == "SELECT":
                 if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 510:
-                    try:
-                        self.profile = self.all_profiles.profiles[0]
+                    if self.all_profiles.profiles[1] != None:
+                        self.profile = self.all_profiles.profiles[1]
                         self.done = True
-                    except:
-                        pass
                 elif 620 <= mouse_pos[0] <= 950 and 555 <= mouse_pos[1] <= 610:
-                    selected_profile = self.all_profiles.profiles[1]
+                    if self.all_profiles.profiles[2]:
+                        self.profile = self.all_profiles.profiles[2]
+                        self.done = True
                 elif 620 <= mouse_pos[0] <= 950 and 655 <= mouse_pos[1] <= 710:
-                    selected_profile = self.all_profiles.profiles[2]
+                    if self.all_profiles.profiles[3]:
+                        self.profile = self.all_profiles.profiles[3]
+                        self.done = True
                 elif 620 <= mouse_pos[0] <= 950 and 755 <= mouse_pos[1] <= 810:
-                    selected_profile = self.all_profiles.profiles[3]
+                    if self.all_profiles.profiles[4]:
+                        self.profile = self.all_profiles.profiles[4]
+                        self.done = True
                 elif 620 <= mouse_pos[0] <= 950 and 855 <= mouse_pos[1] <= 910:
-                    selected_profile = self.all_profiles.profiles[4]
+                    if self.all_profiles.profiles[5]:
+                        self.profile = self.all_profiles.profiles[5]
+                        self.done = True
                 elif 620 <= mouse_pos[0] <= 950 and 955 <= mouse_pos[1] <= 1010:
-                    selected_profile = self.all_profiles.profiles[5]
+                    if self.all_profiles.profiles[6]:
+                        self.profile = self.all_profiles.profiles[6]
+                        self.done = True
     
     def draw(self, surface):
         """
