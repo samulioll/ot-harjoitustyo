@@ -13,4 +13,5 @@
 | 25.3. | 2    | koodin rakenteen muuttaminen |
 |  4.4. | 6    | invoke ja pytest toiminnallisuus |
 |  5.4. | 1    | profiilinvalintasivun rakentamista | 
-| yht   | 29   | | 
+|  5.4. | 2    | näkymien välisen kommunikaation rakentamista |
+| yht   | 31   | | 
