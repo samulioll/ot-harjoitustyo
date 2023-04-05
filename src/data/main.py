@@ -1,6 +1,7 @@
 from .engine import Engine
 from . import initialize
 from .views import mainmenu, levelselect, game, postgame, highscores, profileselect
+from .components import profile
 
 def main():
     """
@@ -13,7 +14,7 @@ def main():
              "GAME"        : game.Game(),
              "POSTGAME"    : postgame.PostGame(),
              "HIGHSCORES"  : highscores.HighScores()}
-    profiles = []
+    profiles = profile.load_profiles()
     app.view_manager.initialize_views(views, "PROFILESELECT")
     app.view_manager.initialize_profiles(profiles)
     app.main()

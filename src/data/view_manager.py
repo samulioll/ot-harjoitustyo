@@ -20,6 +20,8 @@ class ViewManager():
         """
         self.profiles = profiles
         self.profile = None
+        for profile in self.profiles:
+            print(profile.username)
 
     def event_handler(self, event):
         """

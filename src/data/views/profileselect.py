@@ -1,6 +1,7 @@
 import pygame as pg
 from .. import view_manager
 from ..components import menus
+from ..components import profile
 
 class ProfileSelect(view_manager._View):
     def __init__(self):
@@ -8,6 +9,7 @@ class ProfileSelect(view_manager._View):
         self.menu = menus.Menus()
         self.next = "MAINMENU"
         self.clicked = None
+        self.all_profiles = profile.AllProfiles()
 
     def input_handler(self, event, profile):
         print(pg.mouse.get_pos())
@@ -17,6 +19,10 @@ class ProfileSelect(view_manager._View):
                 self.clicked = "SELECT"
             else:
                 self.clicked = None
+
+            if self.clicked == "SELECT":
+                pass
+
     
     def draw(self, surface, profile):
         """
@@ -24,6 +30,10 @@ class ProfileSelect(view_manager._View):
             surface: pygame surface
         """
         self.menu.select_profile.draw(surface)
+
         if self.clicked == "SELECT":
-            print("show profiles")
-            self.done = True
+            for user in self.all_profiles.draw_users(0):
+                surface.blit(user[0], user[1])
+        else:
+            for user in self.all_profiles.draw_users(150):
+                surface.blit(user[0], user[1])

@@ -11,5 +11,6 @@
 | 24.3. | 2    | koodin tarkistusta |
 | 24.3. | 3    | koodin rakenteen suunnittelua |
 | 25.3. | 2    | koodin rakenteen muuttaminen |
-| 4.4.  | 4    | invoke ja pytest toiminnallisuus |
-| yht   | 26   | | 
+|  4.4. | 6    | invoke ja pytest toiminnallisuus |
+|  5.4. | 1    | profiilinvalintasivun rakentamista | 
+| yht   | 29   | | 
