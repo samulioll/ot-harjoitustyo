@@ -20,6 +20,7 @@ class Game(view_manager._View):
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
+        self.moves = 0
         try:
             curr_level = self.profile.current_level()
             level_matrix = self.levels.levels[curr_level]

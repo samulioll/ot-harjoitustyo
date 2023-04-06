@@ -16,6 +16,7 @@ class Profile:
     
     def update_scores(self, level, score):
         """ Updates the score list of the profile. """
+        # Update profile within the game instance
         moves = score[0]
         time = score[1]
         try:
@@ -25,12 +26,21 @@ class Profile:
             new_moves = moves
             new_time = time
         self.scores[level] = (new_moves, new_time)
+        # Update profiles json file
+        saves = []
+        with open(os.path.join(path_name, ".", "profiles.json"), "r") as document:
+            all_profiles = json.load(document)
+            for profile in all_profiles:
+                username = profile[0]
+                scores = profile[1]
+                if username == self.username:
+                    saves.append((self.username, self.scores))
+                else:
+                    saves.append((username, scores))
+        with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+            json.dump(saves, document)
 
-        #load json and update it and save json
         
-
-            
-
 class AllProfiles:
     """ Class for the six save slots for profiles. """
     def __init__(self):
