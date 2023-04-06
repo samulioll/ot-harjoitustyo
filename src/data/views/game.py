@@ -15,7 +15,6 @@ class Game(view_manager._View):
         self.started = False
         self.selected = False
         self.offset = 0
-        self.next = "MAINMENU"
         self.moves = 0
 
     def initiate_level(self):
@@ -33,8 +32,14 @@ class Game(view_manager._View):
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
+            if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
+                self.initiate_level()
+            elif 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
+                self.next = "MAINMENU"
+                self.done = True
             self.started = True
             self.selected = self.board.get_selected(mouse_pos)
             self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
@@ -48,6 +53,7 @@ class Game(view_manager._View):
                     print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(self.profile.current_level(), (self.moves, 0))
+                    self.next = "POSTGAME"
             self.selected = None
             self.offset = 0
 
