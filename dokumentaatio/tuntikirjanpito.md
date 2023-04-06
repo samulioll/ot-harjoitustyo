@@ -17,4 +17,5 @@
 |  5.4. | 2    | näkymien välisen kommunikaation rakentamista |
 |  6.4. | 2    | oikean tason lataaminen profiilille |
 |  6.4. | 2    | voi luoda ja poistaa profiileja |
-| yht   | 36   | | 
+|  6.4. | 1    | koodin ja rakenteen siistimistä |
+| yht   | 37   | | 
