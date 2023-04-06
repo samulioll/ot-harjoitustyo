@@ -34,11 +34,9 @@ class Board:
     
 
     def _initialize_sprites(self):
-        """
-        Create the collection of sprites and their locations at the start.
-        """
-        self.backdrop = UiElement("backdrop_1", 0, 0)
-        self.board = UiElement("Board_1", 298, 294)
+        """ Create the collection of sprites and their locations at the start. """
+        #self.backdrop = UiElement("backdrop_1", 0, 0)
+        #self.board = UiElement("Board_1", 298, 294)
         self.full_game_view = UiElement("full_game_view_1", 0, 0)
         self.background.add(self.full_game_view)
 
@@ -87,13 +85,7 @@ class Board:
 
 
     def move_car(self, selected: str, mouse_pos: tuple, board_offset: int):
-        """
-        Arguments:
-            selected:   ID of selected car
-            mouse_pos:  tuple of current mouse coordinates
-            board_offset:     difference between clicked position and the original position of the selected car
-        """
-
+        """ Handles the movement of cars. """
         # Get car id from matrix
         if "-" in selected:
             parts = selected.split("-")
@@ -145,10 +137,7 @@ class Board:
 
 
     def drop_car(self, selected: str):
-        """
-        Arguments:
-            selected:   ID of selected car
-        """
+        """ Handles the matrix changes of moving a car. """
         if "-" in selected:
             parts = selected.split("-")
             id = parts[0]
@@ -199,6 +188,7 @@ class Board:
                     else:
                         self.layout[y_cell][x_cell+i] = sel.id
             except:
+                print("SOLVED")
                 return (True, True)
         else:
             for i in range(cells):
@@ -219,14 +209,12 @@ class Board:
         return (changed, False)
     
     def get_selected(self, mouse_pos):
-        """
-        Arguments:
-            mouse_pos: Tuple of muose position
-        """
+        """ Returns the car id of clicked cell. """
         x = (mouse_pos[0] - self.board_offset) // 100
         y = (mouse_pos[1] - self.board_offset) // 100
         if 0 <= x <= 5 and 0 <= y <= 5:
             return self.layout[y][x] if self.layout[y][x] != 0 else None
+
     
 
 

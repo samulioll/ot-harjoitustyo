@@ -17,29 +17,21 @@ class Game(view_manager._View):
         self.offset = 0
         self.next = "MAINMENU"
         self.moves = 0
-        self.initiate_level()
 
     def initiate_level(self):
-        """
-        Gets the next level and sets the board.
-        """
-        self.board = None
-        self.level = ""
+        """ Gets the next level and sets the board. """
         try:
-            levels_passed = len(self.profile.scores)
-            next_level = levels_passed + 1
-            self.level = str(next_level)
-            level_matrix = self.levels.levels[self.level]
+            curr_level = self.profile.current_level()
+            level_matrix = self.levels.levels[curr_level]
+            print("Level:", curr_level)
         except:
             level_matrix = self.levels.levels["1"]
+            print("Level: 1")
         self.board = board.Board(level_matrix)
 
 
     def input_handler(self, event):
-        """
-        Arguments:
-            event: pygame event
-        """
+        """ Handles events and sends commands to the board instance. """
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.started = True
@@ -52,14 +44,14 @@ class Game(view_manager._View):
                 moved, self.done = self.board.drop_car(self.selected)
                 if moved:
                     self.moves += 1
+                    print("Moves:", self.moves)
+                if self.done:
+                    self.profile.update_scores(self.profile.current_level(), (self.moves, 0))
             self.selected = None
             self.offset = 0
 
     def draw(self, surface):
-        """
-        Argument:
-            surface: pygame surface
-        """
+        """ Draws the board on the surface given. """
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
 

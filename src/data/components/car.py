@@ -10,11 +10,9 @@ class Car(pg.sprite.Sprite):
     
     def __init__(self, image_file, x=0, y=0):
         super(Car, self).__init__()
-
         self.image = pg.image.load(
             os.path.join(path_name, ".", "assets", image_file+".png")
         )
-
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

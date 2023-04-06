@@ -1,27 +1,25 @@
 import pygame as pg
 from .. import view_manager
 from ..components import menus
-from ..components import profile
+from ..components import profile_manager
 
 class ProfileSelect(view_manager._View):
+    """ The view for the profile selection state."""
     def __init__(self):
         view_manager._View.__init__(self)
         self.menu = menus.Menus()
         self.next = "MAINMENU"
         self.clicked = None
-        self.all_profiles = profile.AllProfiles()
+        self.all_profiles = profile_manager.AllProfiles()
 
     def input_handler(self, event):
-        """
-        Arguments:
-            event: pygame event
-        """
+        """ Handles events and sets active profile. """
         #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 305 <= mouse_pos[0] <= 565 and 545 <= mouse_pos[1] <= 670:
                 self.clicked = "SELECT"
-            
+        
             else:
                 pass
 
@@ -52,10 +50,7 @@ class ProfileSelect(view_manager._View):
                         self.done = True
     
     def draw(self, surface):
-        """
-        Argument:
-            surface: pygame surface
-        """
+        """ Draws the menu on the surface given. """
         self.menu.select_profile.draw(surface)
 
         if self.clicked == "SELECT":

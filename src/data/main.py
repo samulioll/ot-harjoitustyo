@@ -1,11 +1,11 @@
 from .engine import Engine
 from . import initialize
 from .views import mainmenu, levelselect, game, postgame, highscores, profileselect
-from .components import profile
+from .components import profile_manager
 
 def main():
     """
-    The main function which starts the game engine.
+    The main function which starts the game engine and the view manager.
     """
     app = Engine(initialize.caption)
     views = {"PROFILESELECT"     : profileselect.ProfileSelect(),

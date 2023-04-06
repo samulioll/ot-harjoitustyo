@@ -2,6 +2,9 @@ import pygame as pg
 from .ui_element import UiElement
 
 class Menus():
+    """
+    A class for all the menus.
+    """
     def __init__(self):
         self.select_profile = pg.sprite.Group()
         self.main_menu = pg.sprite.Group()
