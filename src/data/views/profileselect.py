@@ -17,11 +17,12 @@ class ProfileSelect(view_manager._View):
         #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 305 <= mouse_pos[0] <= 565 and 545 <= mouse_pos[1] <= 670:
+            if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 560:
                 self.clicked = "SELECT"
-        
-            else:
-                pass
+            elif 305 <= mouse_pos[0] <= 560 and 640 <= mouse_pos[1] <= 760:
+                self.clicked = "NEW"
+            elif 305 <= mouse_pos[0] <= 560 and 840 <= mouse_pos[1] <= 960:
+                self.clicked = "DELETE"
 
             if self.clicked == "SELECT":
                 if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 510:
@@ -48,14 +49,21 @@ class ProfileSelect(view_manager._View):
                     if self.all_profiles.profiles[6]:
                         self.profile = self.all_profiles.profiles[6]
                         self.done = True
+
     
     def draw(self, surface):
         """ Draws the menu on the surface given. """
         self.menu.select_profile.draw(surface)
 
         if self.clicked == "SELECT":
-            for user in self.all_profiles.draw_users(0):
+            for user in self.all_profiles.draw_users(0, 150):
+                surface.blit(user[0], user[1])
+        elif self.clicked == "NEW":
+            for user in self.all_profiles.draw_users(150, 0):
+                surface.blit(user[0], user[1])
+        elif self.clicked == "DELETE":
+            for user in self.all_profiles.draw_users(0, 150):
                 surface.blit(user[0], user[1])
         else:
-            for user in self.all_profiles.draw_users(150):
+            for user in self.all_profiles.draw_users(150, 150):
                 surface.blit(user[0], user[1])

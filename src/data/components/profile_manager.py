@@ -74,20 +74,20 @@ class AllProfiles:
        #         profile.scores[level] = score
         
 
-    def draw_users(self, color):
+    def draw_users(self, active_color, passive_color):
         """ Returns a list of pygame text objects of all profiles and empty slots. """
         usernames = []
         font = pg.font.SysFont("Arial", 50)
         y = 450
         for slot, profile in self.profiles.items():
             if profile == None:
-                text = font.render("EMPTY SLOT", True, (color, color, color), None)
+                text = font.render("EMPTY SLOT", True, (passive_color, passive_color, passive_color), None)
                 text_rect = text.get_rect()
                 text_rect.x = 625
                 text_rect.y = y
                 usernames.append((text, text_rect))
             else:
-                text = font.render(profile.username, True, (color, color, color), None)
+                text = font.render(profile.username, True, (active_color, active_color, active_color), None)
                 text_rect = text.get_rect()
                 text_rect.x = 625
                 text_rect.y = y

@@ -12,16 +12,20 @@ class MainMenu(view_manager._View):
 
     def input_handler(self, event):
         """ Handles events and sets the next game view. """
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 260 <= mouse_pos[0] <= 565 and 470 <= mouse_pos[1] <= 525:
+            if 270 <= mouse_pos[0] <= 565 and 450 <= mouse_pos[1] <= 500:
                 self.next = "GAME"
                 self.done = True
-            elif 390 <= mouse_pos[0] <= 560 and 680 <= mouse_pos[1] <= 720:
+            elif 380 <= mouse_pos[0] <= 565 and 600 <= mouse_pos[1] <= 650:
                 self.next = "LEVELSELECT"
                 self.done = True
-            elif 180 <= mouse_pos[0] <= 565 and 890 <= mouse_pos[1] <= 930:
+            elif 180 <= mouse_pos[0] <= 565 and 755 <= mouse_pos[1] <= 805:
                 self.next = "HIGHSCORES"
+                self.done = True
+            elif 200 <= mouse_pos[0] <= 565 and 905 <= mouse_pos[1] <= 955:
+                self.next = "PROFILESELECT"
                 self.done = True
     
     def draw(self, surface):
