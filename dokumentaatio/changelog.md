@@ -20,3 +20,8 @@
 - Lisätty invoke komennot
 - Luotu pytest toiminnallisuus
 - 100% testikattavuus autojen logiikalle
+
+### Viikko 4
+
+- Lisätty profile.py, joka hallinnoi profiileja
+- Lisätty "select profile" näkymä
