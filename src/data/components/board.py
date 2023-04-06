@@ -1,6 +1,6 @@
 import pygame as pg
-from .car import Car
-from .ui_element import UiElement
+from data.components.objects.car import Car
+from data.components.objects.ui_element import UiElement
 from copy import deepcopy
 
 class Board:

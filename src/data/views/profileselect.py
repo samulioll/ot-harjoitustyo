@@ -1,6 +1,6 @@
 import pygame as pg
 from .. import view_manager
-from ..components import menus
+from data.components.objects import menus
 from ..components import profile_manager
 
 class ProfileSelect(view_manager._View):

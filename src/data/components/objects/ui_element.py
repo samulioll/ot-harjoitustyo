@@ -12,7 +12,7 @@ class UiElement(pg.sprite.Sprite):
         super().__init__()
 
         self.image = pg.image.load(
-            os.path.join(path_name, ".", "assets", image_file+".png")
+            os.path.join(path_name, "..", "assets", image_file+".png")
         )
 
         self.rect = self.image.get_rect()
