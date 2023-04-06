@@ -15,7 +15,6 @@ class Game(view_manager._View):
         self.started = False
         self.selected = False
         self.offset = 0
-        self.moves = 0
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
@@ -53,7 +52,7 @@ class Game(view_manager._View):
                     print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(self.profile.current_level(), (self.moves, 0))
-                    self.next = "POSTGAME"
+                    self.next = "MAINMENU"
             self.selected = None
             self.offset = 0
 
