@@ -23,10 +23,12 @@
 
 ### Viikko 4
 
-- Lisätty profile.py, joka hallinnoi profiileja
+- Lisätty profile_maanger.py, joka hallinnoi profiileja
+	Luokat yksittäiselle profiilille ja kaikille
 - Lisätty "select profile" näkymä
 	- Profiilinimieä klikkaamalla voi valita profiilin
 - Oikean tason lataaminen profiilin peliedistyksen mukaisesti
 	- Peli tallentaa tasojen läpäisyn ja antaa seuraavan tason.
 - Profiilin luominen ja poistaminen toimii
+	- Tekstinsyöttökenttä-luokka profile_managerin alle
 - Car-, Ui_Element- ja Menus-luokat siirretty omaan objects-kansioon selkeyttämään rakennetta
