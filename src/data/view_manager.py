@@ -44,6 +44,8 @@ class ViewManager():
         self.view = self.views[self.view.next]
         self.view.startup(profile)
         self.view.done = False
+        if self.view == self.views["GAME"]:
+            self.view.initiate_level()
 
 
 

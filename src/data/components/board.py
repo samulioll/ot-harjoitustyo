@@ -1,6 +1,7 @@
 import pygame as pg
 from .car import Car
 from .ui_element import UiElement
+from copy import deepcopy
 
 class Board:
     """
@@ -10,7 +11,7 @@ class Board:
     def __init__(self, level):
         self.cell_size = 100
         self.board_offset = 300
-        self.layout = level
+        self.layout = deepcopy(level)
 
         self.red2x1 = None
         self.blue2x1 = None

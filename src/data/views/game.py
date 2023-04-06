@@ -2,26 +2,38 @@ import pygame as pg
 from .. import view_manager
 from ..components import board
 from ..components import levels
+from copy import deepcopy
 
 
 class Game(view_manager._View):
+    """
+    The view for the game state.
+    """
     def __init__(self):
         view_manager._View.__init__(self)
         self.levels = levels.Levels()
-
-        self.level = [[0,0,0,"Yellow",0,0],
-                      [0,0,0,"Yellow-1",0,0],
-                      [0,"Red","Red-1","Yellow-2",0,0],
-                      [0,0,0,0,0,0],
-                      [0,0,0,0,0,0],
-                      [0,0,0,"Blue","Blue-1",0]]
-        
         self.started = False
         self.selected = False
         self.offset = 0
         self.next = "MAINMENU"
-        self.board = board.Board(self.level)
         self.moves = 0
+        self.initiate_level()
+
+    def initiate_level(self):
+        """
+        Gets the next level and sets the board.
+        """
+        self.board = None
+        self.level = ""
+        try:
+            levels_passed = len(self.profile.scores)
+            next_level = levels_passed + 1
+            self.level = str(next_level)
+            level_matrix = self.levels.levels[self.level]
+        except:
+            level_matrix = self.levels.levels["1"]
+        self.board = board.Board(level_matrix)
+
 
     def input_handler(self, event):
         """

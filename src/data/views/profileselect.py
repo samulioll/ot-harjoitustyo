@@ -16,7 +16,7 @@ class ProfileSelect(view_manager._View):
         Arguments:
             event: pygame event
         """
-        print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 305 <= mouse_pos[0] <= 565 and 545 <= mouse_pos[1] <= 670:
