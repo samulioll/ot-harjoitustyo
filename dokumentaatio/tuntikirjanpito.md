@@ -3,6 +3,7 @@
 | :----:|:-----| :-----|
 | 14.3. | 1    | tutustuminen työn ohjeistukseen |
 | 14.3. | 2    | suunnittelu |
+| 14.3. | 1    | vaativuusmäärittely |
 | 15.3. | 5    | perustusten rakentaminen |
 | 16.3. | 2    | pelin perustoimintojen koodausta |
 | 18.3. | 1    | pelin perustoimintojen koodausta |
@@ -16,4 +17,4 @@
 |  5.4. | 2    | näkymien välisen kommunikaation rakentamista |
 |  6.4. | 2    | oikean tason lataaminen profiilille |
 |  6.4. | 2    | voi luoda ja poistaa profiileja |
-| yht   | 35   | | 
+| yht   | 36   | | 
