@@ -29,3 +29,4 @@
 - Oikean tason lataaminen profiilin peliedistyksen mukaisesti
 	- Peli tallentaa tasojen läpäisyn ja antaa seuraavan tason.
 - Profiilin luominen ja poistaminen toimii
+- Car-, Ui_Element- ja Menus-luokat siirretty omaan objects-kansioon selkeyttämään rakennetta
