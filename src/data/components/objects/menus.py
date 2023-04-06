@@ -12,6 +12,7 @@ class Menus():
 
         self.initialize_main_menu()
         self.initialize__profile_select()
+        self.initialize_post_game_menu()
     
     def initialize_main_menu(self):
         full_menu = UiElement("full_main_menu_2", 0, 0)
@@ -20,3 +21,7 @@ class Menus():
     def initialize__profile_select(self):
         full_menu = UiElement("full_select_profile_2", 0, 0)
         self.select_profile.add(full_menu)
+
+    def initialize_post_game_menu(self):
+        boxes = UiElement("post_game_box_1", 0, 0)
+        self.post_game.add(boxes)

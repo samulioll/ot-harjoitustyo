@@ -52,7 +52,7 @@ class Game(view_manager._View):
                     print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(self.profile.current_level(), (self.moves, 0))
-                    self.next = "MAINMENU"
+                    self.next = "POSTGAME"
             self.selected = None
             self.offset = 0
 
