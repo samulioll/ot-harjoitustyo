@@ -15,4 +15,5 @@
 |  5.4. | 1    | profiilinvalintasivun rakentamista | 
 |  5.4. | 2    | näkymien välisen kommunikaation rakentamista |
 |  6.4. | 2    | oikean tason lataaminen profiilille |
-| yht   | 33   | | 
+|  6.4. | 2    | voi luoda ja poistaa profiileja |
+| yht   | 35   | | 
