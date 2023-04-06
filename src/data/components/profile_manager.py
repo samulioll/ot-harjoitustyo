@@ -41,13 +41,17 @@ class AllProfiles:
     def __init__(self):
         self.profiles = {"1": None, "2": None, "3": None, "4": None, "5": None, "6": None}
         # Load profile info from .json file.
-        with open(os.path.join(path_name, ".", "profiles.json"), "r+") as document:
-            all_profiles = json.load(document)
-            for slot, profile in all_profiles.items():
-                try:
-                    self.profiles[slot] = Profile(slot, profile[0], profile[1])
-                except:
-                    pass
+        try:
+            with open(os.path.join(path_name, ".", "profiles.json"), "r+") as document:
+                all_profiles = json.load(document)
+                for slot, profile in all_profiles.items():
+                    try:
+                        self.profiles[slot] = Profile(slot, profile[0], profile[1])
+                    except:
+                        pass
+        except:
+            with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+                json.dump(self.profiles, document)
     
     def add_profile(self, username):
         """ Checks if a save slot is open and creates a profile if so. """
