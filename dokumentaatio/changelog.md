@@ -25,3 +25,5 @@
 
 - Lisätty profile.py, joka hallinnoi profiileja
 - Lisätty "select profile" näkymä
+	- Profiilinimieä klikkaamalla voi valita profiilin
+- Oikean tason lataaminen profiilin peliedistyksen mukaisesti
