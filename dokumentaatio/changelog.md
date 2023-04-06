@@ -27,4 +27,5 @@
 - Lisätty "select profile" näkymä
 	- Profiilinimieä klikkaamalla voi valita profiilin
 - Oikean tason lataaminen profiilin peliedistyksen mukaisesti
-	- Peli tallentaa tasojen läpäisyn ja antaa seuraavan tason. (ei vielä tallenna tiedostoon seuraavaa pelikertaa varten)
+	- Peli tallentaa tasojen läpäisyn ja antaa seuraavan tason.
+- Profiilin luominen ja poistaminen toimii
