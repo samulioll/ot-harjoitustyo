@@ -29,10 +29,10 @@ class Profile:
         self.scores[level] = (new_moves, new_time)
         # Update profiles json file
         saves = {1: None, 2: None, 3: None, 4: None, 5: None, 6: None}
-        with open(os.path.join(path_name, ".", "profiles.json"), "r") as document:
+        with open(os.path.join(path_name, ".", "saves.json"), "r") as document:
             saves = json.load(document)
             saves[self.slot] = [self.username, self.scores]
-        with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+        with open(os.path.join(path_name, ".", "saves.json"), "w") as document:
             json.dump(saves, document)
 
         
@@ -42,7 +42,7 @@ class AllProfiles:
         self.profiles = {"1": None, "2": None, "3": None, "4": None, "5": None, "6": None}
         # Load profile info from .json file.
         try:
-            with open(os.path.join(path_name, ".", "profiles.json"), "r+") as document:
+            with open(os.path.join(path_name, ".", "saves.json"), "r+") as document:
                 all_profiles = json.load(document)
                 for slot, profile in all_profiles.items():
                     try:
@@ -50,7 +50,7 @@ class AllProfiles:
                     except:
                         pass
         except:
-            with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+            with open(os.path.join(path_name, ".", "saves.json"), "w") as document:
                 json.dump(self.profiles, document)
     
     def add_profile(self, username):
@@ -59,20 +59,20 @@ class AllProfiles:
             if profile == None:
                 new_profile = Profile(slot, username, {})
                 self.profiles[slot] = new_profile
-                with open(os.path.join(path_name, ".", "profiles.json"), "r") as document:
+                with open(os.path.join(path_name, ".", "saves.json"), "r") as document:
                     saves = json.load(document)
                     saves[slot] = [username, {}]
-                with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+                with open(os.path.join(path_name, ".", "saves.json"), "w") as document:
                     json.dump(saves, document)
                 return new_profile
 
     def delete_profile(self, slot):
         """ Delete a profile. """
         self.profiles[slot] = None
-        with open(os.path.join(path_name, ".", "profiles.json"), "r") as document:
+        with open(os.path.join(path_name, ".", "saves.json"), "r") as document:
             saves = json.load(document)
             saves[slot] = None
-        with open(os.path.join(path_name, ".", "profiles.json"), "w") as document:
+        with open(os.path.join(path_name, ".", "saves.json"), "w") as document:
             json.dump(saves, document)
 
     def draw_users(self, active_color, passive_color):

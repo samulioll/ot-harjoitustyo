@@ -1,7 +1,7 @@
 import pygame as pg
 from .. import view_manager
 from ..components import board
-from ..components import levels
+from ..components import level_manager
 from copy import deepcopy
 
 
@@ -11,7 +11,7 @@ class Game(view_manager._View):
     """
     def __init__(self):
         view_manager._View.__init__(self)
-        self.levels = levels.Levels()
+        self.levels = level_manager.Levels()
         self.started = False
         self.selected = False
         self.offset = 0
