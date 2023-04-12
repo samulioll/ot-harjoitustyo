@@ -1,5 +1,5 @@
-import pygame as pg
 import os
+import pygame as pg
 
 path_name = os.path.dirname(__file__)
 

@@ -1,20 +1,19 @@
 import pygame as pg
-from .. import view_manager
+from ..view_manager import View
 from ..components import board
 from ..components import level_manager
-from copy import deepcopy
 
-
-class Game(view_manager._View):
+class Game(View):
     """
     The view for the game state.
     """
     def __init__(self):
-        view_manager._View.__init__(self)
+        View.__init__(self)
         self.levels = level_manager.Levels()
         self.started = False
         self.selected = False
         self.offset = 0
+        self.next = None
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
@@ -60,5 +59,3 @@ class Game(view_manager._View):
         """ Draws the board on the surface given. """
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
-
-

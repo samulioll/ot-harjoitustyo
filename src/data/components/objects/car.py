@@ -1,5 +1,5 @@
-import pygame as pg
 import os
+import pygame as pg
 
 path_name = os.path.dirname(__file__)
 
@@ -7,7 +7,7 @@ class Car(pg.sprite.Sprite):
     """
     A class for all the cars.
     """
-    
+
     def __init__(self, image_file, x=0, y=0):
         super(Car, self).__init__()
         self.image = pg.image.load(

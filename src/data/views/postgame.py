@@ -1,14 +1,15 @@
 import pygame as pg
-from .. import view_manager
 from data.components.objects import menus
+from ..view_manager import View
 
-class PostGame(view_manager._View):
+class PostGame(View):
     """
     The view for the post game state.
     """
     def __init__(self):
-        view_manager._View.__init__(self)
+        View.__init__(self)
         self.menu = menus.Menus()
+        self.next = None
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """

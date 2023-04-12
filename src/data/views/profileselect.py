@@ -1,17 +1,18 @@
 import pygame as pg
-from .. import view_manager
 from data.components.objects import menus
+from ..view_manager import View
 from ..components import profile_manager
 
-class ProfileSelect(view_manager._View):
+class ProfileSelect(View):
     """ The view for the profile selection state."""
     def __init__(self):
-        view_manager._View.__init__(self)
+        View.__init__(self)
         self.menu = menus.Menus()
         self.next = "MAINMENU"
         self.clicked = None
         self.all_profiles = profile_manager.AllProfiles()
         self.input_box = None
+
 
     def input_handler(self, event):
         """ Handles events and sets active profile. """
@@ -41,7 +42,7 @@ class ProfileSelect(view_manager._View):
 
             if self.clicked == "SELECT":
                 if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 510:
-                    if self.all_profiles.profiles["1"] != None:
+                    if self.all_profiles.profiles["1"] is not None:
                         self.profile = self.all_profiles.profiles["1"]
                         self.done = True
                 elif 620 <= mouse_pos[0] <= 950 and 555 <= mouse_pos[1] <= 610:
@@ -64,10 +65,10 @@ class ProfileSelect(view_manager._View):
                     if self.all_profiles.profiles["6"]:
                         self.profile = self.all_profiles.profiles["6"]
                         self.done = True
-            
+
             elif self.clicked == "DELETE":
                 if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 510:
-                    if self.all_profiles.profiles["1"] != None:
+                    if self.all_profiles.profiles["1"] is not None:
                         self.all_profiles.delete_profile("1")
                 elif 620 <= mouse_pos[0] <= 950 and 555 <= mouse_pos[1] <= 610:
                     if self.all_profiles.profiles["2"]:
@@ -85,7 +86,6 @@ class ProfileSelect(view_manager._View):
                     if self.all_profiles.profiles["6"]:
                         self.all_profiles.delete_profile("6")
 
-    
     def draw(self, surface):
         """ Draws the menu on the surface given. """
         self.menu.select_profile.draw(surface)

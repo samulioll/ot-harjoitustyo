@@ -1,6 +1,6 @@
 import pygame as pg
-from .. import view_manager
+from ..view_manager import View
 
-class LevelSelect(view_manager._View):
+class LevelSelect(View):
     def __init__(self):
-        view_manager._View.__init__(self)
+        View.__init__(self)

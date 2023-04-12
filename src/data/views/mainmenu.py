@@ -1,14 +1,15 @@
 import pygame as pg
-from .. import view_manager
 from data.components.objects import menus
+from ..view_manager import View
 
-class MainMenu(view_manager._View):
+class MainMenu(View):
     """
     The view for the main menu.
     """
     def __init__(self):
-        view_manager._View.__init__(self)
+        View.__init__(self)
         self.menu = menus.Menus()
+        self.next = None
 
     def input_handler(self, event):
         """ Handles events and sets the next game view. """
@@ -33,7 +34,7 @@ class MainMenu(view_manager._View):
             elif 200 <= mouse_pos[0] <= 565 and 905 <= mouse_pos[1] <= 955:
                 self.next = "PROFILESELECT"
                 self.done = True
-    
+
     def draw(self, surface):
         """ Draws the menu on the surface given. """
         self.menu.main_menu.draw(surface)

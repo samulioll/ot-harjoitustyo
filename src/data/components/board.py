@@ -31,7 +31,6 @@ class Board:
         self.all_sprites = pg.sprite.Group()
 
         self._initialize_sprites()
-    
 
     def _initialize_sprites(self):
         """ Create the collection of sprites and their locations at the start. """
@@ -83,7 +82,6 @@ class Board:
                     self.yellow1x3 = Car("yellow1x3", x_coord, y_coord)
                     self.cars.add(self.yellow1x3)
 
-
     def move_car(self, selected: str, mouse_pos: tuple, board_offset: int):
         """ Handles the movement of cars. """
         # Get car id from matrix
@@ -134,7 +132,6 @@ class Board:
                 colliding = pg.sprite.spritecollide(sel, others, False)
                 if colliding:
                     sel.rect.y = old_pos
-
 
     def drop_car(self, selected: str):
         """ Handles the matrix changes of moving a car. """
@@ -207,15 +204,12 @@ class Board:
         if new_pos != old_pos:
             changed = True
         return (changed, False)
-    
+
     def get_selected(self, mouse_pos):
         """ Returns the car id of clicked cell. """
         x = (mouse_pos[0] - self.board_offset) // 100
         y = (mouse_pos[1] - self.board_offset) // 100
         if 0 <= x <= 5 and 0 <= y <= 5:
             return self.layout[y][x] if self.layout[y][x] != 0 else None
-
-    
-
-
-
+        else:
+            return None

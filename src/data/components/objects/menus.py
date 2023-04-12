@@ -13,7 +13,7 @@ class Menus():
         self.initialize_main_menu()
         self.initialize__profile_select()
         self.initialize_post_game_menu()
-    
+
     def initialize_main_menu(self):
         full_menu = UiElement("full_main_menu_2", 0, 0)
         self.main_menu.add(full_menu)

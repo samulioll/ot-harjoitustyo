@@ -1,6 +1,5 @@
-import os
 import pygame as pg
-from . import view_manager
+from .view_manager import ViewManager
 
 class Engine():
     """
@@ -10,10 +9,9 @@ class Engine():
         self.display = pg.display.get_surface()
         self.caption = caption
         self.clock = pg.time.Clock()
-        self.view_manager = view_manager.ViewManager()
+        self.view_manager = ViewManager()
 
         self.running = True
-
 
     def main(self):
         """ The main loop of the program. """
@@ -28,7 +26,7 @@ class Engine():
             if event.type == pg.QUIT:
                 self.running = False
             self.view_manager.event_handler(event)
-    
+
     def update(self):
         """ Updates the current view. """
         self.view_manager.update()
