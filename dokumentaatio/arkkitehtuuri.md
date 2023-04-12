@@ -1,6 +1,6 @@
 # Arkkitehtuurikuvaus
 
-## Rakenne
+## Luokkarakenne
 
 ```mermaid
     classDiagram
