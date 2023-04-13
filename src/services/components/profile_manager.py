@@ -70,13 +70,12 @@ class AllProfiles:
             if profile is None:
                 new_profile = Profile(slot, username, {})
                 self.profiles[slot] = new_profile
-                with open(os.path.join(path_name, ".saves.json"), "r", encoding="utf-8") as doc:
+                with open(os.path.join(path_name, "saves.json"), "r", encoding="utf-8") as doc:
                     saves = json.load(doc)
                     saves[slot] = [username, {}]
-                with open(os.path.join(path_name, ".saves.json"), "w", encoding="utf-8") as doc:
+                with open(os.path.join(path_name, "saves.json"), "w", encoding="utf-8") as doc:
                     json.dump(saves, doc)
                 return new_profile
-
 
     def delete_profile(self, slot):
         """ Delete a profile. """
@@ -94,24 +93,18 @@ class InputBox:
         self.color = (0, 0, 0)
         self.text = text
         self.text_surface = self.font.render(text, True, self.color)
-        self.active = False
+
 
     def input_handler(self, event):
-        if event.type == pg.MOUSEBUTTONDOWN:
-            if self.rect.collidepoint(event.pos):
-                self.active = True
-            else:
-                self.active = False
         if event.type == pg.KEYDOWN:
-            if self.active:
-                if event.key == pg.K_RETURN:
-                    return self.text
-                if event.key == pg.K_BACKSPACE:
-                    self.text = self.text[:-1]
-                else:
-                    self.text += event.unicode
-                self.text_surface = self.font.render(
-                    self.text, True, self.color)
+            if event.key == pg.K_RETURN:
+                return self.text
+            if event.key == pg.K_BACKSPACE:
+                self.text = self.text[:-1]
+            else:
+                self.text += event.unicode
+            self.text_surface = self.font.render(
+                self.text, True, self.color)
 
     def draw(self, surface):
         pg.draw.rect(surface, (231, 203, 233), self.rect, 25)

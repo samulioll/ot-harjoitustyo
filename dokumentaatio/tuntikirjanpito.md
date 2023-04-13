@@ -20,4 +20,5 @@
 |  6.4. | 1    | koodin ja rakenteen siistimistä |
 | 12.4. | 2    | pylint siistimistä |
 | 12.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
-| yht   | 41   | | 
+| 13.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
+| yht   | 43   | | 

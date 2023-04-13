@@ -72,9 +72,3 @@ class View():
         """ Saves the profile infor for the next view. """
         self.done = False
         return self.profile
-    
-class Element(pg.sprite.Sprite):
-    """ Baseline for all ui elements """
-
-    def __init__(self):
-        pass
