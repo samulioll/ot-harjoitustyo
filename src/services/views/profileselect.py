@@ -1,5 +1,5 @@
 import pygame as pg
-from services.components.objects import menus
+from services.components.objects.menuprofile import MenuProfile
 from ..view_manager import View
 from ..components import profile_manager
 
@@ -9,7 +9,7 @@ class ProfileSelect(View):
 
     def __init__(self):
         View.__init__(self)
-        self.menu = menus.Menus()
+        self.menu = MenuProfile()
         self.next = "MAINMENU"
         self.clicked = None
         self.all_profiles = profile_manager.AllProfiles()
@@ -27,10 +27,7 @@ class ProfileSelect(View):
 
         elif event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 560:
-                self.clicked = "SELECT"
-            elif 305 <= mouse_pos[0] <= 560 and 640 <= mouse_pos[1] <= 760:
-                self.clicked = "NEW"
+            if self.clicked == "NEW":
                 empty = None
                 for slot, profile in self.all_profiles.profiles.items():
                     if not profile and not empty:
@@ -39,8 +36,6 @@ class ProfileSelect(View):
                     self.selected_slot = empty
                     self.input_box = profile_manager.InputBox(
                         620, (353 + 100 * empty), 330, 50)
-            elif 305 <= mouse_pos[0] <= 560 and 840 <= mouse_pos[1] <= 960:
-                self.clicked = "DELETE"
 
             if self.clicked == "SELECT":
                 if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 510:
@@ -87,22 +82,23 @@ class ProfileSelect(View):
                 elif 620 <= mouse_pos[0] <= 950 and 955 <= mouse_pos[1] <= 1010:
                     if self.all_profiles.profiles["6"]:
                         self.all_profiles.delete_profile("6")
+            
+            self.clicked = self.menu.sub_menu(mouse_pos)
+            print(self.clicked)
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
-        self.menu.select_profile.draw(surface)
+        self.menu.menu_items.draw(surface)
+        
+        mouse_pos = pg.mouse.get_pos()
+        show = False
+        if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 600:
+            show = True
+        elif 305 <= mouse_pos[0] <= 560 and 600 <= mouse_pos[1] <= 800:
+            show = True
+        elif 305 <= mouse_pos[0] <= 560 and 800 <= mouse_pos[1] <= 960:
+            show = True
+        if show or self.clicked:
+            for user in self.menu.draw_users(self.all_profiles.profiles, self.clicked):
+                surface.blit(user[0], user[1])
 
-        if self.clicked == "SELECT":
-            for user in self.all_profiles.draw_users(0, 150):
-                surface.blit(user[0], user[1])
-        elif self.clicked == "NEW":
-            for user in self.all_profiles.draw_users(150, 0):
-                surface.blit(user[0], user[1])
-            if self.input_box:
-                self.input_box.draw(surface)
-        elif self.clicked == "DELETE":
-            for user in self.all_profiles.draw_users(0, 150):
-                surface.blit(user[0], user[1])
-        else:
-            for user in self.all_profiles.draw_users(150, 150):
-                surface.blit(user[0], user[1])

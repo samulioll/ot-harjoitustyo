@@ -18,5 +18,6 @@
 |  6.4. | 2    | oikean tason lataaminen profiilille |
 |  6.4. | 2    | voi luoda ja poistaa profiileja |
 |  6.4. | 1    | koodin ja rakenteen siistimistä |
-| 12.4. | 1    | pylint siistimistä |
-| yht   | 38   | | 
+| 12.4. | 2    | pylint siistimistä |
+| 12.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
+| yht   | 41   | | 

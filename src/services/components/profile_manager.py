@@ -15,7 +15,14 @@ class Profile:
 
     def current_level(self):
         """ Returns the next unsolved level. """
-        return str(len(self.scores) + 1)
+        level = len(self.scores) + 1
+        difficulties = {0: "Beginner",
+                        1: "Easy",
+                        2: "Medium",
+                        3: "Advanced",
+                        4: "Hard"}
+        difficulty = difficulties[level // 10]
+        return str(level), difficulty
 
     def update_scores(self, level, score):
         """ Updates the score list of the profile. """
@@ -36,7 +43,6 @@ class Profile:
             saves[self.slot] = [self.username, self.scores]
         with open(os.path.join(path_name, ".", "saves.json"), "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
-
 
 class AllProfiles:
     """ Class for the six save slots for profiles. """
@@ -70,7 +76,7 @@ class AllProfiles:
                 with open(os.path.join(path_name, ".saves.json"), "w", encoding="utf-8") as doc:
                     json.dump(saves, doc)
                 return new_profile
-            return None
+
 
     def delete_profile(self, slot):
         """ Delete a profile. """
@@ -81,34 +87,10 @@ class AllProfiles:
         with open(os.path.join(path_name, ".", "saves.json"), "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
 
-    def draw_users(self, act_col, pass_col):
-        """ Returns a list of pygame text objects of all profiles and empty slots. """
-        usernames = []
-        font = pg.font.SysFont("Arial", 50)
-        y = 450
-        for slot, profile in self.profiles.items():
-            if profile is None:
-                text = font.render("EMPTY SLOT", True,
-                                   (pass_col, pass_col, pass_col), None)
-                text_rect = text.get_rect()
-                text_rect.x = 625
-                text_rect.y = y
-                usernames.append((text, text_rect))
-            else:
-                text = font.render(profile.username, True,
-                                   (act_col, act_col, act_col), None)
-                text_rect = text.get_rect()
-                text_rect.x = 625
-                text_rect.y = y
-                usernames.append((text, text_rect))
-            y += 100
-        return usernames
-
-
 class InputBox:
-    def __init__(self, x, y, w, h, text=""):
+    def __init__(self, x_coord, y_coord, width, height, text=""):
         self.font = pg.font.SysFont("Arial", 50)
-        self.rect = pg.Rect(x, y, w, h)
+        self.rect = pg.Rect(x_coord, y_coord, width, height)
         self.color = (0, 0, 0)
         self.text = text
         self.text_surface = self.font.render(text, True, self.color)

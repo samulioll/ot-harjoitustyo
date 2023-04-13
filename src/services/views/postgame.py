@@ -1,5 +1,5 @@
 import pygame as pg
-from services.components.objects import menus
+from services.components.objects.menupost import MenuPost
 from ..view_manager import View
 
 
@@ -10,7 +10,7 @@ class PostGame(View):
 
     def __init__(self):
         View.__init__(self)
-        self.menu = menus.Menus()
+        self.menu = MenuPost()
         self.next = None
 
     def input_handler(self, event):
@@ -27,4 +27,4 @@ class PostGame(View):
 
     def draw(self, surface):
         """ Draws the post game menu on the surface given. """
-        self.menu.post_game.draw(surface)
+        self.menu.menu_items.draw(surface)

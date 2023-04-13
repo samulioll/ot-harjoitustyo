@@ -16,12 +16,14 @@ class Game(View):
         self.selected = False
         self.offset = 0
         self.next = None
+        self.board = None
+        self.moves = 0
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
         self.moves = 0
         try:
-            curr_level = self.profile.current_level()
+            curr_level = self.profile.current_level()[0]
             level_matrix = self.levels.levels[curr_level]
             print("Level:", curr_level)
         except:
@@ -52,7 +54,7 @@ class Game(View):
                     print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(
-                        self.profile.current_level(), (self.moves, 0))
+                        self.profile.current_level()[0], (self.moves, 0))
                     self.next = "POSTGAME"
             self.selected = None
             self.offset = 0
