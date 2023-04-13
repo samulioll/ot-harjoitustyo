@@ -22,4 +22,5 @@
 | 12.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | grafiikoiden luomista |
-| yht   | 45   | | 
+| 13.4. | 2    | level select näkymän luominen |
+| yht   | 47   | | 
