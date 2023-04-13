@@ -21,4 +21,5 @@
 | 12.4. | 2    | pylint siistimistä |
 | 12.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
-| yht   | 43   | | 
+| 13.4. | 2    | grafiikoiden luomista |
+| yht   | 45   | | 
