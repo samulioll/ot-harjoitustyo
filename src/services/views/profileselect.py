@@ -39,6 +39,7 @@ class ProfileSelect(View):
                 self.clicked = clicked
 
             if self.clicked == "NEW":
+                self.all_profiles = profile_manager.AllProfiles()
                 empty = None
                 for slot, profile in self.all_profiles.profiles.items():
                     if not profile and not empty:

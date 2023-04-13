@@ -30,7 +30,7 @@ class Board:
 
     def _initialize_sprites(self):
         """ Create the collection of sprites and their locations at the start. """
-        self.full_game_view = UiElement("full_game_view_1", 0, 0)
+        self.full_game_view = UiElement("full_game_view_2", 0, 0)
         self.background.add(self.full_game_view)
         for row in range(6):
             for column in range(6):
