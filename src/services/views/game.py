@@ -18,6 +18,7 @@ class Game(View):
         self.next = None
         self.board = None
         self.moves = 0
+        self.time = "00:00"
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
@@ -33,7 +34,7 @@ class Game(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
-        # print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
@@ -63,3 +64,6 @@ class Game(View):
         """ Draws the board on the surface given. """
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
+        moves, time = self.board.draw_score(self.moves, self.time)
+        surface.blit(moves, (725, 918))
+        surface.blit(time, (775, 918))

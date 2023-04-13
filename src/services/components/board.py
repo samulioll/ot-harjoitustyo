@@ -26,6 +26,7 @@ class Board:
                         "Yellow": "yellow1x3"}
         self.background = pg.sprite.Group()
         self.cars = pg.sprite.Group()
+        self.font = pg.font.SysFont("Arial", 50)
         self._initialize_sprites()
 
     def _initialize_sprites(self):
@@ -170,3 +171,8 @@ class Board:
         row = (mouse_pos[1] - self.board_offset) // 100
         if 0 <= column <= 5 and 0 <= row <= 5:
             return self.layout[row][column] if self.layout[row][column] != 0 else None
+    
+    def draw_score(self, moves, time):
+        text_moves = self.font.render(str(moves), True, (0,0,0), None)
+        text_time = self.font.render(time, True, (0,0,0), None)
+        return text_moves, text_time
