@@ -44,7 +44,6 @@ class ProfileSelect(View):
                 for slot, profile in self.all_profiles.profiles.items():
                     if not profile and not empty:
                         empty = int(slot)
-                        print(empty)
                 if empty:
                     self.selected_slot = empty
                     self.input_box = profile_manager.InputBox(

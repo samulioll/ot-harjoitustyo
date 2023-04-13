@@ -94,7 +94,6 @@ class InputBox:
         self.text = text
         self.text_surface = self.font.render(text, True, self.color)
 
-
     def input_handler(self, event):
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_RETURN:

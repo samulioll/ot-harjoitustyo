@@ -22,11 +22,8 @@ class MainMenu(View):
                 self.next = "GAME"
                 self.done = True
             elif 380 <= mouse_pos[0] <= 565 and 600 <= mouse_pos[1] <= 650:
-                print("")
-                print("!!!   Level selector not yet functional   !!!")
-                print("")
-                # self.next = "LEVELSELECT"
-                # self.done = True
+                self.next = "LEVELSELECT"
+                self.done = True
             elif 180 <= mouse_pos[0] <= 565 and 755 <= mouse_pos[1] <= 805:
                 print("")
                 print("!!!   High scores not yet functional   !!!")
