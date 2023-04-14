@@ -22,9 +22,6 @@
 | 12.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | grafiikoiden luomista |
-<<<<<<< HEAD
-| 14.4. | 2    | pylint siistimistä |
-=======
 | 13.4. | 2    | level select näkymän luominen |
->>>>>>> 9e335b56983102e339b8739f46a82a30780b0de1
-| yht   | 47   | | 
+| 14.4. | 2    | pylint siistimistä |
+| yht   | 49   | | 
