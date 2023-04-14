@@ -3,6 +3,7 @@ import pygame as pg
 from services.components.objects.car import Car
 from services.components.objects.ui_element import UiElement
 
+
 class Board:
     """
     Simulates the board and keeps track of all pieces.
@@ -26,7 +27,6 @@ class Board:
                         "Yellow": "yellow1x3"}
         self.background = pg.sprite.Group()
         self.cars = pg.sprite.Group()
-        self.font = pg.font.SysFont("Arial", 50)
         self._initialize_sprites()
 
     def _initialize_sprites(self):
@@ -47,9 +47,11 @@ class Board:
         car_id = self.get_car_id(selected)
         others, sel = self.create_collision_group(car_id)
         if sel.move_axis == "x":
-            self.handle_x_axis_move(selected, sel, mouse_pos, board_offset, others)
+            self.handle_x_axis_move(
+                selected, sel, mouse_pos, board_offset, others)
         else:
-            self.handle_y_axis_move(selected, sel, mouse_pos, board_offset, others)
+            self.handle_y_axis_move(
+                selected, sel, mouse_pos, board_offset, others)
 
     def get_car_id(self, selected):
         """ Return the id of the clicked car. """
@@ -160,9 +162,9 @@ class Board:
         if sel.move_axis == "x":
             try:
                 for i in range(cells):
-                    bonus = "-" +str(i) if i > 0 else ""
+                    bonus = "-" + str(i) if i > 0 else ""
                     self.layout[y_cell][x_cell+i] = sel.car_id + bonus
-            except:
+            except IndexError:
                 print("SOLVED")
                 return True
         else:
@@ -195,7 +197,8 @@ class Board:
 
     def draw_level_info(self, moves, time, level):
         """ Draws move count, time, and level info. """
-        text_moves = self.font.render(str(moves), True, (0,0,0), None)
-        text_time = self.font.render(time, True, (0,0,0), None)
-        text_level = self.font.render(str(level), True, (0,0,0), None)
+        font = pg.font.SysFont("Arial", 50)
+        text_moves = font.render(str(moves), True, (0, 0, 0), None)
+        text_time = font.render(time, True, (0, 0, 0), None)
+        text_level = font.render(str(level), True, (0, 0, 0), None)
         return text_moves, text_time, text_level

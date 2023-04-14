@@ -1,6 +1,7 @@
 import pygame as pg
 from .ui_element import UiElement
 
+
 class MenuLevels():
     """
     A class for the levels logic menu.
@@ -21,9 +22,12 @@ class MenuLevels():
         start_x, start_y, extra_x = 240, 375, 76
         rows = {0: 0, 1: 133, 2: 271, 3: 414, 4: 554}
 
-        numbers = self.add_solved_levels(solved, start_x, extra_x, start_y, rows)
-        numbers.append(self.add_current_level(solved, next_lvl, start_x, extra_x, start_y, rows))
-        self.add_unsolved_levels(solved, start_x, extra_x, start_y, rows, numbers)
+        numbers = self.add_solved_levels(
+            solved, start_x, extra_x, start_y, rows)
+        numbers.append(self.add_current_level(
+            solved, next_lvl, start_x, extra_x, start_y, rows))
+        self.add_unsolved_levels(
+            solved, start_x, extra_x, start_y, rows, numbers)
         return numbers
 
     def add_solved_levels(self, solved, start_x, extra_x, start_y, rows):
@@ -76,14 +80,16 @@ class MenuLevels():
                 9: (831, 898),
                 10: (906, 975)}
 
+        lvl_row, lvl_col = -1, -1
         for row, limits in rows.items():
             if limits[0] <= mouse_pos[1] <= limits[1]:
                 lvl_row = row
         for col, limits in cols.items():
             if limits[0] <= mouse_pos[0] <= limits[1]:
                 lvl_col = col
-
-        level = (lvl_row * 10) + lvl_col
-        if level <= len(profile.scores) + 1:
-            return level
+        if lvl_row >= 0 and lvl_col >= 0:
+            level = (lvl_row * 10) + lvl_col
+            if level <= len(profile.scores) + 1:
+                return level
+            return None
         return None

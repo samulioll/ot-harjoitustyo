@@ -32,7 +32,7 @@ class Profile:
         try:
             new_moves = min(moves, self.scores[level][0])
             new_time = min(time, self.scores[level][1])
-        except:
+        except KeyError:
             new_moves = moves
             new_time = time
         self.scores[level] = (new_moves, new_time)
@@ -44,8 +44,10 @@ class Profile:
         with open(os.path.join(path_name, ".", "saves.json"), "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
 
+
 class AllProfiles:
     """ Class for the six save slots for profiles. """
+
     def __init__(self):
         self.profiles = {"1": None, "2": None,
                          "3": None, "4": None, "5": None, "6": None}
@@ -57,9 +59,9 @@ class AllProfiles:
                     try:
                         self.profiles[slot] = Profile(
                             slot, profile[0], profile[1])
-                    except:
+                    except TypeError:
                         pass
-        except:
+        except FileNotFoundError:
             with open(os.path.join(path_name, ".", "saves.json"), "w", encoding="utf-8") as doc:
                 json.dump(self.profiles, doc)
 
@@ -85,6 +87,7 @@ class AllProfiles:
             saves[slot] = None
         with open(os.path.join(path_name, ".", "saves.json"), "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
+
 
 class InputBox:
     def __init__(self, x_coord, y_coord, width, height, text=""):

@@ -31,14 +31,15 @@ class Game(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
                 self.initiate_level()
             elif 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
                 self.next, self.done = "MAINMENU", True
-            self.started, self.selected = True, self.board.get_selected(mouse_pos)
+            self.started, self.selected = True, self.board.get_selected(
+                mouse_pos)
             self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
         elif self.selected and event.type == pg.MOUSEMOTION:
             self.board.move_car(self.selected, pg.mouse.get_pos(), self.offset)
@@ -59,7 +60,7 @@ class Game(View):
         self.board.cars.draw(surface)
         moves, time, level = self.board.draw_level_info(
             self.moves, self.time, self.profile.current_level()[0]
-            )
+        )
         surface.blit(moves, (725, 918))
         surface.blit(time, (775, 918))
         surface.blit(level, (450, 918))

@@ -34,13 +34,15 @@ class MenuProfile():
         e_col = 150
         for profile in all_profiles.profiles.values():
             if profile is None:
-                text = self.font.render("EMPTY SLOT", True,(e_col,e_col,e_col), None)
+                text = self.font.render(
+                    "EMPTY SLOT", True, (e_col, e_col, e_col), None)
                 text_rect = text.get_rect()
                 text_rect.x = 625
                 text_rect.y = y_coord
                 usernames.append((text, text_rect))
             else:
-                text = self.font.render(profile.username, True, (d_col,p_col,p_col), None)
+                text = self.font.render(
+                    profile.username, True, (d_col, p_col, p_col), None)
                 text_rect = text.get_rect()
                 text_rect.x = 625
                 text_rect.y = y_coord

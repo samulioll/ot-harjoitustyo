@@ -6,7 +6,6 @@ from ..components import profile_manager
 
 class ProfileSelect(View):
     """ The view for the profile selection state."""
-
     def __init__(self):
         View.__init__(self)
         self.menu = MenuProfile()
@@ -34,14 +33,7 @@ class ProfileSelect(View):
             self.clicked = clicked
 
             if self.clicked == "NEW":
-                self.all_profiles = profile_manager.AllProfiles()
-                empty_slot = None
-                for slot, profile in self.all_profiles.profiles.items():
-                    if not profile and not empty_slot:
-                        empty_slot = int(slot)
-                if empty_slot:
-                    self.input_box = profile_manager.InputBox(
-                        620, (338 + 100 * empty_slot), 330, 80)
+                self.handle_clicked_new()
 
         elif self.input_box:
             username = self.input_box.input_handler(event)
@@ -49,6 +41,18 @@ class ProfileSelect(View):
                 new_profile = self.all_profiles.add_profile(username)
                 if new_profile:
                     self.profile, self.input_box, self.done = new_profile, None, True
+
+    def handle_clicked_new(self):
+        """ Handles creation of input box for username if clicked new. """
+        self.all_profiles = profile_manager.AllProfiles()
+        empty_slot = None
+        for slot, profile in self.all_profiles.profiles.items():
+            if not profile and not empty_slot:
+                empty_slot = int(slot)
+        if empty_slot:
+            self.input_box = profile_manager.InputBox(
+                620, (338 + 100 * empty_slot), 330, 80)
+
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """

@@ -17,22 +17,7 @@ class MainMenu(View):
         """ Handles events and sets the next game view. """
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
-            mouse_pos = pg.mouse.get_pos()
-            if 270 <= mouse_pos[0] <= 565 and 450 <= mouse_pos[1] <= 500:
-                self.next = "GAME"
-                self.done = True
-            elif 380 <= mouse_pos[0] <= 565 and 600 <= mouse_pos[1] <= 650:
-                self.next = "LEVELSELECT"
-                self.done = True
-            elif 180 <= mouse_pos[0] <= 565 and 755 <= mouse_pos[1] <= 805:
-                print("")
-                print("!!!   High scores not yet functional   !!!")
-                print("")
-                # self.next = "HIGHSCORES"
-                # self.done = True
-            elif 200 <= mouse_pos[0] <= 565 and 905 <= mouse_pos[1] <= 955:
-                self.next = "PROFILESELECT"
-                self.done = True
+            self.next, self.done = self.menu.get_clicked(pg.mouse.get_pos())
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
@@ -40,7 +25,8 @@ class MainMenu(View):
         mouse_pos = pg.mouse.get_pos()
 
         if 270 <= mouse_pos[0] <= 565 and 450 <= mouse_pos[1] <= 500:
-            text, text_rect = self.menu.draw_level_info(self.profile.current_level())
+            text, text_rect = self.menu.draw_level_info(
+                self.profile.current_level())
             surface.blit(text, text_rect)
         elif 380 <= mouse_pos[0] <= 565 and 600 <= mouse_pos[1] <= 650:
             text, text_rect = self.menu.draw_show_levels()
