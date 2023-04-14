@@ -13,6 +13,7 @@
 | 24.3. | 3    | koodin rakenteen suunnittelua |
 | 25.3. | 2    | koodin rakenteen muuttaminen |
 |  4.4. | 6    | invoke ja pytest toiminnallisuus |
+|  4.4. | 2    | testien muodostamista |
 |  5.4. | 1    | profiilinvalintasivun rakentamista | 
 |  5.4. | 2    | näkymien välisen kommunikaation rakentamista |
 |  6.4. | 2    | oikean tason lataaminen profiilille |
@@ -23,5 +24,6 @@
 | 13.4. | 2    | Koodin rakenteen siistimistä/jäsentelyä |
 | 13.4. | 2    | grafiikoiden luomista |
 | 13.4. | 2    | level select näkymän luominen |
-| 14.4. | 2    | pylint siistimistä |
-| yht   | 49   | | 
+| 14.4. | 3    | pylint siistimistä |
+| 14.4. | 1    | testien muodostamista |
+| yht   | 53   | | 

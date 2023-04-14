@@ -21,7 +21,7 @@ class TestCar(unittest.TestCase):
         # 300 pixels before game grid on both sides, grid cell size 100px
         self.board = Board(basic_level)
 
-    # Horizontal car moevement tests
+    # Horizontal car movement tests
 
     def test_move_right(self):
         mouse_pos_x, mouse_pos_y = 450, 550

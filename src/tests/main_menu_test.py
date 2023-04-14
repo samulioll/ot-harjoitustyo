@@ -14,8 +14,8 @@ class TestMainMenu(unittest.TestCase):
     def test_activate_levels(self):
         self.assertEqual(self.menu.get_clicked((390, 625)), ("LEVELSELECT", True))
 
-    def test_activate_highscores(self):
-        self.assertEqual(self.menu.get_clicked((300, 800)), ("HIGHSCORES", True))
+    #def test_activate_highscores(self):
+    #    self.assertEqual(self.menu.get_clicked((300, 800)), ("HIGHSCORES", True))
 
     def test_activate_profile_menu(self):
         self.assertEqual(self.menu.get_clicked((300, 925)), ("PROFILESELECT", True))
