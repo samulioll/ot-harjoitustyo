@@ -34,3 +34,4 @@
 - Car-, Ui_Element- ja Menus-luokat siirretty omaan objects-kansioon selkeyttämään rakennetta
 - Post game näkymä josta pääsee seuraavaan tasoon tai päävalikkoon
 - Lisätty pylint ja autopep8
+- Purettu funktioita pienempiin osiin pylintin ohjeiden mukaan

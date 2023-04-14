@@ -22,39 +22,33 @@ class ProfileSelect(View):
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
 
-            if self.clicked == "SELECT":
-                if self.menu.select_user(mouse_pos):
-                    self.profile = self.menu.select_user(mouse_pos)
-                    self.done = True
-                    self.clicked = None
+            selected_profile = self.menu.select_user(mouse_pos)
+            if self.clicked == "SELECT" and selected_profile:
+                self.profile, self.done, self.clicked = selected_profile, True, None
 
-            elif self.clicked == "DELETE":
+            if self.clicked == "DELETE":
                 self.menu.delete_user(mouse_pos)
                 self.clicked = None
 
-            clicked = self.menu.get_clicked(mouse_pos)
-            if clicked == "CLEAR":
-                self.clicked = None
-            elif clicked != "KEEP":
-                self.clicked = clicked
+            clicked = self.menu.get_clicked(mouse_pos, self.clicked)
+            self.clicked = clicked
 
             if self.clicked == "NEW":
                 self.all_profiles = profile_manager.AllProfiles()
-                empty = None
+                empty_slot = None
                 for slot, profile in self.all_profiles.profiles.items():
-                    if not profile and not empty:
-                        empty = int(slot)
-                if empty:
-                    self.selected_slot = empty
+                    if not profile and not empty_slot:
+                        empty_slot = int(slot)
+                if empty_slot:
                     self.input_box = profile_manager.InputBox(
-                        620, (353 + 100 * empty), 330, 50)
+                        620, (338 + 100 * empty_slot), 330, 80)
 
         elif self.input_box:
             username = self.input_box.input_handler(event)
             if username:
-                self.profile = self.all_profiles.add_profile(username)
-                self.input_box = None
-                self.done = True
+                new_profile = self.all_profiles.add_profile(username)
+                if new_profile:
+                    self.profile, self.input_box, self.done = new_profile, None, True
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """

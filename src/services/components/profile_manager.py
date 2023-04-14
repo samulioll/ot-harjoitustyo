@@ -46,7 +46,6 @@ class Profile:
 
 class AllProfiles:
     """ Class for the six save slots for profiles. """
-
     def __init__(self):
         self.profiles = {"1": None, "2": None,
                          "3": None, "4": None, "5": None, "6": None}
@@ -76,6 +75,7 @@ class AllProfiles:
                 with open(os.path.join(path_name, "saves.json"), "w", encoding="utf-8") as doc:
                     json.dump(saves, doc)
                 return new_profile
+        return None
 
     def delete_profile(self, slot):
         """ Delete a profile. """
@@ -104,8 +104,9 @@ class InputBox:
                 self.text += event.unicode
             self.text_surface = self.font.render(
                 self.text, True, self.color)
+        return None
 
     def draw(self, surface):
-        pg.draw.rect(surface, (231, 203, 233), self.rect, 25)
+        pg.draw.rect(surface, (231, 203, 233), self.rect, 40)
         pg.draw.rect(surface, self.color, self.rect, 2)
         surface.blit(self.text_surface, (self.rect.x+5, self.rect.y-3))

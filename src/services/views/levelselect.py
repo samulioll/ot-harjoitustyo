@@ -2,14 +2,17 @@ import pygame as pg
 from services.components.objects.menulevels import MenuLevels
 from ..view_manager import View
 
-
 class LevelSelect(View):
+    """
+    The view for the level select state.
+    """
     def __init__(self):
         View.__init__(self)
         self.menu = MenuLevels()
         self.next = None
-    
+
     def input_handler(self, event):
+        """ Handles events and sends commands for the menu to process. """
         #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -21,11 +24,10 @@ class LevelSelect(View):
                 if selected_level:
                     self.next = "GAME"
                     self.done = True
-            
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
         self.menu.menu_items.draw(surface)
 
-        for number in self.menu.draw_levels(surface, self.profile):
+        for number in self.menu.draw_levels(self.profile):
             surface.blit(number[0], number[1])

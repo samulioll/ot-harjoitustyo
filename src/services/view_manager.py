@@ -1,5 +1,3 @@
-import pygame as pg
-
 class ViewManager():
     """
     Keeps track of what view to show and handles the switching between views.
@@ -55,14 +53,6 @@ class View():
     def __init__(self):
         self.done = False
         self.profile = None
-
-    def get_event(self, event):
-        """ Overwritten by each view """
-        pass
-
-    def update(self):
-        """ Overwritten by each view """
-        pass
 
     def startup(self, active_profile):
         """ Loads the profile info from last view. """

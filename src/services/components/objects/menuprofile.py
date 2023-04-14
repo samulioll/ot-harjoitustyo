@@ -13,7 +13,7 @@ class MenuProfile():
         self.menu_items.add(UiElement("full_select_profile_2", 0, 0))
         self.font = pg.font.SysFont("Arial", 50)
 
-    def get_clicked(self, mouse_pos):
+    def get_clicked(self, mouse_pos, prev):
         if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 560:
             return "SELECT"
         if 305 <= mouse_pos[0] <= 560 and 640 <= mouse_pos[1] <= 760:
@@ -21,8 +21,8 @@ class MenuProfile():
         if 305 <= mouse_pos[0] <= 560 and 840 <= mouse_pos[1] <= 960:
             return "DELETE"
         if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 1010:
-            return "KEEP"
-        return "CLEAR"
+            return prev
+        return None
 
     def draw_users(self, active):
         """ Returns a list of pygame text objects of all profiles and empty slots. """
@@ -31,7 +31,7 @@ class MenuProfile():
         y_coord = 450
         p_col = 0 if active in ("SELECT", "DELETE") else 150
         d_col = 200 if active == "DELETE" else p_col
-        e_col = 0 if active == "NEW" else 150
+        e_col = 150
         for profile in all_profiles.profiles.values():
             if profile is None:
                 text = self.font.render("EMPTY SLOT", True,(e_col,e_col,e_col), None)
@@ -49,13 +49,16 @@ class MenuProfile():
         return usernames
 
     def select_user(self, mouse_pos):
+        """ Returns the clicked profile. """
         all_profiles = profile_manager.AllProfiles()
         if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 1010:
             user = str((mouse_pos[1] - 350) // 100)
             if all_profiles.profiles[user] is not None:
                 return all_profiles.profiles[user]
+        return None
 
     def delete_user(self,  mouse_pos):
+        """ Deletes a profile. """
         all_profiles = profile_manager.AllProfiles()
         if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 1010:
             user = str((mouse_pos[1] - 350) // 100)
