@@ -19,9 +19,14 @@ class PostGame(View):
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 450 <= mouse_pos[0] <= 580 and 650 <= mouse_pos[1] <= 690:
-                self.next = "GAME"
-                self.play_level += 1
-                self.done = True
+                if self.play_level < 10:
+                    self.next = "GAME"
+                    self.play_level += 1
+                    self.done = True
+                else:
+                    print("")
+                    print("!! All levels solved !!")
+                    print("")
             elif 620 <= mouse_pos[0] <= 725 and 650 <= mouse_pos[1] <= 690:
                 self.next = "MAINMENU"
                 self.play_level = None

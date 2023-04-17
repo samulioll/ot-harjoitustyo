@@ -8,5 +8,5 @@
  ["7", [[0, "Magenta", "Magenta-1", "Yellow", 0, 0], [0, 0, "Black", "Yellow-1", 0, 0], ["Red", "Red-1", "Black-1", "Yellow-2", 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, "Brown", "Brown-1", 0, 0]]],
  ["8", [["White", "White-1", "White-2", "Sky", 0, 0], [0, 0, 0, "Sky-1", 0, "Grey"], ["Red", "Red-1", 0, "Sky-2", 0, "Grey-1"], [0, 0, 0, 0, 0, "Grey-2"], [0, 0, 0, 0, 0, 0], [0, 0, 0, "Orange", "Orange-1", 0]]],
  ["9", [[0, 0, 0, 0, 0, 0], [0, 0, "Blue", "Blue-1", "Orange", "Orange-1"], ["Red", "Red-1", 0, 0, 0, "Black"], [0, 0, 0, 0, 0, "Black-1"], [0, 0, "Magenta", "Magenta-1", "Brown", "Brown-1"], [0, 0, 0, 0, 0, 0]]],
- ["10", [[0, 0, 0, 0, "Brown", "Brown-1"], [0, "White", "White-1", "White-2", "Black", 0], ["Red", "Red-1", "Purple", 0, "Black-1", 0], [0, 0, "Purple-1", 0, 0, 0], [0, 0, 0, 0, "Blue", "Blue-1"], [0, 0, 0, 0, 0, 0]]]
+ ["10", [[0, 0, 0, 0, "Brown", "Brown-1"], [0, "White", "White-1", "White-2", "Black", 0], ["Red", "Red-1", "Purple", 0, "Black-1", 0], [0, 0, "Purple-1", 0, 0, 0], [0, 0, 0, 0, "Blue", "Blue-1"], [0, 0, 0, 0, 0, 0]]],
 ]

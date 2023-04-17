@@ -26,5 +26,6 @@
 | 13.4. | 2    | level select näkymän luominen |
 | 14.4. | 3    | pylint siistimistä |
 | 14.4. | 1    | testien muodostamista |
-| 17.4. | 1    | tasovalinnan muokkaus |
-| yht   | 56   | | 
+| 17.4. | 3    | tasovalinnan muokkaus ja highscore näkymän perusta|
+| 17.4. | 3    | resoluutiovaihtoehtojen toteutusta |
+| yht   | 61   | | 

@@ -24,7 +24,8 @@ class Board:
                         "Lime": "lime1x2",
                         "Grey": "grey1x3",
                         "Green": "green1x3",
-                        "Yellow": "yellow1x3"}
+                        "Yellow": "yellow1x3",
+                        "Sky": "sky1x3"}
         self.background = pg.sprite.Group()
         self.cars = pg.sprite.Group()
         self._initialize_sprites()

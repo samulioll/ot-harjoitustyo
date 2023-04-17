@@ -20,6 +20,11 @@ class MainMenu(View):
             self.next, self.done = self.menu.get_clicked(pg.mouse.get_pos())
             if self.next == "GAME":
                 self.play_level = self.profile.current_level()[0]
+                if self.play_level > 10:
+                    self.next, self.done = None, False
+                    print("")
+                    print("!! All levels solved !!")
+                    print("")
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """

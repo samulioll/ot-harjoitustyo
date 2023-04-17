@@ -40,7 +40,7 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 - The player can go back to the main menu by clicking "EXIT".
 
 ### Other
-- The game will have 50 levels at release, but currently there are only 12.
+- The game will have 50 levels at release, but currently there are only 10.
 
 
 ## Installation

@@ -7,7 +7,6 @@ path_name = os.path.dirname(__file__)
 class Levels:
     def __init__(self):
         self.levels = {}
-
         self.load_levels()
 
     def load_levels(self):

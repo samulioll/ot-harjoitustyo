@@ -24,10 +24,14 @@ class LevelSelect(View):
             else:
                 selected_level = self.menu.select_level(
                     mouse_pos, self.profile)
-                if selected_level:
+                if selected_level and selected_level <= 10:
                     self.next = "GAME"
                     self.play_level = selected_level
                     self.done = True
+                else:
+                    print("")
+                    print("!! All levels solved !!")
+                    print("")
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
