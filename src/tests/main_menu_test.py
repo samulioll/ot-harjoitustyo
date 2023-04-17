@@ -1,6 +1,6 @@
 import unittest
 import pygame as pg
-from services.components.objects.menumain import MenuMain
+from services.components.objects.mainmenulogic import MenuMain
 
 pg.init()
 

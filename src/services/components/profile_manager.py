@@ -21,7 +21,7 @@ class Profile:
                         2: "Medium",
                         3: "Advanced",
                         4: "Hard"}
-        difficulty = difficulties[level // 10]
+        difficulty = difficulties[(level - 1) // 10]
         return level, difficulty
 
     def update_scores(self, level, score):

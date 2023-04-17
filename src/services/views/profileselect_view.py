@@ -1,5 +1,6 @@
 import pygame as pg
-from services.components.objects.menuprofile import MenuProfile
+from services.components.objects.profilemenulogic import ProfileMenuLogic
+from services.components.objects.ui_element import UiElement
 from ..view_manager import View
 from ..components import profile_manager
 
@@ -8,11 +9,15 @@ class ProfileSelect(View):
     """ The view for the profile selection state."""
     def __init__(self):
         View.__init__(self)
-        self.menu = MenuProfile()
+        self.logic = ProfileMenuLogic()
         self.next = "MAINMENU"
         self.clicked = None
         self.all_profiles = profile_manager.AllProfiles()
         self.input_box = None
+        self.menu_items = pg.sprite.Group()
+        self.font = pg.font.SysFont("Arial", 50)
+
+        self.menu_items.add(UiElement("full_select_profile_2", 0, 0))
 
     def input_handler(self, event):
         """ Handles profile selection, creation and deletion. """
@@ -21,15 +26,15 @@ class ProfileSelect(View):
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
 
-            selected_profile = self.menu.select_user(mouse_pos)
+            selected_profile = self.logic.select_user(mouse_pos)
             if self.clicked == "SELECT" and selected_profile:
                 self.profile, self.done, self.clicked = selected_profile, True, None
 
             if self.clicked == "DELETE":
-                self.menu.delete_user(mouse_pos)
+                self.logic.delete_user(mouse_pos)
                 self.clicked = None
 
-            clicked = self.menu.get_clicked(mouse_pos, self.clicked)
+            clicked = self.logic.get_clicked(mouse_pos, self.clicked)
             self.clicked = clicked
 
             if self.clicked == "NEW":
@@ -56,14 +61,40 @@ class ProfileSelect(View):
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
-        self.menu.menu_items.draw(surface)
+        self.menu_items.draw(surface)
 
         mouse_pos = pg.mouse.get_pos()
         show = False
         if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 960:
             show = True
         if show or self.clicked:
-            for user in self.menu.draw_users(self.clicked):
+            for user in self.draw_users():
                 surface.blit(user[0], user[1])
         if self.input_box:
             self.input_box.draw(surface)
+
+    def draw_users(self):
+        """ Returns a list of pygame text objects of all profiles and empty slots. """
+        all_profiles = profile_manager.AllProfiles()
+        usernames = []
+        y_coord = 450
+        p_col = 0 if self.clicked in ("SELECT", "DELETE") else 150
+        d_col = 200 if self.clicked == "DELETE" else p_col
+        e_col = 150
+        for profile in all_profiles.profiles.values():
+            if profile is None:
+                text = self.font.render(
+                    "EMPTY SLOT", True, (e_col, e_col, e_col), None)
+                text_rect = text.get_rect()
+                text_rect.x = 625
+                text_rect.y = y_coord
+                usernames.append((text, text_rect))
+            else:
+                text = self.font.render(
+                    profile.username, True, (d_col, p_col, p_col), None)
+                text_rect = text.get_rect()
+                text_rect.x = 625
+                text_rect.y = y_coord
+                usernames.append((text, text_rect))
+            y_coord += 100
+        return usernames

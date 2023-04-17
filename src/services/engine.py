@@ -19,8 +19,8 @@ class Engine():
         """ The main loop of the program. """
         while self.running:
             self.get_inputs()
-            self.update()
             self.draw()
+            self.update()
 
     def get_inputs(self):
         """ Gets player inputs and sends them via the event handler to the current view. """
@@ -35,6 +35,5 @@ class Engine():
 
     def draw(self):
         """ Draws the current view. """
-        if not self.view_manager.view.done:
-            self.view_manager.draw(self.display)
-            pg.display.update()
+        self.view_manager.draw(self.display)
+        pg.display.update()

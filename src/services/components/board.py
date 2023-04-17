@@ -196,10 +196,10 @@ class Board:
                 return self.layout[row][column]
         return None
 
-    def draw_level_info(self, moves, time, level):
+    def draw_level_info(self, moves, level):
         """ Draws move count, time, and level info. """
         font = pg.font.SysFont("Arial", 50)
         text_moves = font.render(str(moves), True, (0, 0, 0), None)
-        text_time = font.render(time, True, (0, 0, 0), None)
+        moves_text = font.render("MOVES", True, (0, 0, 0), None)
         text_level = font.render(str(level), True, (0, 0, 0), None)
-        return text_moves, text_time, text_level
+        return text_moves, moves_text, text_level

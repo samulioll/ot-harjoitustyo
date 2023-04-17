@@ -1,16 +1,10 @@
-import pygame as pg
-from .ui_element import UiElement
-
-
-class MenuLevels():
+class LevelsMenuLogic():
     """
     A class for the levels logic menu.
     """
 
     def __init__(self):
-        self.menu_items = pg.sprite.Group()
-        self.menu_items.add(UiElement("full_level_menu_1", 0, 0))
-        self.font = pg.font.SysFont("Century Gothic", 50)
+        pass
 
     def draw_levels(self, profile):
         """
@@ -29,36 +23,6 @@ class MenuLevels():
         self.add_unsolved_levels(
             solved, start_x, extra_x, start_y, rows, numbers)
         return numbers
-
-    def add_solved_levels(self, solved, start_x, extra_x, start_y, rows):
-        """ Returns a list of texts for solved levels. """
-        numbers = []
-        for i in range(1, solved+1):
-            number = str(i) if i >= 10 else "0"+str(i)
-            text = self.font.render(number, True, (0, 0, 0), None)
-            text_rect = text.get_rect()
-            text_rect.x = start_x + (extra_x * ((i-1) % 10))
-            text_rect.y = start_y + rows[((i-1) // 10)]
-            numbers.append((text, text_rect))
-        return numbers
-
-    def add_current_level(self, solved, next_lvl, start_x, extra_x, start_y, rows):
-        """ Returns text for current next unsolved level."""
-        text = self.font.render(next_lvl, True, (0, 150, 0), None)
-        text_rect = text.get_rect()
-        text_rect.x = start_x + (extra_x * ((solved) % 10))
-        text_rect.y = start_y + rows[((solved) // 10)]
-        return (text, text_rect)
-
-    def add_unsolved_levels(self, solved, start_x, extra_x, start_y, rows, numbers):
-        """ Creates text for unsolved levels and adds to given list. """
-        for i in range(solved+2, 51):
-            number = str(i) if i >= 10 else "0"+str(i)
-            text = self.font.render(number, True, (180, 180, 180), None)
-            text_rect = text.get_rect()
-            text_rect.x = start_x + (extra_x * ((i-1) % 10))
-            text_rect.y = start_y + rows[((i-1) // 10)]
-            numbers.append((text, text_rect))
 
     def select_level(self, mouse_pos, profile):
         """
@@ -91,5 +55,4 @@ class MenuLevels():
             level = (lvl_row * 10) + lvl_col
             if level <= len(profile.scores) + 1:
                 return level
-            return None
         return None

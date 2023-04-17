@@ -31,7 +31,7 @@ class Game(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
-        # print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
@@ -58,9 +58,9 @@ class Game(View):
         """ Draws the board on the surface given. """
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
-        moves, time, level = self.board.draw_level_info(
-            self.moves, self.time, self.play_level
+        moves, moves_text, level = self.board.draw_level_info(
+            self.moves, self.play_level
         )
         surface.blit(moves, (725, 918))
-        surface.blit(time, (775, 918))
+        surface.blit(moves_text, (775, 918))
         surface.blit(level, (450, 918))

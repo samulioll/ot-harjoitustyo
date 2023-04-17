@@ -1,5 +1,6 @@
 import pygame as pg
-from services.components.objects.menupost import MenuPost
+from services.components.objects.postgamelogic import PostGameLogic
+from services.components.objects.ui_element import UiElement
 from ..view_manager import View
 
 
@@ -10,28 +11,18 @@ class PostGame(View):
 
     def __init__(self):
         View.__init__(self)
-        self.menu = MenuPost()
+        self.logic = PostGameLogic()
         self.next = None
+        self.menu_items = pg.sprite.Group()
+        self.menu_items.add(UiElement("post_game_box_1", 0, 0))
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 450 <= mouse_pos[0] <= 580 and 650 <= mouse_pos[1] <= 690:
-                if self.play_level < 10:
-                    self.next = "GAME"
-                    self.play_level += 1
-                    self.done = True
-                else:
-                    print("")
-                    print("!! All levels solved !!")
-                    print("")
-            elif 620 <= mouse_pos[0] <= 725 and 650 <= mouse_pos[1] <= 690:
-                self.next = "MAINMENU"
-                self.play_level = None
-                self.done = True
+            self.next, self.play_level, self.done = self.logic.get_next(mouse_pos, self.play_level)
 
     def draw(self, surface):
         """ Draws the post game menu on the surface given. """
-        self.menu.menu_items.draw(surface)
+        self.menu_items.draw(surface)
