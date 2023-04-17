@@ -40,3 +40,5 @@
 - Korjattu autojen testaukset ja lisätty päävalikon testit
 - Lisätty play_level attribuutti
 	- Mahdollistaa muun kuin seuraavan tason pelaamisen
+- Lisätty tasoja
+- Erotettu logiikka UI elementeistä kaikista näkymistä peliä ja highscorea lukuunottamatta (tulossa myöhemmin)
