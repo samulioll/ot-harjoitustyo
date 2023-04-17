@@ -11,7 +11,7 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 
 ## Current state
 
-!! The game currently only runs in 1200x1200 screen size, but additional resolution options will be made available in the next version. !!
+!! The game currently only runs in 1200x1200 screen size, but additional resolution options will be made available in the next version !!
 
 ### Profile selection
 - A profile can be selected by clicking the "SELECT PROFILE" button and then clicking a profile username.
@@ -35,7 +35,6 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 - Information shown:
     - Current level
     - Completed moves (if a car is placed into the same square where it started at, no move is counted as completed)
-    - Time (NOT YET FUNCTIONAL)
 - The player can reset the level by clicking "RESET".
 - The player can go back to the main menu by clicking "EXIT".
 
