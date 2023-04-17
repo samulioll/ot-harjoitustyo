@@ -8,6 +8,8 @@ class TestMainMenu(unittest.TestCase):
     def setUp(self):
         self.menu = MenuMain()
 
+    # Menu buttons activation tests
+
     def test_activate_continue(self):
         self.assertEqual(self.menu.get_clicked((300, 475)), ("GAME", True))
 
@@ -22,3 +24,4 @@ class TestMainMenu(unittest.TestCase):
     
     def test_click_outside_buttons(self):
         self.assertEqual(self.menu.get_clicked((200, 125)), (None, False))
+

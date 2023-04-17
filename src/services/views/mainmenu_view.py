@@ -18,6 +18,8 @@ class MainMenu(View):
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             self.next, self.done = self.menu.get_clicked(pg.mouse.get_pos())
+            if self.next == "GAME":
+                self.play_level = self.profile.current_level()[0]
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """

@@ -38,3 +38,5 @@
 - Lisätty pylint ja autopep8
 - Purettu funktioita pienempiin osiin pylintin ohjeiden mukaan
 - Korjattu autojen testaukset ja lisätty päävalikon testit
+- Lisätty play_level attribuutti
+	- Mahdollistaa muun kuin seuraavan tason pelaamisen

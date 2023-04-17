@@ -15,7 +15,7 @@ class ProfileSelect(View):
         self.input_box = None
 
     def input_handler(self, event):
-        """ Handles events and sets active profile. """
+        """ Handles profile selection, creation and deletion. """
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()

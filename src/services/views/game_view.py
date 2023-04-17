@@ -24,7 +24,7 @@ class Game(View):
         levels = level_manager.Levels()
         self.moves = 0
         if self.profile:
-            curr_level = self.profile.current_level()[0]
+            curr_level = str(self.play_level)
             level_matrix = levels.levels[curr_level]
             print("Level:", curr_level)
             self.board = board.Board(level_matrix)
@@ -37,7 +37,7 @@ class Game(View):
             if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
                 self.initiate_level()
             elif 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
-                self.next, self.done = "MAINMENU", True
+                self.next, self.done, self.play_level = "MAINMENU", True, None
             self.started, self.selected = True, self.board.get_selected(
                 mouse_pos)
             self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
@@ -50,7 +50,7 @@ class Game(View):
                 print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(
-                        self.profile.current_level()[0], (self.moves, 0))
+                        str(self.play_level), (self.moves, 0))
                     self.next = "POSTGAME"
             self.selected, self.offset = None, 0
 
@@ -59,7 +59,7 @@ class Game(View):
         self.board.background.draw(surface)
         self.board.cars.draw(surface)
         moves, time, level = self.board.draw_level_info(
-            self.moves, self.time, self.profile.current_level()[0]
+            self.moves, self.time, self.play_level
         )
         surface.blit(moves, (725, 918))
         surface.blit(time, (775, 918))

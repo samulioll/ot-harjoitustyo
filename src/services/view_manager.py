@@ -39,9 +39,9 @@ class ViewManager():
         """ Handles the switch from one view to another. """
         print("View changing to", self.view.next)
         self.start_view = self.view.next
-        profile = self.view.closure()
+        profile, level = self.view.closure()
         self.view = self.views[self.view.next]
-        self.view.startup(profile)
+        self.view.startup(profile, level)
         self.view.done = False
         if self.view == self.views["GAME"]:
             self.view.initiate_level()
@@ -53,12 +53,14 @@ class View():
     def __init__(self):
         self.done = False
         self.profile = None
+        self.play_level = 1
 
-    def startup(self, active_profile):
+    def startup(self, active_profile, level):
         """ Loads the profile info from last view. """
         self.profile = active_profile
+        self.play_level = level
 
     def closure(self):
         """ Saves the profile infor for the next view. """
         self.done = False
-        return self.profile
+        return self.profile, self.play_level

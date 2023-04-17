@@ -8,6 +8,8 @@ class MenuHighscores():
     """
 
     def __init__(self):
-        self.menu_items = pg.sprite.Group()
-
-        self.menu_items.add(UiElement("full_main_menu_2", 0, 0))
+        self.general_menu_items = pg.sprite.Group()
+        self.level_menu_items = pg.sprite.Group()
+        self.general_menu_items.add(UiElement("full_level_menu_1", 0, 0))
+        self.level_menu_items.add(UiElement("full_highscores_single_level_view_1", 0, 0))
+        self.font = pg.font.SysFont("Century Gothic", 50)

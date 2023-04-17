@@ -10,7 +10,9 @@ class MenuProfile():
 
     def __init__(self):
         self.menu_items = pg.sprite.Group()
+        self.menu_confirm = pg.sprite.Group()
         self.menu_items.add(UiElement("full_select_profile_2", 0, 0))
+        self.menu_confirm.add(UiElement("delete_user_box_1", 0, 0))
         self.font = pg.font.SysFont("Arial", 50)
 
     def get_clicked(self, mouse_pos, prev):
@@ -57,6 +59,15 @@ class MenuProfile():
             user = str((mouse_pos[1] - 350) // 100)
             if all_profiles.profiles[user] is not None:
                 return all_profiles.profiles[user]
+        return None
+
+    def select_username(self, mouse_pos):
+        """ Returns the username of selected profile. """
+        all_profiles = profile_manager.AllProfiles()
+        if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 1010:
+            user = str((mouse_pos[1] - 350) // 100)
+            if all_profiles.profiles[user] is not None:
+                return all_profiles.profiles[user][0]
         return None
 
     def delete_user(self,  mouse_pos):

@@ -26,6 +26,7 @@ class LevelSelect(View):
                     mouse_pos, self.profile)
                 if selected_level:
                     self.next = "GAME"
+                    self.play_level = selected_level
                     self.done = True
 
     def draw(self, surface):

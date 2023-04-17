@@ -20,9 +20,11 @@ class PostGame(View):
             mouse_pos = pg.mouse.get_pos()
             if 450 <= mouse_pos[0] <= 580 and 650 <= mouse_pos[1] <= 690:
                 self.next = "GAME"
+                self.play_level += 1
                 self.done = True
             elif 620 <= mouse_pos[0] <= 725 and 650 <= mouse_pos[1] <= 690:
                 self.next = "MAINMENU"
+                self.play_level = None
                 self.done = True
 
     def draw(self, surface):
