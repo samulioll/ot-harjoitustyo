@@ -27,5 +27,6 @@
 | 14.4. | 3    | pylint siistimistä |
 | 14.4. | 1    | testien muodostamista |
 | 17.4. | 3    | tasovalinnan muokkaus ja highscore näkymän perusta|
-| 17.4. | 3    | resoluutiovaihtoehtojen toteutusta |
+| 17.4. | 2    | ligiikan erottaminen UI koodista |
+| 17.4. | 1    | uusien tasojen lisääminen |
 | yht   | 61   | | 
