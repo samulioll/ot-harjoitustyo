@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits.menuhighscores import MenuHighscores
+from resources.logicunits.menuhighscores import HighscoresMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
 
@@ -7,7 +7,7 @@ from resources.services.view_manager import View
 class HighScores(View):
     def __init__(self):
         View.__init__(self)
-        self.logic = MenuHighscores()
+        self.logic = HighscoresMenuLogic()
         self.next = None
         self.selected_level = None
         self.general_menu_items = pg.sprite.Group()

@@ -10,20 +10,20 @@
         ViewManager: +View currentView
         ViewManager: +Profile currentProfile
         ViewManager ..> ProfileSelect
-        ProfileSelect ..> Menus
+        ProfileSelect ..> ProfileMenuLogic
         ProfileSelect: +str nextView
         ViewManager ..> MainMenu
-        MainMenu ..> Menus
+        MainMenu ..> MainMenuLogic
         MainMenu: +str nextView
         ViewManager ..> LevelSelect
         LevelSelect: +str nextView
-        LevelSelect ..> Menus
+        LevelSelect ..> LevelSelectLogic
         ViewManager ..> Highscores
         Highscores: +str nextView
-        Highscores ..> Menus
+        Highscores ..> HighscoresMenuLogic
         ViewManager ..> PostGame
         PostGame: +str nextView
-        PostGame ..> Menus
+        PostGame ..> PostGameLogic
         ViewManager ..> Game
         Game: +str nextView
         Game: +Levels levels

@@ -1,7 +1,7 @@
 from resources.services import profile_manager
 
 
-class MenuHighscores():
+class HighscoresMenuLogic():
     """
     A class for the high scores menu.
     """
