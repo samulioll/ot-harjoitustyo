@@ -1,7 +1,7 @@
 import pygame as pg
-from services.logicunits.mainmenulogic import MainMenuLogic
-from components.sprites.ui_element import UiElement
-from ..view_manager import View
+from resources.logicunits.mainmenulogic import MainMenuLogic
+from resources.ui.sprites.ui_element import UiElement
+from resources.services.view_manager import View
 
 
 class MainMenu(View):

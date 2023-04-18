@@ -1,7 +1,7 @@
 import pygame as pg
-from services.logicunits.postgamelogic import PostGameLogic
-from components.sprites.ui_element import UiElement
-from ..view_manager import View
+from resources.logicunits.postgamelogic import PostGameLogic
+from resources.ui.sprites.ui_element import UiElement
+from resources.services.view_manager import View
 
 
 class PostGame(View):

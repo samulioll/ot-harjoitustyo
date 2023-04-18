@@ -1,7 +1,7 @@
 import pygame as pg
-from services.logicunits.levelsmenulogic import LevelsMenuLogic
-from components.sprites.ui_element import UiElement
-from ..view_manager import View
+from resources.logicunits.levelsmenulogic import LevelsMenuLogic
+from resources.ui.sprites.ui_element import UiElement
+from resources.services.view_manager import View
 
 
 class LevelSelect(View):
@@ -19,21 +19,11 @@ class LevelSelect(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands for the menu to process. """
-        # print(pg.mouse.get_pos())
+        print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 430 <= mouse_pos[0] <= 770 and 1050 <= mouse_pos[1] <= 1100:
-                self.next = "MAINMENU"
-                self.done = True
-            else:
-                selected_level = self.logic.select_level(
-                    mouse_pos, self.profile)
-                if selected_level and selected_level <= 37:
-                    self.next = "GAME"
-                    self.play_level = selected_level
-                    self.done = True
-                else:
-                    print("!! All levels solved !!")
+            info = self.logic.get_clicked_button(mouse_pos, self.profile)
+            self.next, self.done, self.play_level = info[0], info[1], info[2]
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """

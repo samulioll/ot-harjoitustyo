@@ -1,7 +1,7 @@
 import json
 import os
 
-path_name = os.path.dirname(__file__)
+level_path = os.path.dirname(__file__)[:-18] + "data/levels.json"
 
 
 class Levels:
@@ -10,7 +10,7 @@ class Levels:
         self.load_levels()
 
     def load_levels(self):
-        with open(os.path.join(path_name, "../data", "levels.json"), "r+", encoding="utf-8") as doc:
+        with open(level_path, "r+", encoding="utf-8") as doc:
             all_levels = json.load(doc)
             for level in all_levels:
                 name = level[0]

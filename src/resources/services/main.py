@@ -1,8 +1,7 @@
-from .engine import Engine
-from . import initialize
-from .views import game_view, highscores_view, levelselect_view
-from .views import mainmenu_view, postgame_view, profileselect_view
-
+from resources.services.engine import Engine
+from resources.services import initialize
+from resources.ui.views import game_view, highscores_view, levelselect_view
+from resources.ui.views import mainmenu_view, postgame_view, profileselect_view
 
 def main():
     """

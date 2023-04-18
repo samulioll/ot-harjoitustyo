@@ -1,8 +1,8 @@
 import pygame as pg
-from services import profile_manager
-from services.logicunits.profilemenulogic import ProfileMenuLogic
-from components.sprites.ui_element import UiElement
-from ..view_manager import View
+from resources.logicunits.profilemenulogic import ProfileMenuLogic
+from resources.ui.sprites.ui_element import UiElement
+from resources.services import profile_manager
+from resources.services.view_manager import View
 
 
 class ProfileSelect(View):

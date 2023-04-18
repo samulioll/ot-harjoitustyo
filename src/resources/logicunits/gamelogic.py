@@ -1,7 +1,7 @@
 from copy import deepcopy
 import pygame as pg
-from components.sprites.car import Car
-from components.sprites.ui_element import UiElement
+from resources.ui.sprites.car import Car
+from resources.ui.sprites.ui_element import UiElement
 
 class Board:
     """
@@ -206,7 +206,6 @@ class Board:
         """ Returns the car id of clicked cell. """
         column = (mouse_pos[0] - self.board_offset) // 100
         row = (mouse_pos[1] - self.board_offset) // 100
-        if 0 <= column <= 5 and 0 <= row <= 5:
-            if self.layout[row][column] != 0:
-                return self.layout[row][column]
+        if 0 <= column <= 5 and 0 <= row <= 5 and self.layout[row][column] != 0:
+            return self.layout[row][column]
         return None

@@ -27,7 +27,8 @@
 | 14.4. | 3    | pylint siistimistä |
 | 14.4. | 1    | testien muodostamista |
 | 17.4. | 3    | tasovalinnan muokkaus ja highscore näkymän perusta|
-| 17.4. | 2    | ligiikan erottaminen UI koodista |
+| 17.4. | 2    | logiikan erottaminen UI koodista |
 | 17.4. | 1    | uusien tasojen lisääminen |
-| 18.4. | 1    | kansiorakenteen muuttaminen |
-| yht   | 62   | | 
+| 18.4. | 2    | kansiorakenteen muuttaminen ja logiikan erottaminen UI koodista|
+| 18.4. | 2    | testien kirjoittamista |
+| yht   | 65   | | 

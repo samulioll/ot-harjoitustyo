@@ -1,7 +1,7 @@
 import sys
 import pygame as pg
 
-from services.main import main
+from resources.services.main import main
 
 if __name__ == "__main__":
     main()

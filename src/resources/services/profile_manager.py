@@ -2,7 +2,7 @@ import json
 import os
 import pygame as pg
 
-save_path = os.path.dirname(__file__)[:-8] + "data/saves.json"
+save_path = os.path.dirname(__file__)[:-18] + "data/saves.json"
 
 
 class Profile:
@@ -33,10 +33,10 @@ class Profile:
             new_moves = moves
         self.scores[level] = new_moves
         saves = {1: None, 2: None, 3: None, 4: None, 5: None, 6: None}
-        with open(os.path.join(save_path), "r", encoding="utf-8") as doc:
+        with open(save_path, "r", encoding="utf-8") as doc:
             saves = json.load(doc)
             saves[self.slot] = [self.username, self.scores]
-        with open(os.path.join(save_path), "w", encoding="utf-8") as doc:
+        with open(save_path, "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
 
 
@@ -47,7 +47,7 @@ class AllProfiles:
         self.profiles = {"1": None, "2": None,
                          "3": None, "4": None, "5": None, "6": None}
         try:
-            with open(os.path.join(save_path), "r+", encoding="utf-8") as doc:
+            with open(save_path, "r+", encoding="utf-8") as doc:
                 all_profiles = json.load(doc)
                 for slot, profile in all_profiles.items():
                     try:
@@ -56,7 +56,7 @@ class AllProfiles:
                     except TypeError:
                         pass
         except FileNotFoundError:
-            with open(os.path.join(save_path), "w", encoding="utf-8") as doc:
+            with open(save_path, "w", encoding="utf-8") as doc:
                 json.dump(self.profiles, doc)
 
     def add_profile(self, username):
@@ -65,10 +65,10 @@ class AllProfiles:
             if profile is None:
                 new_profile = Profile(slot, username, {})
                 self.profiles[slot] = new_profile
-                with open(os.path.join(save_path), "r", encoding="utf-8") as doc:
+                with open(save_path, "r", encoding="utf-8") as doc:
                     saves = json.load(doc)
                     saves[slot] = [username, {}]
-                with open(os.path.join(save_path), "w", encoding="utf-8") as doc:
+                with open(save_path, "w", encoding="utf-8") as doc:
                     json.dump(saves, doc)
                 return new_profile
         return None
@@ -76,10 +76,10 @@ class AllProfiles:
     def delete_profile(self, slot):
         """ Delete a profile. """
         self.profiles[slot] = None
-        with open(os.path.join(save_path, "../data/saves.json"), "r", encoding="utf-8") as doc:
+        with open(save_path, "r", encoding="utf-8") as doc:
             saves = json.load(doc)
             saves[slot] = None
-        with open(os.path.join(save_path, "../data/saves.json"), "w", encoding="utf-8") as doc:
+        with open(save_path, "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
 
 

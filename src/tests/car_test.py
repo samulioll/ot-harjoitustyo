@@ -1,5 +1,5 @@
 import unittest
-from services.components.board import Board
+from resources.logicunits.gamelogic import Board
 
 basic_level = [["Magenta", "Magenta-1", 0, 0, 0, 0],
                [0, "Blue", "Blue-1", 0, 0, 0],
@@ -18,7 +18,6 @@ test_level = [[0, "White", "White-1", "White-2", 0, 0],
 
 class TestCar(unittest.TestCase):
     def setUp(self):
-        # 300 pixels before game grid on both sides, grid cell size 100px
         self.board = Board(basic_level)
 
     # Horizontal car movement tests

@@ -1,25 +1,28 @@
-from services import profile_manager
-
-
-class MenuHighscores():
+class LevelsMenuLogic():
     """
-    A class for the high scores menu.
+    A class for the levels logic menu.
     """
 
     def __init__(self):
-        self.all_profiles = profile_manager.AllProfiles()
+        pass
 
-    def handle_show_level(self, mouse_pos):
-        if 215 <= mouse_pos[0] <= 395 and 740 <= mouse_pos[1] <= 790:
-            return "MOVES"
-        if 240 <= mouse_pos[0] <= 360 and 810 <= mouse_pos[1] <= 860:
-            return "TIME"
-        return None
-
-    def get_selected_level(self, mouse_pos, profile):
+    def get_clicked_button(self, mouse_pos, profile):
         if 430 <= mouse_pos[0] <= 770 and 1050 <= mouse_pos[1] <= 1100:
-            return ("MAINMENU", True, None)
-        return ("MAINMENU", False, self.select_level(mouse_pos, profile))
+            next_view = "MAINMENU"
+            done = True
+            level = None
+            return (next_view, done, level)
+        selected_level = self.select_level(mouse_pos, profile)
+        if selected_level and selected_level <= 37:
+            if selected_level > 37:
+                print("Level not yet available")
+                return ("MAINMENU", False, None)
+            next_view = "GAME"
+            done = True
+            level = selected_level
+            return (next_view, done, level)
+        print("Unsolved level")
+        return ("MAINMENU", False, None)
 
     def select_level(self, mouse_pos, profile):
         """
@@ -52,5 +55,4 @@ class MenuHighscores():
             level = (lvl_row * 10) + lvl_col
             if level <= len(profile.scores) + 1:
                 return level
-            return None
         return None

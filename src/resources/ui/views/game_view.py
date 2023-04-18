@@ -1,7 +1,7 @@
 import pygame as pg
-from services.logicunits import gamelogic
-from services import level_manager
-from ..view_manager import View
+from resources.logicunits import gamelogic
+from resources.services import level_manager
+from resources.services.view_manager import View
 
 
 class Game(View):
@@ -11,7 +11,6 @@ class Game(View):
 
     def __init__(self):
         View.__init__(self)
-        self.started = False
         self.selected = False
         self.offset = 0
         self.next = "POSTGAME"
@@ -39,9 +38,9 @@ class Game(View):
             else:
                 info = self.logic.get_clicked_button(mouse_pos, self.play_level)
                 self.next, self.done, self.play_level = info[0], info[1], info[2]
-            self.started, self.selected = True, self.logic.get_selected(
-                mouse_pos)
-            self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
+                self.selected = self.logic.get_selected(
+                    mouse_pos)
+                self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
         elif self.selected and event.type == pg.MOUSEMOTION:
             self.logic.move_car(self.selected, pg.mouse.get_pos(), self.offset)
         elif event.type == pg.MOUSEBUTTONUP:
