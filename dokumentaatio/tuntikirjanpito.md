@@ -29,4 +29,5 @@
 | 17.4. | 3    | tasovalinnan muokkaus ja highscore näkymän perusta|
 | 17.4. | 2    | ligiikan erottaminen UI koodista |
 | 17.4. | 1    | uusien tasojen lisääminen |
-| yht   | 61   | | 
+| 18.4. | 1    | kansiorakenteen muuttaminen |
+| yht   | 62   | | 

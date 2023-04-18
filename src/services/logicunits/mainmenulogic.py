@@ -12,7 +12,7 @@ class MainMenuLogic():
             return ("LEVELSELECT", True)
         if 180 <= mouse_pos[0] <= 565 and 755 <= mouse_pos[1] <= 805:
             print("")
-            print("!! HIGHSCORES NOT YET FUNCTIONAL !!")
+            print("!! HIGHSCORES NOT YET FUNCTIONAL")
             print("")
             #return ("HIGHSCORES", True)
         if 200 <= mouse_pos[0] <= 565 and 905 <= mouse_pos[1] <= 955:

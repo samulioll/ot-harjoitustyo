@@ -3,7 +3,6 @@ import pygame as pg
 from components.sprites.car import Car
 from components.sprites.ui_element import UiElement
 
-
 class Board:
     """
     Simulates the board and keeps track of all pieces.
@@ -45,6 +44,19 @@ class Board:
                 if cell != 0 and "-" not in cell:
                     car = Car(self.car_ids[cell], x_coord, y_coord)
                     self.cars.add(car)
+
+    def get_clicked_button(self, mouse_pos, level):
+        if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
+            return "RESET"
+        if 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
+            next_view = "MAINMENU"
+            done = True
+            play_level = None
+            return (next_view, done, play_level)
+        next_view = "POSTGAME"
+        done = False
+        play_level = level
+        return (next_view, done, play_level)
 
     def move_car(self, selected: str, mouse_pos: tuple, board_offset: int):
         """ Handles the movement of cars. """
@@ -198,11 +210,3 @@ class Board:
             if self.layout[row][column] != 0:
                 return self.layout[row][column]
         return None
-
-    def draw_level_info(self, moves, level):
-        """ Draws move count, time, and level info. """
-        font = pg.font.SysFont("Arial", 50)
-        text_moves = font.render(str(moves), True, (0, 0, 0), None)
-        moves_text = font.render("MOVES", True, (0, 0, 0), None)
-        text_level = font.render(str(level), True, (0, 0, 0), None)
-        return text_moves, moves_text, text_level

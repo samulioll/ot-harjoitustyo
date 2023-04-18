@@ -42,3 +42,4 @@
 	- Mahdollistaa muun kuin seuraavan tason pelaamisen
 - Lisätty tasoja
 - Erotettu logiikka UI elementeistä kaikista näkymistä peliä ja highscorea lukuunottamatta (tulossa myöhemmin)
+- Muutettu kansiorakennetta

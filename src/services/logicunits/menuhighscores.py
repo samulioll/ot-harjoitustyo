@@ -1,5 +1,3 @@
-import pygame as pg
-from components.sprites.ui_element import UiElement
 from services import profile_manager
 
 
@@ -9,49 +7,19 @@ class MenuHighscores():
     """
 
     def __init__(self):
-        self.general_menu_items = pg.sprite.Group()
-        self.level_menu_items = pg.sprite.Group()
-        self.general_menu_items.add(UiElement("full_level_menu_1", 0, 0))
-        self.level_menu_items.add(UiElement("full_highscores_single_level_view_1", 0, 0))
-        self.font = pg.font.SysFont("Century Gothic", 50)
         self.all_profiles = profile_manager.AllProfiles()
 
-    def draw_levels(self, profile):
-        """
-        Creates the numbers for the levels.
-        Color depends on the player's progress.
-        """
-        solved = len(profile.scores)
-        start_x, start_y, extra_x = 240, 375, 76
-        rows = {0: 0, 1: 133, 2: 271, 3: 414, 4: 554}
+    def handle_show_level(self, mouse_pos):
+        if 215 <= mouse_pos[0] <= 395 and 740 <= mouse_pos[1] <= 790:
+            return "MOVES"
+        if 240 <= mouse_pos[0] <= 360 and 810 <= mouse_pos[1] <= 860:
+            return "TIME"
+        return None
 
-        numbers = self.add_solved_levels(
-            solved, start_x, extra_x, start_y, rows)
-        self.add_unsolved_levels(
-            solved, start_x, extra_x, start_y, rows, numbers)
-        return numbers
-
-    def add_solved_levels(self, solved, start_x, extra_x, start_y, rows):
-        """ Returns a list of texts for solved levels. """
-        numbers = []
-        for i in range(1, solved+1):
-            number = str(i) if i >= 10 else "0"+str(i)
-            text = self.font.render(number, True, (0, 0, 0), None)
-            text_rect = text.get_rect()
-            text_rect.x = start_x + (extra_x * ((i-1) % 10))
-            text_rect.y = start_y + rows[((i-1) // 10)]
-            numbers.append((text, text_rect))
-        return numbers
-
-    def add_unsolved_levels(self, solved, start_x, extra_x, start_y, rows, numbers):
-        """ Creates text for unsolved levels and adds to given list. """
-        for i in range(solved+1, 51):
-            number = str(i) if i >= 10 else "0"+str(i)
-            text = self.font.render(number, True, (180, 180, 180), None)
-            text_rect = text.get_rect()
-            text_rect.x = start_x + (extra_x * ((i-1) % 10))
-            text_rect.y = start_y + rows[((i-1) // 10)]
-            numbers.append((text, text_rect))
+    def get_selected_level(self, mouse_pos, profile):
+        if 430 <= mouse_pos[0] <= 770 and 1050 <= mouse_pos[1] <= 1100:
+            return ("MAINMENU", True, None)
+        return ("MAINMENU", False, self.select_level(mouse_pos, profile))
 
     def select_level(self, mouse_pos, profile):
         """
@@ -86,25 +54,3 @@ class MenuHighscores():
                 return level
             return None
         return None
-
-    def draw_info(self, selected, level):
-        font = pg.font.SysFont("Arial", 50)
-        texts = []
-        move_col = 0 if selected == "MOVES" else 150
-        text_moves = font.render("MOVES", True, (move_col, move_col, move_col), None)
-        moves_rect = text_moves.get_rect()
-        moves_rect.x, moves_rect.y = 215, 740
-        texts.append((text_moves, moves_rect))
-        time_col = 0 if selected == "TIME" else 150
-        text_time = font.render("TIME", True, (time_col, time_col, time_col), None)
-        time_rect = text_time.get_rect()
-        time_rect.x, time_rect.y = 240, 810
-        texts.append((text_time, time_rect))
-        text_level = font.render(str(level), True, (0, 0, 0), None)
-        level_rect = text_level.get_rect()
-        level_rect.x, level_rect.y = 285, 505
-        texts.append((text_level, level_rect))
-        return texts
-
-    def draw_level_highscores(self, level):
-        pass

@@ -1,7 +1,7 @@
 import pygame as pg
-from ..view_manager import View
 from services.logicunits import gamelogic
 from services import level_manager
+from ..view_manager import View
 
 
 class Game(View):
@@ -14,15 +14,15 @@ class Game(View):
         self.started = False
         self.selected = False
         self.offset = 0
-        self.next = None
+        self.next = "POSTGAME"
         self.logic = None
         self.moves = 0
-        self.time = "00:00"
 
     def initiate_level(self):
         """ Gets the next level and sets the board. """
         levels = level_manager.Levels()
         self.moves = 0
+        self.next = "POSTGAME"
         if self.profile:
             curr_level = str(self.play_level)
             level_matrix = levels.levels[curr_level]
@@ -34,10 +34,11 @@ class Game(View):
         #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
+            if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()
-            elif 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
-                self.next, self.done, self.play_level = "MAINMENU", True, None
+            else:
+                info = self.logic.get_clicked_button(mouse_pos, self.play_level)
+                self.next, self.done, self.play_level = info[0], info[1], info[2]
             self.started, self.selected = True, self.logic.get_selected(
                 mouse_pos)
             self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
@@ -50,17 +51,21 @@ class Game(View):
                 print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(
-                        str(self.play_level), (self.moves, 0))
-                    self.next = "POSTGAME"
+                        str(self.play_level), self.moves)
             self.selected, self.offset = None, 0
 
     def draw(self, surface):
         """ Draws the board on the surface given. """
         self.logic.background.draw(surface)
         self.logic.cars.draw(surface)
-        moves, moves_text, level = self.logic.draw_level_info(
-            self.moves, self.play_level
-        )
-        surface.blit(moves, (725, 918))
+        self.draw_level_info(surface)
+
+    def draw_level_info(self, surface):
+        """ Draws move count, time, and level info. """
+        font = pg.font.SysFont("Arial", 50)
+        text_moves = font.render(str(self.moves), True, (0, 0, 0), None)
+        moves_text = font.render("MOVES", True, (0, 0, 0), None)
+        text_level = font.render(str(self.play_level), True, (0, 0, 0), None)
+        surface.blit(text_moves, (725, 918))
         surface.blit(moves_text, (775, 918))
-        surface.blit(level, (450, 918))
+        surface.blit(text_level, (450, 918))

@@ -6,24 +6,6 @@ class LevelsMenuLogic():
     def __init__(self):
         pass
 
-    def draw_levels(self, profile):
-        """
-        Creates the numbers for the levels.
-        Color depends on the player's progress.
-        """
-        solved = len(profile.scores)
-        next_lvl = str(solved + 1) if solved >= 9 else "0" + str(solved + 1)
-        start_x, start_y, extra_x = 240, 375, 76
-        rows = {0: 0, 1: 133, 2: 271, 3: 414, 4: 554}
-
-        numbers = self.add_solved_levels(
-            solved, start_x, extra_x, start_y, rows)
-        numbers.append(self.add_current_level(
-            solved, next_lvl, start_x, extra_x, start_y, rows))
-        self.add_unsolved_levels(
-            solved, start_x, extra_x, start_y, rows, numbers)
-        return numbers
-
     def select_level(self, mouse_pos, profile):
         """
         Returns the numerical value of the clicked level.
