@@ -7,5 +7,5 @@ __pycache__
 *.py[cod]
 *$py.class
 TODO.md
-/src/data/components/profiles.json
+/src/data/saves.json
 .pylintrc
