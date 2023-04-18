@@ -1,4 +1,4 @@
-from .. import profile_manager
+from services import profile_manager
 
 class ProfileMenuLogic():
     """

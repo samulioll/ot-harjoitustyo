@@ -1,7 +1,7 @@
 from copy import deepcopy
 import pygame as pg
-from services.components.objects.car import Car
-from services.components.objects.ui_element import UiElement
+from components.sprites.car import Car
+from components.sprites.ui_element import UiElement
 
 
 class Board:
@@ -25,7 +25,10 @@ class Board:
                         "Grey": "grey1x3",
                         "Green": "green1x3",
                         "Yellow": "yellow1x3",
-                        "Sky": "sky1x3"}
+                        "Sky": "sky1x3",
+                        "Tropic": "tropic3x1",
+                        "Beige": "beige2x1",
+                        "Ocean": "ocean1x2"}
         self.background = pg.sprite.Group()
         self.cars = pg.sprite.Group()
         self._initialize_sprites()

@@ -1,6 +1,6 @@
 import pygame as pg
-from services.components.objects.mainmenulogic import MainMenuLogic
-from services.components.objects.ui_element import UiElement
+from services.logicunits.mainmenulogic import MainMenuLogic
+from components.sprites.ui_element import UiElement
 from ..view_manager import View
 
 

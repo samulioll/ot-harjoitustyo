@@ -1,6 +1,6 @@
 import pygame as pg
-from .ui_element import UiElement
-from ...components import profile_manager
+from components.sprites.ui_element import UiElement
+from services import profile_manager
 
 
 class MenuHighscores():

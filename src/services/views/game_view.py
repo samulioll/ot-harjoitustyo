@@ -1,7 +1,7 @@
 import pygame as pg
 from ..view_manager import View
-from ..components import board
-from ..components import level_manager
+from services.logicunits import gamelogic
+from services import level_manager
 
 
 class Game(View):
@@ -15,7 +15,7 @@ class Game(View):
         self.selected = False
         self.offset = 0
         self.next = None
-        self.board = None
+        self.logic = None
         self.moves = 0
         self.time = "00:00"
 
@@ -27,7 +27,7 @@ class Game(View):
             curr_level = str(self.play_level)
             level_matrix = levels.levels[curr_level]
             print("Level:", curr_level)
-            self.board = board.Board(level_matrix)
+            self.logic = gamelogic.Board(level_matrix)
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
@@ -38,14 +38,14 @@ class Game(View):
                 self.initiate_level()
             elif 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
                 self.next, self.done, self.play_level = "MAINMENU", True, None
-            self.started, self.selected = True, self.board.get_selected(
+            self.started, self.selected = True, self.logic.get_selected(
                 mouse_pos)
             self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
         elif self.selected and event.type == pg.MOUSEMOTION:
-            self.board.move_car(self.selected, pg.mouse.get_pos(), self.offset)
+            self.logic.move_car(self.selected, pg.mouse.get_pos(), self.offset)
         elif event.type == pg.MOUSEBUTTONUP:
             if self.selected:
-                moved, self.done = self.board.drop_car(self.selected)
+                moved, self.done = self.logic.drop_car(self.selected)
                 self.moves += moved
                 print("Moves:", self.moves)
                 if self.done:
@@ -56,9 +56,9 @@ class Game(View):
 
     def draw(self, surface):
         """ Draws the board on the surface given. """
-        self.board.background.draw(surface)
-        self.board.cars.draw(surface)
-        moves, moves_text, level = self.board.draw_level_info(
+        self.logic.background.draw(surface)
+        self.logic.cars.draw(surface)
+        moves, moves_text, level = self.logic.draw_level_info(
             self.moves, self.play_level
         )
         surface.blit(moves, (725, 918))

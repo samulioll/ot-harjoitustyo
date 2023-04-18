@@ -1,5 +1,5 @@
 import pygame as pg
-from services.components.objects.menuhighscores import MenuHighscores
+from services.logicunits.menuhighscores import MenuHighscores
 from ..view_manager import View
 
 
