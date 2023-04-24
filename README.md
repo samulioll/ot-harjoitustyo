@@ -10,7 +10,7 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 - [Arkkitehtuuri](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
 ## Current state
-Tested and is working with a virtual machine. Tested with VMware Horizon on 18.4.2023 at 14:10.
+Tested and is working with a virtual machine and university cubbli computer. Tested with VMware Horizon on 18.4.2023 at 14:10 and University computer on 18.4.2023 at 17:50.
 
 !! The game currently only runs in 1200x1200 screen size, but additional resolution options will be made available in the next version !!
 
