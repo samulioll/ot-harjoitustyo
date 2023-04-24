@@ -15,23 +15,35 @@ class ProfileSelect(View):
         self.all_profiles = profile_manager.AllProfiles()
         self.input_box = None
         self.menu_items = pg.sprite.Group()
+        self.confirm_box = pg.sprite.Group()
         self.font = pg.font.SysFont("Arial", 50)
+        self.user_to_del = None
 
         self.menu_items.add(UiElement("full_select_profile_2", 0, 0))
+        self.confirm_box.add(UiElement("delete_user_box_1", 0, 0))
 
     def input_handler(self, event):
         """ Handles profile selection, creation and deletion. """
-        # print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
-
             selected_profile = self.logic.select_user(mouse_pos)
+
+            if self.user_to_del:
+                if self.logic.confirm_delete(mouse_pos) == "YES":
+                    self.logic.delete_user(self.user_to_del[0])
+                    self.user_to_del = None
+                elif self.logic.confirm_delete(mouse_pos) == "NO":
+                    self.user_to_del = None
+                return
+
             if self.clicked == "SELECT" and selected_profile:
                 self.profile, self.done, self.clicked = selected_profile, True, None
 
             if self.clicked == "DELETE":
-                self.logic.delete_user(mouse_pos)
+                self.confirm_delete = True
+                self.user_to_del = self.logic.get_user_for_del(mouse_pos)
                 self.clicked = None
 
             clicked = self.logic.get_clicked(mouse_pos, self.clicked)
@@ -65,6 +77,13 @@ class ProfileSelect(View):
 
         mouse_pos = pg.mouse.get_pos()
         show = False
+
+        if self.user_to_del:
+            for user in self.draw_users():
+                surface.blit(user[0], user[1])
+            self.draw_delete_confirm(surface)
+            return
+
         if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 960:
             show = True
         if show or self.clicked:
@@ -98,3 +117,9 @@ class ProfileSelect(View):
                 usernames.append((text, text_rect))
             y_coord += 100
         return usernames
+
+    def draw_delete_confirm(self, surface):
+        self.confirm_box.draw(surface)
+        text_user = self.font.render(self.user_to_del[1], True, (0,0,0), None)
+        text_width = text_user.get_width()
+        surface.blit(text_user, ((600 - text_width/2), 530))
