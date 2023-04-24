@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits.postgamelogic import PostGameLogic
+from resources.logicunits.postgame_logic import PostGameLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
 

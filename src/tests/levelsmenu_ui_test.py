@@ -1,5 +1,5 @@
 import unittest
-from resources.logicunits.levelsmenulogic import LevelsMenuLogic
+from resources.logicunits.lvl_menu_logic import LevelsMenuLogic
 from resources.services.profile_manager import Profile
 
 class TestMainenuUI(unittest.TestCase):

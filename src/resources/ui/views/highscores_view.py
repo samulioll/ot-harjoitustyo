@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits.menuhighscores import HighscoresMenuLogic
+from resources.logicunits.scores_menu_logic import HighscoresMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
 

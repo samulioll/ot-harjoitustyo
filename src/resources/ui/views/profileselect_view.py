@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits.profilemenulogic import ProfileMenuLogic
+from resources.logicunits.profile_menu_logic import ProfileMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services import profile_manager
 from resources.services.view_manager import View

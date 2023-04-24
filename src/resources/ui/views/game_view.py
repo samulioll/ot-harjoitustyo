@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits import gamelogic
+from resources.logicunits import game_logic
 from resources.services import level_manager
 from resources.services.view_manager import View
 
@@ -26,7 +26,7 @@ class Game(View):
             curr_level = str(self.play_level)
             level_matrix = levels.levels[curr_level]
             print("Level:", curr_level)
-            self.logic = gamelogic.Board(level_matrix)
+            self.logic = game_logic.Board(level_matrix)
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """

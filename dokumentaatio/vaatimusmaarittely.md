@@ -23,9 +23,9 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 
 ### Pelin lisäominaisuudet
 
-- Peli mittaa tason ratkaisemiseen kuluneen ajan ja siirtojen määrän. Niiden pohjalta luodaan HIGH SCORE -taulukko.
+- (✓) Peli mittaa tason ratkaisemiseen kuluneen siirtojen määrän. Niiden pohjalta luodaan HIGH SCORE -taulukko.
 - (✓) Peli tallentaa jokaisen käyttäjän etenemisen, ja pelaajat voivat jatkaa siitä tasosta mihin edellisellä pelikerralla jäivät.
-- Pelaajat voivat myös valita tietyn jo ratkaisseensa tason, jos haluavat yrittää parempaa tulosta.
+- (✓) Pelaajat voivat myös valita tietyn jo ratkaisseensa tason, jos haluavat yrittää parempaa tulosta.
 
 ### Jatkokehitysideoita
 
@@ -35,4 +35,5 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 ### Käyttöliittymä
 
 - (✓) Peli pyytää käynnistettäessä valitsemaan tai luomaan uuden käyttäjäprofiilin, jonka jälkeen siirrytääm päävalikkoon. Myös profiilin poistaminen on mahdollista.
-- Päävalikosta voi jatkaa pelaamista seuraavasta ratkaisemattomasta tasosta (✓), valita jo ratkaistun tason, nähdä HIGH SCOREt tai vaihtaa profiilia (✓).
+- (✓) Päävalikosta voi jatkaa pelaamista seuraavasta ratkaisemattomasta tasosta, valita jo ratkaistun tason, nähdä HIGH SCOREt tai vaihtaa profiilia.
+- Peli-ikkunan koon voi vaihtaa.

@@ -1,5 +1,5 @@
 import unittest
-from resources.logicunits.mainmenulogic import MainMenuLogic
+from resources.logicunits.mainmenu_logic import MainMenuLogic
 
 class TestMainenuUI(unittest.TestCase):
     def setUp(self):

@@ -1,5 +1,5 @@
 import pygame as pg
-from resources.logicunits.levelsmenulogic import LevelsMenuLogic
+from resources.logicunits.lvl_menu_logic import LevelsMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
 

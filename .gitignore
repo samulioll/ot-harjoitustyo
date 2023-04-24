@@ -8,3 +8,4 @@ __pycache__
 *$py.class
 TODO.md
 /src/data/saves.json
+/src/tests/__pycache__

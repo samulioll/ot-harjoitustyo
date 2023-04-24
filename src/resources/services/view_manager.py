@@ -51,16 +51,18 @@ class View():
     """ Baseline parent for all of the different views """
 
     def __init__(self):
+        self.scale = 1
         self.done = False
         self.profile = None
         self.play_level = 1
 
-    def startup(self, active_profile, level):
+    def startup(self, active_profile, level, scale):
         """ Loads the profile info from last view. """
         self.profile = active_profile
         self.play_level = level
+        self.scale = scale
 
     def closure(self):
         """ Saves the profile infor for the next view. """
         self.done = False
-        return self.profile, self.play_level
+        return self.profile, self.play_level, self.scale

@@ -1,5 +1,5 @@
 import unittest
-from resources.logicunits.gamelogic import Board
+from resources.logicunits.game_logic import Board
 
 basic_level = [["Magenta", "Magenta-1", 0, 0, 0, 0],
                [0, "Blue", "Blue-1", 0, 0, 0],
