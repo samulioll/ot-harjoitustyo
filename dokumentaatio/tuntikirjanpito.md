@@ -31,4 +31,6 @@
 | 17.4. | 1    | uusien tasojen lisääminen |
 | 18.4. | 2    | kansiorakenteen muuttaminen ja logiikan erottaminen UI koodista|
 | 18.4. | 2    | testien kirjoittamista |
-| yht   | 65   | | 
+| 24.4. | 2    | high scores -näkymä |
+| 24.4. | 3    | testien kirjoittamista |
+| yht   | 67   | | 

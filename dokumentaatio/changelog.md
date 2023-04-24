@@ -43,3 +43,8 @@
 - Lisätty tasoja
 - Erotettu logiikka UI elementeistä kaikista näkymistä
 - Muutettu kansiorakennetta
+
+### Viikko 5
+
+- Lisätty toimiva high scores näkymä
+- Lisätty testikattavuutta
