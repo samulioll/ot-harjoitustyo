@@ -97,7 +97,7 @@ class InputBox:
                 return self.text
             if event.key == pg.K_BACKSPACE:
                 self.text = self.text[:-1]
-            else:
+            elif len(self.text)<= 9:
                 self.text += event.unicode
             self.text_surface = self.font.render(
                 self.text, True, self.color)

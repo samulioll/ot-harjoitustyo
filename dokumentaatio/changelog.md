@@ -48,3 +48,5 @@
 
 - Lisätty toimiva high scores näkymä
 - Lisätty testikattavuutta
+- Lisätty vahvistus-boksi käyttäjän poistamiseen
+- Lisätty maksimipituus käyttäjänimelle (10 merkkiä)

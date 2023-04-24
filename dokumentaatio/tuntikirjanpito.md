@@ -33,4 +33,5 @@
 | 18.4. | 2    | testien kirjoittamista |
 | 24.4. | 2    | high scores -näkymä |
 | 24.4. | 3    | testien kirjoittamista |
-| yht   | 67   | | 
+| 24.4. | 1    | vahvistusboksin lisääminen |
+| yht   | 68   | | 
