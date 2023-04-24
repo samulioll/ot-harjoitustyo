@@ -57,3 +57,4 @@ class ProfileMenuLogic():
             return "YES"
         if 620 <= mouse_pos[0] <= 670 and 650 <= mouse_pos[1] <= 695:
             return "NO"
+        return None

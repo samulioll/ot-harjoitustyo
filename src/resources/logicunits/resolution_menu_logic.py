@@ -10,12 +10,10 @@ class ResolutionMenuLogic():
             scale = 1
             if profile:
                 return ("MAINMENU", True, scale)
-            else: 
-                return ("PROFILESELECT", True, scale)
+            return ("PROFILESELECT", True, scale)
         if 270 <= mouse_pos[0] <= 455 and 180 <= mouse_pos[1] <= 260:
             scale = 0.5
             if profile:
                 return ("MAINMENU", True, scale)
-            else: 
-                return ("PROFILESELECT", True, scale)
-
+            return ("PROFILESELECT", True, scale)
+        return None

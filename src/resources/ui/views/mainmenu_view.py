@@ -24,7 +24,7 @@ class MainMenu(View):
             self.next, self.done = self.logic.get_clicked(pg.mouse.get_pos())
             if self.next == "GAME":
                 self.play_level = self.profile.current_level()[0]
-                if self.play_level > 37:
+                if self.play_level > 40:
                     self.next, self.done = None, False
                     print("!! All levels solved !!")
 

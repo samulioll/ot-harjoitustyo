@@ -13,8 +13,8 @@ class LevelsMenuLogic():
             level = None
             return (next_view, done, level)
         selected_level = self.select_level(mouse_pos, profile)
-        if selected_level and selected_level <= 37:
-            if selected_level > 37:
+        if selected_level and selected_level <= 40:
+            if selected_level > 40:
                 print("Level not yet available")
                 return ("MAINMENU", False, None)
             next_view = "GAME"
