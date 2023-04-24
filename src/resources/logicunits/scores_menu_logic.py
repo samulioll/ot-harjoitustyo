@@ -8,13 +8,14 @@ class HighscoresMenuLogic():
 
     def __init__(self):
         self.all_profiles = profile_manager.AllProfiles()
+    
+    def update_scores(self):
+        self.all_profiles = profile_manager.AllProfiles()
 
-    def handle_show_level(self, mouse_pos):
-        if 215 <= mouse_pos[0] <= 395 and 740 <= mouse_pos[1] <= 790:
-            return "MOVES"
-        if 240 <= mouse_pos[0] <= 360 and 810 <= mouse_pos[1] <= 860:
-            return "TIME"
-        return None
+    def handle_show_level(self, mouse_pos, selected_level):
+        if 220 <= mouse_pos[0] <= 380 and 805 <= mouse_pos[1] <= 850:
+            return None
+        return selected_level
 
     def get_selected_level(self, mouse_pos, profile):
         if 430 <= mouse_pos[0] <= 770 and 1050 <= mouse_pos[1] <= 1100:
@@ -54,3 +55,18 @@ class HighscoresMenuLogic():
                 return level
             return None
         return None
+
+    def level_scores(self, level):
+        self.update_scores()
+        scores = []
+        for user in self.all_profiles.profiles.values():
+            try:
+                score = user.scores[str(level)]
+                scores.append((user.username, score))
+            except:
+                pass
+        scores.sort(key=lambda a: a[1])
+        return scores
+        
+
+

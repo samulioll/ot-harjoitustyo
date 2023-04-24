@@ -13,8 +13,8 @@ def main():
              "LEVELSELECT": levelselect_view.LevelSelect(),
              "GAME": game_view.Game(),
              "POSTGAME": postgame_view.PostGame(),
-             "HIGHSCORES": highscores_view.HighScores(),
-             "RESOLUTION": resolution_view.Resolution()
+             "HIGHSCORES": highscores_view.HighScores()
+             #"RESOLUTION": resolution_view.Resolution()
              }
-    app.view_manager.initialize_views(views, "RESOLUTION")
+    app.view_manager.initialize_views(views, "PROFILESELECT")
     app.main()
