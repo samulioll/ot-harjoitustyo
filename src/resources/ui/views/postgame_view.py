@@ -21,7 +21,8 @@ class PostGame(View):
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
-            self.next, self.play_level, self.done = self.logic.get_next(mouse_pos, self.play_level)
+            self.next, self.play_level, self.done = self.logic.get_next(
+                mouse_pos, self.play_level)
 
     def draw(self, surface):
         """ Draws the post game menu on the surface given. """

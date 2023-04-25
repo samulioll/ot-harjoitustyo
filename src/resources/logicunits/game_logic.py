@@ -3,6 +3,7 @@ import pygame as pg
 from resources.ui.sprites.car import Car
 from resources.ui.sprites.ui_element import UiElement
 
+
 class Board:
     """
     Simulates the board and keeps track of all pieces.

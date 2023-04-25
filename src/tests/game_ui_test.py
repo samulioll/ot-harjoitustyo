@@ -9,18 +9,22 @@ test_level = [[0, "White", "White-1", "White-2", 0, 0],
               [0, 0, 0, 0, 0, 0]]
 level = 2
 
+
 class TestGameUI(unittest.TestCase):
     def setUp(self):
         self.board = Board(test_level)
-    
+
     def test_reset(self):
         mouse_pos = (500, 1075)
-        self.assertEqual(self.board.get_clicked_button(mouse_pos, level), "RESET")
+        self.assertEqual(self.board.get_clicked_button(
+            mouse_pos, level), "RESET")
 
     def test_back_to_mainmenu(self):
         mouse_pos = (700, 1075)
-        self.assertEqual(self.board.get_clicked_button(mouse_pos, level), ("MAINMENU", True, None))
+        self.assertEqual(self.board.get_clicked_button(
+            mouse_pos, level), ("MAINMENU", True, None))
 
     def test_didnt_click_button(self):
         mouse_pos = (400, 1075)
-        self.assertEqual(self.board.get_clicked_button(mouse_pos, level), ("POSTGAME", False, level))
+        self.assertEqual(self.board.get_clicked_button(
+            mouse_pos, level), ("POSTGAME", False, level))

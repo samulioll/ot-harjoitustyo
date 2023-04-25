@@ -13,15 +13,17 @@ class HighScores(View):
         self.general_menu_items = pg.sprite.Group()
         self.level_menu_items = pg.sprite.Group()
         self.general_menu_items.add(UiElement("full_level_menu_1", 0, 0))
-        self.level_menu_items.add(UiElement("full_highscores_single_level_view_1", 0, 0))
+        self.level_menu_items.add(
+            UiElement("full_highscores_single_level_view_1", 0, 0))
 
     def input_handler(self, event):
         """ Handles events and sends commands for the menu to process. """
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if self.selected_level:
-                self.selected_level = self.logic.handle_show_level(mouse_pos, self.selected_level)
+                self.selected_level = self.logic.handle_show_level(
+                    mouse_pos, self.selected_level)
             else:
                 info = self.logic.get_selected_level(mouse_pos, self.profile)
                 self.next, self.done, self.selected_level = info[0], info[1], info[2]
@@ -41,7 +43,7 @@ class HighScores(View):
         self.level_menu_items.draw(surface)
 
         font = pg.font.SysFont("Arial", 50)
-        text_lvl = font.render(str(self.selected_level), True, (0,0,0), None)
+        text_lvl = font.render(str(self.selected_level), True, (0, 0, 0), None)
         lvl_width = text_lvl.get_width()
         300, 505
         surface.blit(text_lvl, ((300 - (lvl_width/2)), 505))
@@ -49,8 +51,8 @@ class HighScores(View):
         ordered = self.logic.level_scores(self.selected_level)
         y_bonus = 0
         for score in ordered:
-            text_name = font.render(score[0], True, (0,0,0), None)
-            text_moves = font.render(str(score[1]), True, (0,0,0), None)
+            text_name = font.render(score[0], True, (0, 0, 0), None)
+            text_moves = font.render(str(score[1]), True, (0, 0, 0), None)
             surface.blit(text_name, (630, 425 + y_bonus))
             surface.blit(text_moves, (920, 425 + y_bonus))
             y_bonus += 100

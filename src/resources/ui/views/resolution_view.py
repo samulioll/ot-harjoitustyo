@@ -22,7 +22,8 @@ class Resolution(View):
         """ Handles events and sets the next game view. """
         print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
-            self.next, self.done, self.scale = self.logic.get_clicked(pg.mouse.get_pos(), self.profile)
+            self.next, self.done, self.scale = self.logic.get_clicked(
+                pg.mouse.get_pos(), self.profile)
             pg.display.set_mode((self.scale*1200, self.scale*1200))
 
     def draw(self, surface):

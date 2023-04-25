@@ -30,13 +30,14 @@ class Game(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands to the board instance. """
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()
             else:
-                info = self.logic.get_clicked_button(mouse_pos, self.play_level)
+                info = self.logic.get_clicked_button(
+                    mouse_pos, self.play_level)
                 self.next, self.done, self.play_level = info[0], info[1], info[2]
                 self.selected = self.logic.get_selected(
                     mouse_pos)

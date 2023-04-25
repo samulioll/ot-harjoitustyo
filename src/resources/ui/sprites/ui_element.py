@@ -10,6 +10,7 @@ class UiElement(pg.sprite.Sprite):
     """
     A class for all the UI elements.
     """
+
     def __init__(self, image_file, x_coord=0, y_coord=0):
         super().__init__()
         self.image = pg.image.load(

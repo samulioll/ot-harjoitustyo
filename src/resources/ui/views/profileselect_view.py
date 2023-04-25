@@ -7,6 +7,7 @@ from resources.services.view_manager import View
 
 class ProfileSelect(View):
     """ The view for the profile selection state."""
+
     def __init__(self):
         View.__init__(self)
         self.logic = ProfileMenuLogic()
@@ -24,7 +25,7 @@ class ProfileSelect(View):
 
     def input_handler(self, event):
         """ Handles profile selection, creation and deletion. """
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
@@ -69,7 +70,6 @@ class ProfileSelect(View):
         if empty_slot:
             self.input_box = profile_manager.InputBox(
                 620, (338 + 100 * empty_slot), 330, 80)
-
 
     def draw(self, surface):
         """ Draws the menu on the surface given. """
@@ -120,6 +120,7 @@ class ProfileSelect(View):
 
     def draw_delete_confirm(self, surface):
         self.confirm_box.draw(surface)
-        text_user = self.font.render(self.user_to_del[1], True, (0,0,0), None)
+        text_user = self.font.render(
+            self.user_to_del[1], True, (0, 0, 0), None)
         text_width = text_user.get_width()
         surface.blit(text_user, ((600 - text_width/2), 530))

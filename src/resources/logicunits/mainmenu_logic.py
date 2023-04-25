@@ -2,6 +2,7 @@ class MainMenuLogic():
     """
     A class that contains the main menu logic.
     """
+
     def __init__(self):
         pass
 
