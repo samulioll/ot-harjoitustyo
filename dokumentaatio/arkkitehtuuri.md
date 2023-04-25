@@ -1,6 +1,6 @@
-# Arkkitehtuurikuvaus
+# Architecture
 
-## Luokkarakenne
+## Class diagram
 
 ```mermaid
     classDiagram
@@ -30,4 +30,28 @@
         Game ..> Board
         Board ..> Car
         Board ..> Levels
+```
+## Sequence diagram of one loop in the main menu where "continue" is clicked
+
+```mermaid
+    sequenceDiagram
+        participant Engine
+        participant ViewManager
+        participant MainMenu
+        participant MainMenuLogic
+        participant Profile
+        Engine ->> ViewManager: event_handler(event)
+        ViewManager ->> MainMenu: input_handler(event)
+        MainMenu ->> MainMenuLogic: get_clicked(mouse_pos)
+        MainMenuLogic -->> MainMenu: ("GAME", True)
+        MainMenu ->> Profile: current_level()
+        Profile -->> MainMenu: (6, "Beginner")
+        Engine ->> ViewManager: draw(surface)
+        ViewManager ->> MainMenu: draw(surface)
+        MainMenu ->> Profile: current_level()
+        Profile -->> MainMenu: (6, "Beginner")
+        Engine ->> ViewManager: update()
+        ViewManager ->> MainMenu: done
+        MainMenu -->> ViewManager: True
+
 ```

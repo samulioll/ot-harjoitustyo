@@ -34,4 +34,5 @@
 | 24.4. | 2    | high scores -näkymä |
 | 24.4. | 3    | testien kirjoittamista |
 | 24.4. | 1    | vahvistusboksin lisääminen |
-| yht   | 68   | | 
+| 25.4. | 1    | sekvenssikaavio |
+| yht   | 69   | | 
