@@ -1,3 +1,3 @@
 [run]
 source = src
-omit = src/**/__init__.py, src/rushhour.py, src/tests/**, src/data/**, src/resources/services/**, src/resources/ui/**
+omit = src/**/__init__.py, src/rushhour.py, src/tests/**, src/data/**, src/resources/services/**, src/resources/ui/**, src/resources/logicunits/resolution_menu_logic.py

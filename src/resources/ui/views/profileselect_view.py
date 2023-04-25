@@ -25,15 +25,15 @@ class ProfileSelect(View):
 
     def input_handler(self, event):
         """ Handles profile selection, creation and deletion. """
-        # print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
-            selected_profile = self.logic.select_user(mouse_pos)
+            selected_profile = self.logic.select_user(mouse_pos, self.all_profiles)
 
             if self.user_to_del:
                 if self.logic.confirm_delete(mouse_pos) == "YES":
-                    self.logic.delete_user(self.user_to_del[0])
+                    self.all_profiles.delete_profile(self.user_to_del.slot)
                     self.user_to_del = None
                 elif self.logic.confirm_delete(mouse_pos) == "NO":
                     self.user_to_del = None
@@ -44,7 +44,7 @@ class ProfileSelect(View):
 
             if self.clicked == "DELETE":
                 self.confirm_delete = True
-                self.user_to_del = self.logic.get_user_for_del(mouse_pos)
+                self.user_to_del = self.logic.select_user(mouse_pos, self.all_profiles)
                 self.clicked = None
 
             clicked = self.logic.get_clicked(mouse_pos, self.clicked)
@@ -121,6 +121,6 @@ class ProfileSelect(View):
     def draw_delete_confirm(self, surface):
         self.confirm_box.draw(surface)
         text_user = self.font.render(
-            self.user_to_del[1], True, (0, 0, 0), None)
+            self.user_to_del.username, True, (0, 0, 0), None)
         text_width = text_user.get_width()
         surface.blit(text_user, ((600 - text_width/2), 530))
