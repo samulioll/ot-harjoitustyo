@@ -4,6 +4,8 @@ A puzzle game where the goal is to move cars on the board in a way that allows t
 
 ## Documentation
 
+Newest release: [week5](https://github.com/samulioll/ot-harjoitustyo/releases/tag/viikko5)
+
 - [Työaikakirjanpito](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 - [Changelog](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/changelog.md)
 - [Vaativuusmäärittely](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
