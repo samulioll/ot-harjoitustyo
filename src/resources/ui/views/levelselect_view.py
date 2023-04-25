@@ -19,7 +19,7 @@ class LevelSelect(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands for the menu to process. """
-        print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             info = self.logic.get_clicked_button(mouse_pos, self.profile)

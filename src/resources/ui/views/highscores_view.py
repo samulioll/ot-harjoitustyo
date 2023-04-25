@@ -18,7 +18,7 @@ class HighScores(View):
 
     def input_handler(self, event):
         """ Handles events and sends commands for the menu to process. """
-        # print(pg.mouse.get_pos())
+        print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             if self.selected_level:

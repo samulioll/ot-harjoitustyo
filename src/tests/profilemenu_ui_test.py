@@ -1,12 +1,14 @@
 import unittest
 from resources.logicunits.profile_menu_logic import ProfileMenuLogic
+from resources.services import profile_manager
 
 
-class TestMainenuUI(unittest.TestCase):
+class TestProfileMenuUI(unittest.TestCase):
     def setUp(self):
         self.logic = ProfileMenuLogic()
+        self.all_profiles = {}
 
-    # Menu buttons activation tests
+    # First level menu buttons activation tests
 
     def test_activate_select_profile(self):
         self.assertEqual(self.logic.get_clicked((400, 500), None), "SELECT")
@@ -22,3 +24,8 @@ class TestMainenuUI(unittest.TestCase):
 
     def test_reset_selected(self):
         self.assertEqual(self.logic.get_clicked((200, 100), "SELECT"), None)
+    
+    # Select profile menu buttons activation tests
+
+    #def test_activate_first_slot(self):
+    #    self.assertEqual(self.logic.select_user((650, 460), None), "DELETE")
