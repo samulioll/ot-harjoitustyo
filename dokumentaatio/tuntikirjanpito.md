@@ -35,4 +35,5 @@
 | 24.4. | 3    | testien kirjoittamista |
 | 24.4. | 1    | vahvistusboksin lisääminen |
 | 25.4. | 1    | sekvenssikaavio |
-| yht   | 69   | | 
+| 25.4. | 2    | testikattavuuden lisäämistä |
+| yht   | 71   | | 
