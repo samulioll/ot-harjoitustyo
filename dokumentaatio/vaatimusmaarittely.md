@@ -20,6 +20,7 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 - (✓) Palikat voivat liikkua ruudukossa vain sillä akselilla jonka suuntaisesti ne ovat, ja vain tyhjiin ruutuihin.
 - (✓) Yksi palikoista on ns. pelaajan oma palikka, ja pelin ideana on saada tämä pelinappula ulos ruudukosta. Pelinappula on aina tietyllä x-akselilla ja kyseisen rivin oikeassa reunassa on peliruudukon seinässä aukko, josta pelinappulan voi saada ulos ruudukosta.
 - (✓) Pelinappuloita on sijoitettu ruudukkoon tietty määrä tiettyihin paikkohin, joilla saadaan luotua tietyn vaikeustason ongelma.
+- (✓) Pelissä on useita tasoja kasvavalla vaikeustasolla.
 
 ### Pelin lisäominaisuudet
 
@@ -27,13 +28,13 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 - (✓) Peli tallentaa jokaisen käyttäjän etenemisen, ja pelaajat voivat jatkaa siitä tasosta mihin edellisellä pelikerralla jäivät.
 - (✓) Pelaajat voivat myös valita tietyn jo ratkaisseensa tason, jos haluavat yrittää parempaa tulosta.
 
-### Jatkokehitysideoita
-
-- Mahdollisuus luoda itse uusia tasoja.
-- Mahdollisuus vaihtaa pelin ulkoasua eri teemoilla.
-
 ### Käyttöliittymä
 
 - (✓) Peli pyytää käynnistettäessä valitsemaan tai luomaan uuden käyttäjäprofiilin, jonka jälkeen siirrytääm päävalikkoon. Myös profiilin poistaminen on mahdollista.
 - (✓) Päävalikosta voi jatkaa pelaamista seuraavasta ratkaisemattomasta tasosta, valita jo ratkaistun tason, nähdä HIGH SCOREt tai vaihtaa profiilia.
 - Peli-ikkunan koon voi vaihtaa.
+
+### Jatkokehitysideoita
+
+- Mahdollisuus luoda itse uusia tasoja.
+- Mahdollisuus vaihtaa pelin ulkoasua eri teemoilla.
