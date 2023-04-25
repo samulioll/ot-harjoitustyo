@@ -1,6 +1,3 @@
-from resources.services import profile_manager
-
-
 class ProfileMenuLogic():
     """
     A class for the select profile menu.
