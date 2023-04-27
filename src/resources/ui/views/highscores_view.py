@@ -5,6 +5,8 @@ from resources.services.view_manager import View
 
 
 class HighScores(View):
+    """ The view for the high scores state. """
+
     def __init__(self):
         View.__init__(self)
         self.logic = HighscoresMenuLogic()
@@ -17,7 +19,12 @@ class HighScores(View):
             UiElement("full_highscores_single_level_view_1", 0, 0))
 
     def input_handler(self, event):
-        """ Handles events and sends commands for the menu to process. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
+
         print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -29,17 +36,34 @@ class HighScores(View):
                 self.next, self.done, self.selected_level = info[0], info[1], info[2]
 
     def draw(self, surface):
-        """ Draws the menu on the surface given. """
+        """ Handles which state to draw.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         if not self.selected_level:
             self.draw_level_select(surface)
         else:
             self.draw_level_highscores(surface)
 
     def draw_level_select(self, surface):
+        """ Draws the level selection state.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.general_menu_items.draw(surface)
         self.draw_levels(surface)
 
     def draw_level_highscores(self, surface):
+        """ Draws the level specific high scores state.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.level_menu_items.draw(surface)
 
         font = pg.font.SysFont("Arial", 50)
@@ -58,25 +82,36 @@ class HighScores(View):
             y_bonus += 100
 
     def draw_levels(self, surface):
+        """ Creates the numbers for the levels.
+
+        Args:
+            surface: The given surface to draw the box onto.
         """
-        Creates the numbers for the levels.
-        Color depends on the player's progress.
-        """
-        solved = len(self.profile.scores)
+
         start_x, start_y, extra_x = 240, 375, 76
         rows = {0: 0, 1: 133, 2: 271, 3: 414, 4: 554}
-        numbers = self.add_solved_levels(
-            solved, start_x, extra_x, start_y, rows)
-        self.add_unsolved_levels(
-            solved, start_x, extra_x, start_y, rows, numbers)
+        numbers = self.add_levels(50, start_x, extra_x, start_y, rows)
         for number in numbers:
             surface.blit(number[0], number[1])
 
-    def add_solved_levels(self, solved, start_x, extra_x, start_y, rows):
-        """ Returns a list of texts for solved levels. """
+    def add_levels(self, total_levels:int, start_x: int, extra_x: int, 
+                   start_y: int, rows: dict):
+        """ Returns a list of texts for solved levels.
+
+        Args:
+            solved (int): Number of solved levels.
+            start_x (int): X coordinate of the first element in a row.
+            extra_x (int): X coordinate bonus to create columns.
+            start_y (int): Y coordinate of the first row.
+            rows (int): Dictionary with Y coordinates for all of the rows.
+
+        Returns:
+            A list of text objects of all solved levels.
+        """
+
         numbers = []
         font = pg.font.SysFont("Century Gothic", 50)
-        for i in range(1, solved+1):
+        for i in range(1, total_levels+1):
             number = str(i) if i >= 10 else "0"+str(i)
             text = font.render(number, True, (0, 0, 0), None)
             text_rect = text.get_rect()
@@ -84,14 +119,3 @@ class HighScores(View):
             text_rect.y = start_y + rows[((i-1) // 10)]
             numbers.append((text, text_rect))
         return numbers
-
-    def add_unsolved_levels(self, solved, start_x, extra_x, start_y, rows, numbers):
-        """ Creates text for unsolved levels and adds to given list. """
-        font = pg.font.SysFont("Century Gothic", 50)
-        for i in range(solved+1, 51):
-            number = str(i) if i >= 10 else "0"+str(i)
-            text = font.render(number, True, (180, 180, 180), None)
-            text_rect = text.get_rect()
-            text_rect.x = start_x + (extra_x * ((i-1) % 10))
-            text_rect.y = start_y + rows[((i-1) // 10)]
-            numbers.append((text, text_rect))

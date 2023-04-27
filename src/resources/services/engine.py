@@ -40,6 +40,6 @@ class Engine():
 
     def draw(self):
         """ Draws the current view. """
-        
+
         self.view_manager.draw(self.display)
         pg.display.update()

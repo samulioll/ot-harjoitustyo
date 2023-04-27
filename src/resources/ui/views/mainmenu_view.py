@@ -5,9 +5,7 @@ from resources.services.view_manager import View
 
 
 class MainMenu(View):
-    """
-    The view for the main menu.
-    """
+    """ The view for the main menu. """
 
     def __init__(self):
         View.__init__(self)
@@ -18,7 +16,12 @@ class MainMenu(View):
         self.menu_items.add(UiElement("full_main_menu_2", 0, 0))
 
     def input_handler(self, event):
-        """ Handles events and sets the next game view. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
+
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             self.next, self.done = self.logic.get_clicked(pg.mouse.get_pos())
@@ -29,7 +32,12 @@ class MainMenu(View):
                     print("!! All levels solved !!")
 
     def draw(self, surface):
-        """ Draws the menu on the surface given. """
+        """ Draws the main menu.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.menu_items.draw(surface)
         mouse_pos = pg.mouse.get_pos()
 
@@ -47,6 +55,8 @@ class MainMenu(View):
             surface.blit(text, text_rect)
 
     def draw_level_info(self):
+        """ Draws the next level info if hovering over CONTINUE. """
+
         level = self.profile.current_level()
         info = "Level " + str(level[0]) + " | " + level[1]
         text = self.font.render(info, True, (150, 150, 150), None)
@@ -56,6 +66,8 @@ class MainMenu(View):
         return text, text_rect
 
     def draw_show_levels(self):
+        """ Draws the level select info if hovering over LEVELS. """
+
         text = self.font.render("View all levels", True, (150, 150, 150), None)
         text_rect = text.get_rect()
         text_rect.x = 620
@@ -63,6 +75,8 @@ class MainMenu(View):
         return text, text_rect
 
     def draw_show_highscores(self):
+        """ Draws the high scores info if hovering over HIGHSCORES. """
+
         font = pg.font.SysFont("Arial", 50)
         text = font.render("View highscores", True, (150, 150, 150), None)
         text_rect = text.get_rect()
@@ -71,6 +85,8 @@ class MainMenu(View):
         return text, text_rect
 
     def draw_show_profiles(self):
+        """ Draws the profile select info if hovering over SWITCH PROFILE. """
+        
         font = pg.font.SysFont("Arial", 50)
         text = font.render("View save slots", True, (150, 150, 150), None)
         text_rect = text.get_rect()

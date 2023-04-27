@@ -80,6 +80,6 @@ class View():
 
     def closure(self):
         """ Saves the profile and level info for the next view. """
-        
+
         self.done = False
         return self.profile, self.play_level

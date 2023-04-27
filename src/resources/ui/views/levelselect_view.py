@@ -5,9 +5,7 @@ from resources.services.view_manager import View
 
 
 class LevelSelect(View):
-    """
-    The view for the level select state.
-    """
+    """ The view for the level select state. """
 
     def __init__(self):
         View.__init__(self)
@@ -18,7 +16,12 @@ class LevelSelect(View):
         self.font = pg.font.SysFont("Century Gothic", 50)
 
     def input_handler(self, event):
-        """ Handles events and sends commands for the menu to process. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
+
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -26,17 +29,25 @@ class LevelSelect(View):
             self.next, self.done, self.play_level = info[0], info[1], info[2]
 
     def draw(self, surface):
-        """ Draws the menu on the surface given. """
+        """ Draws the level select menu.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.menu_items.draw(surface)
 
         for number in self.draw_levels():
             surface.blit(number[0], number[1])
 
     def draw_levels(self):
+        """ Creates the numbers for the levels.
+            Color depends on the player's progress.
+
+        Args:
+            surface: The given surface to draw the box onto.
         """
-        Creates the numbers for the levels.
-        Color depends on the player's progress.
-        """
+        
         profile = self.profile
         solved = len(profile.scores)
         next_lvl = str(solved + 1) if solved >= 9 else "0" + str(solved + 1)
@@ -51,8 +62,21 @@ class LevelSelect(View):
             solved, start_x, extra_x, start_y, rows, numbers)
         return numbers
 
-    def add_solved_levels(self, solved, start_x, extra_x, start_y, rows):
-        """ Returns a list of texts for solved levels. """
+    def add_solved_levels(self, solved: int, start_x: int, extra_x: int, 
+                          start_y: int, rows: dict):
+        """ Returns a list of texts for solved levels.
+
+        Args:
+            solved (int): Number of solved levels.
+            start_x (int): X coordinate of the first element in a row.
+            extra_x (int): X coordinate bonus to create columns.
+            start_y (int): Y coordinate of the first row.
+            rows (int): Dictionary with Y coordinates for all of the rows.
+
+        Returns:
+            A list of text objects of all solved levels.
+        """
+
         numbers = []
         for i in range(1, solved+1):
             number = str(i) if i >= 10 else "0"+str(i)
@@ -63,16 +87,43 @@ class LevelSelect(View):
             numbers.append((text, text_rect))
         return numbers
 
-    def add_current_level(self, solved, next_lvl, start_x, extra_x, start_y, rows):
-        """ Returns text for current next unsolved level."""
+    def add_current_level(self, solved: int, next_lvl: int, start_x: int, extra_x: int, 
+                          start_y: int, rows: dict):
+        """ Returns a text object for the next unsolved level.
+
+        Args:
+            solved (int): Number of solved levels.
+            start_x (int): X coordinate of the first element in a row.
+            extra_x (int): X coordinate bonus to create columns.
+            start_y (int): Y coordinate of the first row.
+            rows (int): Dictionary with Y coordinates for all of the rows.
+
+        Returns:
+            A list of text objects with all solved levels added to it.
+        """
+
         text = self.font.render(next_lvl, True, (0, 150, 0), None)
         text_rect = text.get_rect()
         text_rect.x = start_x + (extra_x * ((solved) % 10))
         text_rect.y = start_y + rows[((solved) // 10)]
         return (text, text_rect)
 
-    def add_unsolved_levels(self, solved, start_x, extra_x, start_y, rows, numbers):
-        """ Creates text for unsolved levels and adds to given list. """
+    def add_unsolved_levels(self, solved: int, start_x: int, extra_x: int, 
+                            start_y: int, rows: dict, numbers: list):
+        """ Returns a list with texts for unsolved levels added to it.
+
+        Args:
+            solved (int): Number of solved levels.
+            start_x (int): X coordinate of the first element in a row.
+            extra_x (int): X coordinate bonus to create columns.
+            start_y (int): Y coordinate of the first row.
+            rows (int): Dictionary with Y coordinates for all of the rows.
+            numbers (list): A list with text objects for solved levels
+
+        Returns:
+            A list of text objects with all solved levels added to it.
+        """
+
         for i in range(solved+2, 51):
             number = str(i) if i >= 10 else "0"+str(i)
             text = self.font.render(number, True, (180, 180, 180), None)

@@ -24,7 +24,12 @@ class ProfileSelect(View):
         self.confirm_box.add(UiElement("delete_user_box_1", 0, 0))
 
     def input_handler(self, event):
-        """ Handles profile selection, creation and deletion. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
+
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -64,6 +69,7 @@ class ProfileSelect(View):
 
     def handle_clicked_new(self):
         """ Handles creation of input box for username if clicked new. """
+
         self.all_profiles = profile_manager.AllProfiles()
         empty_slot = None
         for slot, profile in self.all_profiles.profiles.items():
@@ -74,7 +80,12 @@ class ProfileSelect(View):
                 620, (338 + 100 * empty_slot), 330, 80)
 
     def draw(self, surface):
-        """ Draws the menu on the surface given. """
+        """ Draws the profile select menu.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.menu_items.draw(surface)
 
         mouse_pos = pg.mouse.get_pos()
@@ -96,6 +107,7 @@ class ProfileSelect(View):
 
     def draw_users(self):
         """ Returns a list of pygame text objects of all profiles and empty slots. """
+
         all_profiles = profile_manager.AllProfiles()
         usernames = []
         y_coord = 450
@@ -121,6 +133,11 @@ class ProfileSelect(View):
         return usernames
 
     def draw_delete_confirm(self, surface):
+        """ Draws the confirm delete box onto the surface.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
         self.confirm_box.draw(surface)
         text_user = self.font.render(
             self.user_to_del.username, True, (0, 0, 0), None)

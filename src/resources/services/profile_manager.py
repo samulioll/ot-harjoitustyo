@@ -136,7 +136,7 @@ class InputBox:
         Returns:
             Given username if ENTER is pressed.
         """
-        
+
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_RETURN:
                 return self.text

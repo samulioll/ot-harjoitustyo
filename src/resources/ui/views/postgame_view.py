@@ -5,9 +5,7 @@ from resources.services.view_manager import View
 
 
 class PostGame(View):
-    """
-    The view for the post game state.
-    """
+    """ The view for the post game state. """
 
     def __init__(self):
         View.__init__(self)
@@ -17,7 +15,12 @@ class PostGame(View):
         self.menu_items.add(UiElement("post_game_box_1", 0, 0))
 
     def input_handler(self, event):
-        """ Handles events and sends commands to the board instance. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
+
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -25,5 +28,10 @@ class PostGame(View):
                 mouse_pos, self.play_level)
 
     def draw(self, surface):
-        """ Draws the post game menu on the surface given. """
+        """ Draws the post game menu.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.menu_items.draw(surface)

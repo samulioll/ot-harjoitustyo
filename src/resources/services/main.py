@@ -7,7 +7,7 @@ from resources.ui.views import mainmenu_view, postgame_view, profileselect_view
 
 def main():
     """ The main function which starts the game engine and the view manager. """
-    
+
     app = Engine(initialize.CAPTION)
     views = {"PROFILESELECT": profileselect_view.ProfileSelect(),
              "MAINMENU": mainmenu_view.MainMenu(),

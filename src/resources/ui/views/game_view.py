@@ -5,9 +5,7 @@ from resources.services.view_manager import View
 
 
 class Game(View):
-    """
-    The view for the game state.
-    """
+    """ The view for the game state. """
 
     def __init__(self):
         View.__init__(self)
@@ -18,18 +16,22 @@ class Game(View):
         self.moves = 0
 
     def initiate_level(self):
-        """ Gets the next level and sets the board. """
+        """ Sets the board with the level matrix passed on from previous view. """
+
         levels = level_manager.Levels()
         self.moves = 0
         self.next = "POSTGAME"
         if self.profile:
-            curr_level = str(self.play_level)
-            level_matrix = levels.levels[curr_level]
-            print("Level:", curr_level)
+            level_matrix = levels.levels[str(self.play_level)]
+            print("Level:", str(self.play_level))
             self.logic = game_logic.Board(level_matrix)
 
     def input_handler(self, event):
-        """ Handles events and sends commands to the board instance. """
+        """ Event type handling and sending event to logic unit for processing.
+
+        Args:
+            event: Pygame event
+        """
         # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
@@ -42,8 +44,10 @@ class Game(View):
                 self.selected = self.logic.get_selected(
                     mouse_pos)
                 self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
+
         elif self.selected and event.type == pg.MOUSEMOTION:
             self.logic.move_car(self.selected, pg.mouse.get_pos(), self.offset)
+
         elif event.type == pg.MOUSEBUTTONUP:
             if self.selected:
                 moved, self.done = self.logic.drop_car(self.selected)
@@ -55,13 +59,23 @@ class Game(View):
             self.selected, self.offset = None, 0
 
     def draw(self, surface):
-        """ Draws the board on the surface given. """
+        """ Draws the game view.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         self.logic.background.draw(surface)
         self.logic.cars.draw(surface)
         self.draw_level_info(surface)
 
     def draw_level_info(self, surface):
-        """ Draws move count, time, and level info. """
+        """ Draws the level info onto the game view.
+
+        Args:
+            surface: The given surface to draw the box onto.
+        """
+
         font = pg.font.SysFont("Arial", 50)
         text_moves = font.render(str(self.moves), True, (0, 0, 0), None)
         moves_text = font.render("MOVES", True, (0, 0, 0), None)
@@ -69,4 +83,4 @@ class Game(View):
         moves_width = text_moves.get_width()
         surface.blit(text_moves, (755-moves_width, 918))
         surface.blit(moves_text, (775, 918))
-        surface.blit(text_level, (440, 918))
+        surface.blit(text_level, (450, 918))
