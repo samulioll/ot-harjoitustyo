@@ -3,8 +3,10 @@ from .view_manager import ViewManager
 
 
 class Engine():
-    """
-    Controls the core functions of the game.
+    """ Controls the main loop of the game.
+    
+        Attributes:
+            caption: Caption for the game window
     """
 
     def __init__(self, caption):
@@ -16,7 +18,8 @@ class Engine():
         self.running = True
 
     def main(self):
-        """ The main loop of the program. """
+        """ The main loop of the game. """
+
         while self.running:
             self.get_inputs()
             self.draw()
@@ -24,6 +27,7 @@ class Engine():
 
     def get_inputs(self):
         """ Gets player inputs and sends them via the event handler to the current view. """
+
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 self.running = False
@@ -31,9 +35,11 @@ class Engine():
 
     def update(self):
         """ Updates the current view. """
+
         self.view_manager.update()
 
     def draw(self):
         """ Draws the current view. """
+        
         self.view_manager.draw(self.display)
         pg.display.update()
