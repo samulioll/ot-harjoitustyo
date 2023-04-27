@@ -12,6 +12,7 @@ class LevelSelect(View):
         self.logic = LevelsMenuLogic()
         self.next = None
         self.menu_items = pg.sprite.Group()
+        self.hovering = None
         self.menu_items.add(UiElement("full_level_menu_1", 0, 0))
         self.font = pg.font.SysFont("Century Gothic", 50)
 
@@ -23,10 +24,12 @@ class LevelSelect(View):
         """
 
         # print(pg.mouse.get_pos())
+        mouse_pos = pg.mouse.get_pos()
         if event.type == pg.MOUSEBUTTONDOWN:
-            mouse_pos = pg.mouse.get_pos()
             info = self.logic.get_clicked_button(mouse_pos, self.profile)
             self.next, self.done, self.play_level = info[0], info[1], info[2]
+        if event.type == pg.MOUSEMOTION:
+            self.hovering = self.logic.select_level(mouse_pos, self.profile)
 
     def draw(self, surface):
         """ Draws the level select menu.
@@ -80,7 +83,10 @@ class LevelSelect(View):
         numbers = []
         for i in range(1, solved+1):
             number = str(i) if i >= 10 else "0"+str(i)
-            text = self.font.render(number, True, (0, 0, 0), None)
+            if i == self.hovering:
+                text = self.font.render(number, True, (100, 100, 100), None)
+            else:
+                text = self.font.render(number, True, (0, 0, 0), None)
             text_rect = text.get_rect()
             text_rect.x = start_x + (extra_x * ((i-1) % 10))
             text_rect.y = start_y + rows[((i-1) // 10)]
@@ -102,7 +108,10 @@ class LevelSelect(View):
             A list of text objects with all solved levels added to it.
         """
 
-        text = self.font.render(next_lvl, True, (0, 150, 0), None)
+        if int(next_lvl) == self.hovering:
+            text = self.font.render(next_lvl, True, (100, 200, 100), None)
+        else:
+            text = self.font.render(next_lvl, True, (0, 150, 0), None)
         text_rect = text.get_rect()
         text_rect.x = start_x + (extra_x * ((solved) % 10))
         text_rect.y = start_y + rows[((solved) // 10)]

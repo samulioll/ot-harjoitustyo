@@ -55,7 +55,7 @@ class HighscoresMenuLogic():
             level: Value of the clicked level if one is clicked.
         """
 
-        return tools.select_level(mouse_pos, profile)
+        return tools.select_level(mouse_pos)
 
     def level_scores(self, level: int):
         """ Return the highscores for the selected level.

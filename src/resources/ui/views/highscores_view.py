@@ -12,6 +12,7 @@ class HighScores(View):
         self.logic = HighscoresMenuLogic()
         self.next = None
         self.selected_level = None
+        self.hovering = None
         self.general_menu_items = pg.sprite.Group()
         self.level_menu_items = pg.sprite.Group()
         self.general_menu_items.add(UiElement("full_level_menu_1", 0, 0))
@@ -26,14 +27,16 @@ class HighScores(View):
         """
 
         print(pg.mouse.get_pos())
+        mouse_pos = pg.mouse.get_pos()
         if event.type == pg.MOUSEBUTTONDOWN:
-            mouse_pos = pg.mouse.get_pos()
             if self.selected_level:
                 self.selected_level = self.logic.handle_show_level(
                     mouse_pos, self.selected_level)
             else:
                 info = self.logic.get_selected_level(mouse_pos, self.profile)
                 self.next, self.done, self.selected_level = info[0], info[1], info[2]
+        if event.type == pg.MOUSEMOTION:
+            self.hovering = self.logic.select_level(mouse_pos, self.profile)
 
     def draw(self, surface):
         """ Handles which state to draw.
@@ -113,7 +116,10 @@ class HighScores(View):
         font = pg.font.SysFont("Century Gothic", 50)
         for i in range(1, total_levels+1):
             number = str(i) if i >= 10 else "0"+str(i)
-            text = font.render(number, True, (0, 0, 0), None)
+            if i == self.hovering:
+                text = font.render(number, True, (100, 100, 100), None)
+            else:
+                text = font.render(number, True, (0, 0, 0), None)
             text_rect = text.get_rect()
             text_rect.x = start_x + (extra_x * ((i-1) % 10))
             text_rect.y = start_y + rows[((i-1) // 10)]

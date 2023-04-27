@@ -1,4 +1,4 @@
-def select_level(mouse_pos: tuple, profile):
+def select_level(mouse_pos: tuple, profile=None):
     """ Gets the numerical value of the clicked level.
 
     Args:
@@ -33,6 +33,9 @@ def select_level(mouse_pos: tuple, profile):
             lvl_col = col
     if lvl_row >= 0 and lvl_col >= 0:
         level = (lvl_row * 10) + lvl_col
-        if level <= len(profile.scores) + 1:
-            return level
+        if profile:
+            if level <= len(profile.scores) + 1:
+                return level
+            return None
+        return level
     return None
