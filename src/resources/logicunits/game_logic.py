@@ -5,8 +5,10 @@ from resources.ui.sprites.ui_element import UiElement
 
 
 class Board:
-    """
-    Simulates the board and handles the logic tasks.
+    """ Simulates the board and handles the logic tasks of the game.
+
+        Attributes:
+            level: Selected level to be played.
     """
 
     def __init__(self, level):
@@ -48,14 +50,16 @@ class Board:
                     self.cars.add(car)
 
     def get_clicked_button(self, mouse_pos, level):
-        """ Returns the necessary information to switch game views according to which button is pressed.
+        """ Returns the necessary information to switch game views 
+            according to which button is pressed.
 
         Args:
             mouse_pos (tuple): Mouse coordinates.
             level (int): Current level.
 
         Returns:
-            Tuple with information about next view, if the current view is done and thecurrent level.
+            Tuple with information about next view, if the current view 
+            is done and the current level.
         """
         if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
             return "RESET"
@@ -75,8 +79,8 @@ class Board:
         Args:
             selected (str): Name of the selected car.
             mouse_pos (tuple): Mouse coordinates.
-            board_offset (int): Distance from original mouse position when the car was first clicked
-                                to the cell corner.
+            board_offset (int): Distance from original mouse position when the 
+                                car was first clicked to the cell corner.
         """
         car_id = self.get_car_id(selected)
         others, sel = self.create_collision_group(car_id)
@@ -87,11 +91,11 @@ class Board:
             self.handle_y_axis_move(
                 selected, sel, mouse_pos, board_offset, others)
 
-    def get_car_id(self, selected):
+    def get_car_id(self, selected: str):
         """ Return the id of the clicked car.
 
         Args:
-            selected (str): Name of the selected car.
+            selected (str): Name of the selected car cell.
 
         Returns:
             _type_: _description_
@@ -101,8 +105,15 @@ class Board:
             return parts[0]
         return selected
 
-    def create_collision_group(self, car_id):
-        """ Creates a collision group and returns selected car. """
+    def create_collision_group(self, car_id: str):
+        """ Creates a collision group and returns selected car.
+
+        Args:
+            car_id (str): Name of the selected car.
+
+        Returns:
+            Tuple with sprite group of other cars and the selected Car object.
+        """
         others = pg.sprite.Group()
         for car in self.cars:
             if car.car_id != car_id:
@@ -111,8 +122,18 @@ class Board:
                 sel = car
         return others, sel
 
-    def handle_x_axis_move(self, selected, sel, mouse_pos, board_offset, others):
-        """ Handles movement for x-axis cars. """
+    def handle_x_axis_move(self, selected: str, sel: Car,
+                           mouse_pos: tuple, board_offset: int, others):
+        """ Handles movement for x-axis cars.
+
+        Args:
+            selected (str): Name of the selected car cell.
+            sel (Car): Selected car.
+            mouse_pos (tuple): Mouse coordinates.
+            board_offset (int): Distance from original mouse position when the
+                                car was first clicked to the cell corner.
+            others: Sprite group of every other car.
+        """
         red_bonus = 200 if "Red" in sel.car_id else 0
         if "1" in selected:
             diff = board_offset[0] + 100
@@ -130,8 +151,18 @@ class Board:
             if colliding:
                 sel.rect.x = old_pos
 
-    def handle_y_axis_move(self, selected, sel, mouse_pos, board_offset, others):
-        """ Handles movement for y-axis cars. """
+    def handle_y_axis_move(self, selected: str, sel: Car,
+                           mouse_pos: tuple, board_offset: int, others):
+        """ Handles movement for y-axis cars.
+
+        Args:
+            selected (str): Name of the selected car cell.
+            sel (Car): Selected car.
+            mouse_pos (tuple): Mouse coordinates.
+            board_offset (int): Distance from original mouse position when the
+                                car was first clicked to the cell corner.
+            others: Sprite group of every other car.
+        """
         if "1" in selected:
             diff = board_offset[1] + 100
         elif "2" in selected:
@@ -149,24 +180,45 @@ class Board:
                 sel.rect.y = old_pos
 
     def drop_car(self, selected: str):
-        """ Handles the matrix changes of moving a car. """
+        """ Handles the dropping of a car that is being dragged.
+
+        Args:
+            selected (str): Name of the selected car cell.
+
+        Returns:
+            Tuple with move count and solved status.
+        """
         car_id = self.get_car_id(selected)
         sel = self.create_collision_group(car_id)[1]
         cells = self.get_new_car_position(sel)
-        old_pos = []
+        old_pos = None
         for row in range(6):
             for column in range(6):
-                self.clear_cell(row, column, car_id, old_pos, sel, cells)
+                position = self.clear_cell(row, column, car_id, sel, cells)
+                if position:
+                    old_pos = position
         if self.add_car_position(cells, sel):
             return (1, True)
-        return self.check_for_move(car_id, old_pos)
+        return (self.check_for_move(car_id, old_pos), False)
 
-    def clear_cell(self, row, column, car_id, old_pos, sel, cells):
-        """ Clears a specified cell. """
+    def clear_cell(self, row: int, column: int, car_id: str, sel: Car, cells: int):
+        """ Clears the old cells of the selected car.
+
+        Args:
+            row (int): Row of the first cell of the car.
+            column (int): Column of the first cell of the car.
+            car_id (str): Name of car.
+            sel (Car): Selected car.
+            cells (int): Number of cells in the car.
+
+        Returns:
+            old_pos: Tuple of old position of the first cell.
+        """
         cell = self.layout[row][column]
+        old_pos = None
         if cell == car_id:
             print("Cell", cell, "Car_id", car_id)
-            old_pos.append((column, row))
+            old_pos = (row, column)
             cell = 0
             if sel.move_axis == "x":
                 for i in range(cells):
@@ -174,10 +226,17 @@ class Board:
             else:
                 for i in range(cells):
                     self.layout[row+i][column] = 0
+        return old_pos
 
-    def get_new_car_position(self, sel):
-        """ 
-        Calculates the correct cell for the car and returns car's cell count. 
+    def get_new_car_position(self, sel: Car):
+        """ Calculates the correct cell for the car and changes its
+            coordinates to match it.
+
+        Args:
+            sel (Car): Selected car.
+
+        Returns:
+            cells: Number of cells in the car.
         """
         if sel.move_axis == "x":
             cells = sel.width // 100
@@ -195,11 +254,18 @@ class Board:
                 sel.rect.y = old_pos - diff
             else:
                 sel.rect.y = old_pos + (100 - diff)
-        print("Cells", cells)
         return cells
 
-    def add_car_position(self, cells, sel):
-        """ Adds car info to level matrix. """
+    def add_car_position(self, cells: int, sel: Car):
+        """ Adds car info to level matrix.
+
+        Args:
+            cells (int): Number of cells in the car.
+            sel (Car): Selected car.
+
+        Returns:
+            True if level is solved else False.
+        """
         x_cell = sel.rect.x // 100 - 3
         y_cell = sel.rect.y // 100 - 3
         if sel.move_axis == "x":
@@ -216,29 +282,28 @@ class Board:
                 self.layout[y_cell+i][x_cell] = sel.car_id + bonus
         return False
 
-    def check_for_move(self, car_id, old_pos):
-        """ Checks if new level matrix is different.
+    def check_for_move(self, car_id: str, old_pos: tuple):
+        """ Checks if the selected car is in a different location.
 
         Args:
-            car_id (_type_): _description_
-            old_pos (_type_): _description_
+            car_id (str): Name of car.
+            old_pos (tuple): Tuple of old matrix location of the first cell.
 
         Returns:
-            _type_: _description_
+            changed (int): 1 if move happened else 0.
         """
         changed = 0
-        new_pos = []
+        new_pos = None
         for row in range(6):
             for column in range(6):
                 cell = self.layout[row][column]
                 if cell == car_id:
-                    new_pos.append((column, row))
-        print("Old pos:", old_pos, "New pos:", new_pos)
+                    new_pos = (row, column)
         if new_pos != old_pos:
             changed = 1
-        return (changed, False)
+        return changed
 
-    def get_selected(self, mouse_pos):
+    def get_selected(self, mouse_pos: tuple):
         """ Returns the selected car matrix cell name.
 
         Args:

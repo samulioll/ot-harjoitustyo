@@ -1,12 +1,19 @@
 class MainMenuLogic():
-    """
-    A class that contains the main menu logic.
-    """
+    """ Handles the logic tasks of the main menu. """
 
     def __init__(self):
         pass
 
-    def get_clicked(self, mouse_pos):
+    def get_clicked(self, mouse_pos: tuple):
+        """ Returns the necessary information to switch game views 
+            according to which button is pressed.
+
+        Args:
+            mouse_pos (tuple): Mouse coordinates.
+
+        Returns:
+            Information about the next view, if the current level is done.
+        """
         if 270 <= mouse_pos[0] <= 565 and 450 <= mouse_pos[1] <= 500:
             return ("GAME", True)
         if 380 <= mouse_pos[0] <= 565 and 600 <= mouse_pos[1] <= 650:

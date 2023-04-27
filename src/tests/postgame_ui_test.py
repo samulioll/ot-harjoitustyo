@@ -9,10 +9,13 @@ class TestMainenuUI(unittest.TestCase):
     # Menu buttons activation tests
 
     def test_activate_next_level(self):
-        self.assertEqual(self.logic.get_next((500, 675), 10), ("GAME", 11, True))
+        self.assertEqual(self.logic.get_next(
+            (500, 675), 10), ("GAME", 11, True))
 
     def test_activate_back_to_menu(self):
-        self.assertEqual(self.logic.get_next((700, 675), 10), ("MAINMENU", None, True))
+        self.assertEqual(self.logic.get_next(
+            (700, 675), 10), ("MAINMENU", None, True))
 
     def test_dont_click_buttons(self):
-        self.assertEqual(self.logic.get_next((300, 475), 10), (None, 10, False))
+        self.assertEqual(self.logic.get_next(
+            (300, 475), 10), (None, 10, False))

@@ -1,12 +1,21 @@
 class PostGameLogic():
-    """
-    A class for the post game menu.
-    """
+    """ Handles the logic tasks of the post game menu. """
 
     def __init__(self):
         pass
 
-    def get_next(self, mouse_pos, play_level):
+    def get_next(self, mouse_pos: tuple, play_level: int):
+        """ Returns the necessary information to switch game views 
+            according to which button is pressed.
+
+        Args:
+            mouse_pos (tuple): Mouse coordinates.
+            play_level (int): The level that was just solved.
+
+        Returns:
+            Information about the next view, next level to be played and
+            if the current view is done.
+        """
         if 450 <= mouse_pos[0] <= 580 and 650 <= mouse_pos[1] <= 690:
             if play_level < 37:
                 next_view = "GAME"

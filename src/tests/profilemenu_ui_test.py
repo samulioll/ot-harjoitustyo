@@ -20,12 +20,13 @@ class TestProfileMenuUI(unittest.TestCase):
         self.assertEqual(self.logic.get_clicked((400, 900), None), "DELETE")
 
     def test_keep_selected(self):
-        self.assertEqual(self.logic.get_clicked((700, 900), "SELECT"), "SELECT")
+        self.assertEqual(self.logic.get_clicked(
+            (700, 900), "SELECT"), "SELECT")
 
     def test_reset_selected(self):
         self.assertEqual(self.logic.get_clicked((200, 100), "SELECT"), None)
-    
+
     # Select profile menu buttons activation tests
 
-    #def test_activate_first_slot(self):
+    # def test_activate_first_slot(self):
     #    self.assertEqual(self.logic.select_user((650, 460), None), "DELETE")

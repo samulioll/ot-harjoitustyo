@@ -25,11 +25,12 @@ class ProfileSelect(View):
 
     def input_handler(self, event):
         """ Handles profile selection, creation and deletion. """
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = pg.mouse.get_pos()
             self.input_box = None
-            selected_profile = self.logic.select_user(mouse_pos, self.all_profiles)
+            selected_profile = self.logic.select_user(
+                mouse_pos, self.all_profiles)
 
             if self.user_to_del:
                 if self.logic.confirm_delete(mouse_pos) == "YES":
@@ -44,7 +45,8 @@ class ProfileSelect(View):
 
             if self.clicked == "DELETE":
                 self.confirm_delete = True
-                self.user_to_del = self.logic.select_user(mouse_pos, self.all_profiles)
+                self.user_to_del = self.logic.select_user(
+                    mouse_pos, self.all_profiles)
                 self.clicked = None
 
             clicked = self.logic.get_clicked(mouse_pos, self.clicked)
