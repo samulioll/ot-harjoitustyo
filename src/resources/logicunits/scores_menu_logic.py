@@ -27,7 +27,7 @@ class HighscoresMenuLogic():
             return None
         return selected_level
 
-    def get_selected_level(self, mouse_pos: tuple, profile):
+    def get_selected_level(self, mouse_pos: tuple):
         """ returns the selected level or necessary information to switch 
             back to the main menu if the main menu button is clicked.
 
@@ -42,9 +42,9 @@ class HighscoresMenuLogic():
 
         if 430 <= mouse_pos[0] <= 770 and 1050 <= mouse_pos[1] <= 1100:
             return ("MAINMENU", True, None)
-        return (None, False, self.select_level(mouse_pos, profile))
+        return (None, False, self.select_level(mouse_pos))
 
-    def select_level(self, mouse_pos: tuple, profile):
+    def select_level(self, mouse_pos: tuple):
         """ Gets the numerical value of the clicked level.
 
         Args:

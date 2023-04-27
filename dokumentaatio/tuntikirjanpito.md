@@ -37,4 +37,5 @@
 | 25.4. | 1    | sekvenssikaavio |
 | 25.4. | 3    | testikattavuuden lisäämistä |
 | 27.4. | 4    | docstring kirjaamista |
-| yht   | 76   | | 
+| 27.4. | 1    | tasovalikon tason korostus |
+| yht   | 77   | | 

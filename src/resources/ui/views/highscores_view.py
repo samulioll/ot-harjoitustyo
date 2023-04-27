@@ -26,17 +26,17 @@ class HighScores(View):
             event: Pygame event
         """
 
-        print(pg.mouse.get_pos())
+        #print(pg.mouse.get_pos())
         mouse_pos = pg.mouse.get_pos()
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.selected_level:
                 self.selected_level = self.logic.handle_show_level(
                     mouse_pos, self.selected_level)
             else:
-                info = self.logic.get_selected_level(mouse_pos, self.profile)
+                info = self.logic.get_selected_level(mouse_pos)
                 self.next, self.done, self.selected_level = info[0], info[1], info[2]
         if event.type == pg.MOUSEMOTION:
-            self.hovering = self.logic.select_level(mouse_pos, self.profile)
+            self.hovering = self.logic.select_level(mouse_pos)
 
     def draw(self, surface):
         """ Handles which state to draw.

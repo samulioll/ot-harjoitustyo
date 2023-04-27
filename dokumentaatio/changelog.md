@@ -54,3 +54,4 @@
 ### Viikko 6 
 
 - Lisätty docstring dokumentointi kaikkiin tiedostoihin
+- Lisätty tason korostus tasovalikkoihin kun hiiri on tason päällä
