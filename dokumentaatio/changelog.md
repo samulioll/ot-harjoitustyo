@@ -50,3 +50,7 @@
 - Lisätty testikattavuutta
 - Lisätty vahvistus-boksi käyttäjän poistamiseen
 - Lisätty maksimipituus käyttäjänimelle (10 merkkiä)
+
+### Viikko 6 
+
+- Lisätty docstring dokumentointi kaikkiin tiedostoihin

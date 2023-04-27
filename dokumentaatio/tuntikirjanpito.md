@@ -36,5 +36,5 @@
 | 24.4. | 1    | vahvistusboksin lisääminen |
 | 25.4. | 1    | sekvenssikaavio |
 | 25.4. | 3    | testikattavuuden lisäämistä |
-| 27.4. | 3    | docstring kirjaamista |
-| yht   | 75   | | 
+| 27.4. | 4    | docstring kirjaamista |
+| yht   | 76   | | 
