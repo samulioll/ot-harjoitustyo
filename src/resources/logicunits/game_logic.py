@@ -6,7 +6,7 @@ from resources.ui.sprites.ui_element import UiElement
 
 class Board:
     """
-    Simulates the board and keeps track of all pieces.
+    Simulates the board and handles the logic tasks.
     """
 
     def __init__(self, level):
@@ -35,6 +35,7 @@ class Board:
 
     def _initialize_sprites(self):
         """ Create the collection of sprites and their locations at the start. """
+
         self.full_game_view = UiElement("full_game_view_2", 0, 0)
         self.background.add(self.full_game_view)
         for row in range(6):
@@ -47,6 +48,15 @@ class Board:
                     self.cars.add(car)
 
     def get_clicked_button(self, mouse_pos, level):
+        """ Returns the necessary information to switch game views according to which button is pressed.
+
+        Args:
+            mouse_pos (tuple): Mouse coordinates.
+            level (int): Current level.
+
+        Returns:
+            Tuple with information about next view, if the current view is done and thecurrent level.
+        """
         if 430 <= mouse_pos[0] <= 565 and 1050 <= mouse_pos[1] <= 1100:
             return "RESET"
         if 615 <= mouse_pos[0] <= 720 and 1050 <= mouse_pos[1] <= 1100:
@@ -60,7 +70,14 @@ class Board:
         return (next_view, done, play_level)
 
     def move_car(self, selected: str, mouse_pos: tuple, board_offset: int):
-        """ Handles the movement of cars. """
+        """Handles the movement of cars.
+
+        Args:
+            selected (str): Name of the selected car.
+            mouse_pos (tuple): Mouse coordinates.
+            board_offset (int): Distance from original mouse position when the car was first clicked
+                                to the cell corner.
+        """
         car_id = self.get_car_id(selected)
         others, sel = self.create_collision_group(car_id)
         if sel.move_axis == "x":
@@ -71,7 +88,14 @@ class Board:
                 selected, sel, mouse_pos, board_offset, others)
 
     def get_car_id(self, selected):
-        """ Return the id of the clicked car. """
+        """ Return the id of the clicked car.
+
+        Args:
+            selected (str): Name of the selected car.
+
+        Returns:
+            _type_: _description_
+        """
         if "-" in selected:
             parts = selected.split("-")
             return parts[0]
@@ -141,6 +165,7 @@ class Board:
         """ Clears a specified cell. """
         cell = self.layout[row][column]
         if cell == car_id:
+            print("Cell", cell, "Car_id", car_id)
             old_pos.append((column, row))
             cell = 0
             if sel.move_axis == "x":
@@ -170,6 +195,7 @@ class Board:
                 sel.rect.y = old_pos - diff
             else:
                 sel.rect.y = old_pos + (100 - diff)
+        print("Cells", cells)
         return cells
 
     def add_car_position(self, cells, sel):
@@ -191,7 +217,15 @@ class Board:
         return False
 
     def check_for_move(self, car_id, old_pos):
-        """ Checks if new level matrix is different. """
+        """ Checks if new level matrix is different.
+
+        Args:
+            car_id (_type_): _description_
+            old_pos (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         changed = 0
         new_pos = []
         for row in range(6):
@@ -199,12 +233,20 @@ class Board:
                 cell = self.layout[row][column]
                 if cell == car_id:
                     new_pos.append((column, row))
+        print("Old pos:", old_pos, "New pos:", new_pos)
         if new_pos != old_pos:
             changed = 1
         return (changed, False)
 
     def get_selected(self, mouse_pos):
-        """ Returns the car id of clicked cell. """
+        """ Returns the selected car matrix cell name.
+
+        Args:
+            mouse_pos (tuple): Mouse coordinates.
+
+        Returns:
+            Car cell name in the clicked level layout matrix cell if possible.
+        """
         column = (mouse_pos[0] - self.board_offset) // 100
         row = (mouse_pos[1] - self.board_offset) // 100
         if 0 <= column <= 5 and 0 <= row <= 5 and self.layout[row][column] != 0:
