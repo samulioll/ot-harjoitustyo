@@ -41,4 +41,5 @@
 | 28.4. | 1    | attribuuttikutsujen lisäämistä |
 | 28.4. | 2    | resoluutiovaihtoehdot |
 | 28.4. | 1    | dokumentoinnin kirjoittamista |
-| yht   | 81   | | 
+| 28.4. | 1    | käyttöohjeiden kirjoittaminen |
+| yht   | 82   | | 
