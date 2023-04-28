@@ -1,7 +1,7 @@
 import pygame as pg
 from resources.logicunits.profile_menu_logic import ProfileMenuLogic
 from resources.ui.sprites.ui_element import UiElement
-from resources.services import profile_manager
+from resources.services import profile_manager, tools
 from resources.services.view_manager import View
 
 
@@ -30,9 +30,9 @@ class ProfileSelect(View):
             event: Pygame event
         """
 
-        # print(pg.mouse.get_pos())
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
-            mouse_pos = pg.mouse.get_pos()
             self.input_box = None
             selected_profile = self.logic.select_user(
                 mouse_pos, self.all_profiles)
@@ -89,7 +89,7 @@ class ProfileSelect(View):
 
         self.menu_items.draw(surface)
 
-        mouse_pos = pg.mouse.get_pos()
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
         show = False
 
         if self.user_to_del:

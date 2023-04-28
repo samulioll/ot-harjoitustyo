@@ -1,4 +1,5 @@
 import pygame as pg
+from resources.services import tools
 from resources.logicunits.mainmenu_logic import MainMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
@@ -22,9 +23,10 @@ class MainMenu(View):
             event: Pygame event
         """
 
-        # print(pg.mouse.get_pos())
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
-            self.next, self.done = self.logic.get_clicked(pg.mouse.get_pos())
+            self.next, self.done = self.logic.get_clicked(mouse_pos)
             if self.next == "GAME":
                 self.play_level = self.profile.current_level()[0]
                 if self.play_level > 40:
@@ -39,7 +41,7 @@ class MainMenu(View):
         """
 
         self.menu_items.draw(surface)
-        mouse_pos = pg.mouse.get_pos()
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
 
         if 270 <= mouse_pos[0] <= 565 and 450 <= mouse_pos[1] <= 500:
             text, text_rect = self.draw_level_info()

@@ -38,4 +38,6 @@
 | 25.4. | 3    | testikattavuuden lisäämistä |
 | 27.4. | 4    | docstring kirjaamista |
 | 27.4. | 1    | tasovalikon tason korostus |
-| yht   | 77   | | 
+| 28.4. | 1    | attribuuttikutsujen lisäämistä |
+| 28.4. | 2    | resoluutiovaihtoehdot |
+| yht   | 80   | | 

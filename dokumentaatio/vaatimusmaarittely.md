@@ -32,7 +32,7 @@ Alkuvaiheessa pelissä ei ole valmiiksi luotuja käyttäjiä. Jokainen peliä pe
 
 - (✓) Peli pyytää käynnistettäessä valitsemaan tai luomaan uuden käyttäjäprofiilin, jonka jälkeen siirrytääm päävalikkoon. Myös profiilin poistaminen on mahdollista.
 - (✓) Päävalikosta voi jatkaa pelaamista seuraavasta ratkaisemattomasta tasosta, valita jo ratkaistun tason, nähdä HIGH SCOREt tai vaihtaa profiilia.
-- Peli-ikkunan koon voi vaihtaa.
+- (✓) Peli-ikkunan koon voi vaihtaa.
 
 ### Jatkokehitysideoita
 

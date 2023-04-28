@@ -1,4 +1,5 @@
 import pygame as pg
+from resources.services import tools
 from resources.logicunits.lvl_menu_logic import LevelsMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
@@ -23,8 +24,8 @@ class LevelSelect(View):
             event: Pygame event
         """
 
-        # print(pg.mouse.get_pos())
-        mouse_pos = pg.mouse.get_pos()
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
+        #print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             info = self.logic.get_clicked_button(mouse_pos, self.profile)
             self.next, self.done, self.play_level = info[0], info[1], info[2]

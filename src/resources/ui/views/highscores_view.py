@@ -1,4 +1,5 @@
 import pygame as pg
+from resources.services import tools
 from resources.logicunits.scores_menu_logic import HighscoresMenuLogic
 from resources.ui.sprites.ui_element import UiElement
 from resources.services.view_manager import View
@@ -26,8 +27,8 @@ class HighScores(View):
             event: Pygame event
         """
 
-        # print(pg.mouse.get_pos())
-        mouse_pos = pg.mouse.get_pos()
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
+        #print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.selected_level:
                 self.selected_level = self.logic.handle_show_level(

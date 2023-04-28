@@ -38,7 +38,7 @@ class ProfileMenuLogic():
             Selected user if clicked slot has one.
         """
         if 620 <= mouse_pos[0] <= 950 and 455 <= mouse_pos[1] <= 1010:
-            user = str((mouse_pos[1] - 350) // 100)
+            user = str(int((mouse_pos[1] - 350) // 100))
             if all_profiles.profiles[user] is not None:
                 return all_profiles.profiles[user]
         return None

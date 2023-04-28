@@ -312,8 +312,8 @@ class Board:
         Returns:
             Car cell name in the clicked level layout matrix cell if possible.
         """
-        column = (mouse_pos[0] - self.board_offset) // 100
-        row = (mouse_pos[1] - self.board_offset) // 100
+        column = int((mouse_pos[0] - self.board_offset) // 100)
+        row = int((mouse_pos[1] - self.board_offset) // 100)
         if 0 <= column <= 5 and 0 <= row <= 5 and self.layout[row][column] != 0:
             return self.layout[row][column]
         return None

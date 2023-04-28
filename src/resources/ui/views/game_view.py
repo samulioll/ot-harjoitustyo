@@ -1,6 +1,6 @@
 import pygame as pg
 from resources.logicunits import game_logic
-from resources.services import level_manager
+from resources.services import level_manager, tools
 from resources.services.view_manager import View
 
 
@@ -32,8 +32,9 @@ class Game(View):
         Args:
             event: Pygame event
         """
-        # print(pg.mouse.get_pos())
-        mouse_pos = pg.mouse.get_pos()
+
+        mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
+        #print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()
@@ -46,7 +47,7 @@ class Game(View):
                 self.offset = (mouse_pos[0] % 100, mouse_pos[1] % 100)
 
         elif self.selected and event.type == pg.MOUSEMOTION:
-            self.logic.move_car(self.selected, pg.mouse.get_pos(), self.offset)
+            self.logic.move_car(self.selected, mouse_pos, self.offset)
 
         elif event.type == pg.MOUSEBUTTONUP:
             if self.selected:

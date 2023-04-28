@@ -42,7 +42,14 @@ def select_level(mouse_pos: tuple, profile=None):
         return level
     return None
 
-def set_scale(surface, scale):
-    surf = pg.transform.smoothscale(surface, (scale*1200, scale*1200))
-    surf_rect = surf.get_rect()
-    return (surf, surf_rect)
+def scale_mouse_pos(coords: tuple, scale: float):
+    """ Scales the mouse_coordinates for hte current game scale
+
+    Args:
+        coords (tuple): Actual mouse coordinates
+        scale (float): Current game scale
+
+    Returns:
+        A tuple with scaled coordinates
+    """
+    return (coords[0] / scale, coords[1] / scale)
