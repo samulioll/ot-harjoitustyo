@@ -101,21 +101,29 @@ class ProfileSelect(View):
         if 305 <= mouse_pos[0] <= 560 and 440 <= mouse_pos[1] <= 960:
             show = True
         if show or self.clicked:
-            for user in self.draw_users():
+            for user in self.draw_users(mouse_pos):
                 surface.blit(user[0], user[1])
         if self.input_box:
             self.input_box.draw(surface)
 
-    def draw_users(self):
-        """ Returns a list of pygame text objects of all profiles and empty slots. """
+    def draw_users(self, mouse_pos: tuple):
+        """ Returns a list of pygame text objects of all profiles and empty slots. 
+        
+            Args:
+                mouse_pos (tuple): Mouse coordinates.
+            
+            Returns:
+                Text objects for usernames.
+        """
 
         all_profiles = profile_manager.AllProfiles()
         usernames = []
         y_coord = 450
-        p_col = 0 if self.clicked in ("SELECT", "DELETE") else 150
-        d_col = 200 if self.clicked == "DELETE" else p_col
-        e_col = 150
+        hovering_over = self.logic.select_user(mouse_pos, self.all_profiles)
         for profile in all_profiles.get_all_profiles():
+            p_col = 0 if self.clicked in ("SELECT", "DELETE") else 150
+            d_col = 200 if self.clicked == "DELETE" else p_col
+            e_col = 150
             if profile is None:
                 text = self.font.render(
                     "EMPTY SLOT", True, (e_col, e_col, e_col), None)
@@ -124,6 +132,9 @@ class ProfileSelect(View):
                 text_rect.y = y_coord
                 usernames.append((text, text_rect))
             else:
+                if hovering_over and self.clicked != "NEW" and hovering_over.get_username() == profile.get_username():
+                    d_col = 250 if self.clicked == "DELETE" else 100
+                    p_col = 100
                 text = self.font.render(
                     profile.get_username(), True, (d_col, p_col, p_col), None)
                 text_rect = text.get_rect()
