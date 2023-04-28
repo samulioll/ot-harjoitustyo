@@ -2,6 +2,7 @@
 
 ## Package diagram
 
+![package](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/kuvat/pakkauskaavio.png)
 
 ## Class diagram
 
