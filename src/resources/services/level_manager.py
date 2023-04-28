@@ -20,3 +20,15 @@ class Levels:
                 name = level[0]
                 matrix = level[1]
                 self.levels[name] = matrix
+
+    def get_layout(self, level: int):
+        """ Gets the layout matrix of the wanted level.
+
+        Args:
+            level (int): Selected level
+
+            Returns:
+                layout (list): The layout matrix of the level
+        """
+
+        return self.levels[str(level)]

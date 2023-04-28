@@ -39,7 +39,8 @@ class ProfileSelect(View):
 
             if self.user_to_del:
                 if self.logic.confirm_delete(mouse_pos) == "YES":
-                    self.all_profiles.delete_profile(self.user_to_del.slot)
+                    self.all_profiles.delete_profile(
+                        self.user_to_del.get_slot())
                     self.user_to_del = None
                 elif self.logic.confirm_delete(mouse_pos) == "NO":
                     self.user_to_del = None
@@ -72,7 +73,7 @@ class ProfileSelect(View):
 
         self.all_profiles = profile_manager.AllProfiles()
         empty_slot = None
-        for slot, profile in self.all_profiles.profiles.items():
+        for slot, profile in self.all_profiles.get_all_profiles_info().items():
             if not profile and not empty_slot:
                 empty_slot = int(slot)
         if empty_slot:
@@ -114,7 +115,7 @@ class ProfileSelect(View):
         p_col = 0 if self.clicked in ("SELECT", "DELETE") else 150
         d_col = 200 if self.clicked == "DELETE" else p_col
         e_col = 150
-        for profile in all_profiles.profiles.values():
+        for profile in all_profiles.get_all_profiles():
             if profile is None:
                 text = self.font.render(
                     "EMPTY SLOT", True, (e_col, e_col, e_col), None)
@@ -124,7 +125,7 @@ class ProfileSelect(View):
                 usernames.append((text, text_rect))
             else:
                 text = self.font.render(
-                    profile.username, True, (d_col, p_col, p_col), None)
+                    profile.get_username(), True, (d_col, p_col, p_col), None)
                 text_rect = text.get_rect()
                 text_rect.x = 625
                 text_rect.y = y_coord
@@ -140,6 +141,6 @@ class ProfileSelect(View):
         """
         self.confirm_box.draw(surface)
         text_user = self.font.render(
-            self.user_to_del.username, True, (0, 0, 0), None)
+            self.user_to_del.get_username(), True, (0, 0, 0), None)
         text_width = text_user.get_width()
         surface.blit(text_user, ((600 - text_width/2), 530))

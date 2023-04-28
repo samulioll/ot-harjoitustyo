@@ -22,7 +22,7 @@ class Game(View):
         self.moves = 0
         self.next = "POSTGAME"
         if self.profile:
-            level_matrix = levels.levels[str(self.play_level)]
+            level_matrix = levels.get_layout(self.play_level)
             print("Level:", str(self.play_level))
             self.logic = game_logic.Board(level_matrix)
 
@@ -33,8 +33,8 @@ class Game(View):
             event: Pygame event
         """
         # print(pg.mouse.get_pos())
+        mouse_pos = pg.mouse.get_pos()
         if event.type == pg.MOUSEBUTTONDOWN:
-            mouse_pos = pg.mouse.get_pos()
             if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()
             else:

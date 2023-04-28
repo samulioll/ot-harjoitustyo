@@ -50,7 +50,7 @@ class LevelSelect(View):
         Args:
             surface: The given surface to draw the box onto.
         """
-        
+
         profile = self.profile
         solved = len(profile.scores)
         next_lvl = str(solved + 1) if solved >= 9 else "0" + str(solved + 1)
@@ -65,7 +65,7 @@ class LevelSelect(View):
             solved, start_x, extra_x, start_y, rows, numbers)
         return numbers
 
-    def add_solved_levels(self, solved: int, start_x: int, extra_x: int, 
+    def add_solved_levels(self, solved: int, start_x: int, extra_x: int,
                           start_y: int, rows: dict):
         """ Returns a list of texts for solved levels.
 
@@ -93,7 +93,7 @@ class LevelSelect(View):
             numbers.append((text, text_rect))
         return numbers
 
-    def add_current_level(self, solved: int, next_lvl: int, start_x: int, extra_x: int, 
+    def add_current_level(self, solved: int, next_lvl: int, start_x: int, extra_x: int,
                           start_y: int, rows: dict):
         """ Returns a text object for the next unsolved level.
 
@@ -117,7 +117,7 @@ class LevelSelect(View):
         text_rect.y = start_y + rows[((solved) // 10)]
         return (text, text_rect)
 
-    def add_unsolved_levels(self, solved: int, start_x: int, extra_x: int, 
+    def add_unsolved_levels(self, solved: int, start_x: int, extra_x: int,
                             start_y: int, rows: dict, numbers: list):
         """ Returns a list with texts for unsolved levels added to it.
 

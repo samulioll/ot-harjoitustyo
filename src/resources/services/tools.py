@@ -1,3 +1,5 @@
+import pygame as pg
+
 def select_level(mouse_pos: tuple, profile=None):
     """ Gets the numerical value of the clicked level.
 
@@ -39,3 +41,8 @@ def select_level(mouse_pos: tuple, profile=None):
             return None
         return level
     return None
+
+def set_scale(surface, scale):
+    surf = pg.transform.smoothscale(surface, (scale*1200, scale*1200))
+    surf_rect = surf.get_rect()
+    return (surf, surf_rect)

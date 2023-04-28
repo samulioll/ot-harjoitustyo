@@ -22,7 +22,7 @@ class ViewManager():
 
     def event_handler(self, event):
         """ Passes the events to the current view to handle. 
-        
+
             Args:
                 event: Pygame event. 
         """
@@ -31,7 +31,7 @@ class ViewManager():
 
     def draw(self, surface):
         """ Passes the surface to the current view to draw on. 
-        
+
             Args:
                 surface: The surface to draw onto.
         """
@@ -51,12 +51,21 @@ class ViewManager():
 
         print("View changing to", self.view.next)
         self.start_view = self.view.next
-        profile, level = self.view.closure()
+        profile, level, scale = self.view.closure()
         self.view = self.views[self.view.next]
-        self.view.startup(profile, level)
+        self.view.startup(profile, level, scale)
         self.view.done = False
         if self.view == self.views["GAME"]:
             self.view.initiate_level()
+    
+    def get_scale(self):
+        """ Gets the window scale
+
+        Returns:
+            Numerical value for the scale
+        """
+
+        return self.view.get_scale()
 
 
 class View():
@@ -66,8 +75,9 @@ class View():
         self.done = False
         self.profile = None
         self.play_level = 1
+        self.scale = 1
 
-    def startup(self, active_profile, level: int):
+    def startup(self, active_profile, level: int, scale: int):
         """ Loads the profile and level info from last view.
 
         Args:
@@ -77,9 +87,19 @@ class View():
 
         self.profile = active_profile
         self.play_level = level
+        self.scale = scale
 
     def closure(self):
         """ Saves the profile and level info for the next view. """
 
         self.done = False
-        return self.profile, self.play_level
+        return self.profile, self.play_level, self.scale
+    
+    def get_scale(self):
+        """ Gets the window scale
+
+        Returns:
+            Numerical value for the scale
+        """
+
+        return self.scale

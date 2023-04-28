@@ -86,7 +86,7 @@ class MainMenu(View):
 
     def draw_show_profiles(self):
         """ Draws the profile select info if hovering over SWITCH PROFILE. """
-        
+
         font = pg.font.SysFont("Arial", 50)
         text = font.render("View save slots", True, (150, 150, 150), None)
         text_rect = text.get_rect()

@@ -26,7 +26,7 @@ class HighScores(View):
             event: Pygame event
         """
 
-        #print(pg.mouse.get_pos())
+        # print(pg.mouse.get_pos())
         mouse_pos = pg.mouse.get_pos()
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.selected_level:
@@ -97,7 +97,7 @@ class HighScores(View):
         for number in numbers:
             surface.blit(number[0], number[1])
 
-    def add_levels(self, total_levels:int, start_x: int, extra_x: int, 
+    def add_levels(self, total_levels: int, start_x: int, extra_x: int,
                    start_y: int, rows: dict):
         """ Returns a list of texts for solved levels.
 

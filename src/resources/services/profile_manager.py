@@ -7,7 +7,7 @@ save_path = os.path.dirname(__file__)[:-18] + "data/saves.json"
 
 class Profile:
     """ A class for a single profile containing relevant info. 
-        
+
         Attributes:
             slot (int): The save slot of the profile (1-6)
             username (str): The username of the profile
@@ -51,6 +51,24 @@ class Profile:
             saves[self.slot] = [self.username, self.scores]
         with open(save_path, "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
+
+    def get_username(self):
+        """ Gets the username of the profile
+
+        Returns:
+            The username as a string
+        """
+
+        return self.username
+
+    def get_slot(self):
+        """ Gets the save slot of the profile
+
+        Returns:
+            The numerical value of the save slot
+        """
+
+        return self.slot
 
 
 class AllProfiles:
@@ -108,10 +126,29 @@ class AllProfiles:
         with open(save_path, "w", encoding="utf-8") as doc:
             json.dump(saves, doc)
 
+    def get_all_profiles_info(self):
+        """ Gets all profiles and their slots
+
+        Returns:
+            A list of all profiles and their slots
+        """
+        return self.profiles
+
+    def get_all_profiles(self):
+        """ Gets all of the profiles
+
+        Returns:
+            A list with only the profiles
+        """
+        profiles = []
+        for profile in self.profiles.values():
+            profiles.append(profile)
+        return profiles
+
 
 class InputBox:
     """ A class for an input box for writing a username for a new profile. 
-        
+
         Attributes:
             x_coord (int): X-coordinate of the input box.
             y_coord (int): Y-coordinate of the input box.
