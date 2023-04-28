@@ -13,19 +13,22 @@ Newest release: [week5](https://github.com/samulioll/ot-harjoitustyo/releases/ta
 
 ## Current state
 
-!! The game currently only runs in 1200x1200 screen size, but additional resolution options will be made available in the next version !!
+### Resolution selection
+- The user can choose between two resolution settings: 1200x1200 or 600x600 pixels.
 
 ### Profile selection
 - A profile can be selected by clicking the "SELECT PROFILE" button and then clicking a profile username.
 - A new profile can be created by clicking the "NEW PROFILE" button and then typing a username and submitting it with ENTER.
 - A profile can be deleted by clicking the "DELETE PROFILE" button and then clicking the profile to be deleted.
-    - In the next version the game will ask for confirmation for the deletion.
+    - A confirmation box is shown to make sure the deletion wasn't accidental.
 
 ### Main menu
 - The player can continue playing from the next unsolved level by clicking "CONTINUE".
 - The player can go into the level selection menu by clicking "LEVELS".
 - Highscores view is currently not finished and is disabled.
 - The player can go back to the profile selection menu by clicking "SWITCH USERS".
+
+- An option will be added to change the game resolution without having to restart the application.
 
 ### Levels menu
 - Solved levels will be shown in dark black color, next unsolved level in green and the rest of the unsolved levels in light grey.
@@ -41,7 +44,7 @@ Newest release: [week5](https://github.com/samulioll/ot-harjoitustyo/releases/ta
 - The player can go back to the main menu by clicking "EXIT".
 
 ### Other
-- The game will have 50 levels at release, but currently there are only 37.
+- The game will have 50 levels at release, but currently there are only 39.
 
 
 ## Installation
