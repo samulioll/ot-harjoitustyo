@@ -40,4 +40,5 @@
 | 27.4. | 1    | tasovalikon tason korostus |
 | 28.4. | 1    | attribuuttikutsujen lisäämistä |
 | 28.4. | 2    | resoluutiovaihtoehdot |
-| yht   | 80   | | 
+| 28.4. | 1    | dokumentoinnin kirjoittamista |
+| yht   | 81   | | 
