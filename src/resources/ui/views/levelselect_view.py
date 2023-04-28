@@ -25,7 +25,7 @@ class LevelSelect(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        #print(mouse_pos)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             info = self.logic.get_clicked_button(mouse_pos, self.profile)
             self.next, self.done, self.play_level = info[0], info[1], info[2]

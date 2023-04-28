@@ -16,19 +16,19 @@ class TestHighscoresMenuUI(unittest.TestCase):
     # First level input tests
 
     def test_returns_correct_level_int(self):
-        self.assertEqual(self.logic.select_level((260, 390), self.profile1), 1)
+        self.assertEqual(self.logic.select_level((260, 390)), 1)
 
     def test_doesnt_return_level_int_if_not_clicked(self):
         self.assertEqual(self.logic.select_level(
-            (100, 390), self.profile1), None)
+            (100, 390)), None)
 
     def test_returns_to_main_menu(self):
         self.assertEqual(self.logic.get_selected_level(
-            (440, 1075), self.profile1), ("MAINMENU", True, None))
+            (440, 1075)), ("MAINMENU", True, None))
 
     def test_returns_correct_level_info(self):
         self.assertEqual(self.logic.get_selected_level(
-            (260, 390), self.profile1), ("MAINMENU", False, 1))
+            (260, 390)), (None, False, 1))
 
     def test_returns_to_level_select(self):
         self.assertEqual(self.logic.handle_show_level((260, 840), 2), None)

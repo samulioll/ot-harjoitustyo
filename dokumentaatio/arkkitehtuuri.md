@@ -1,5 +1,8 @@
 # Architecture
 
+## Package diagram
+
+
 ## Class diagram
 
 ```mermaid

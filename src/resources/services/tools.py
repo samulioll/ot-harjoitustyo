@@ -1,5 +1,3 @@
-import pygame as pg
-
 def select_level(mouse_pos: tuple, profile=None):
     """ Gets the numerical value of the clicked level.
 
@@ -41,6 +39,7 @@ def select_level(mouse_pos: tuple, profile=None):
             return None
         return level
     return None
+
 
 def scale_mouse_pos(coords: tuple, scale: float):
     """ Scales the mouse_coordinates for hte current game scale

@@ -28,7 +28,7 @@ class HighScores(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        #print(mouse_pos)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.selected_level:
                 self.selected_level = self.logic.handle_show_level(

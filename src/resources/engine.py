@@ -1,5 +1,5 @@
 import pygame as pg
-from .view_manager import ViewManager
+from resources.services.view_manager import ViewManager
 
 
 class Engine():

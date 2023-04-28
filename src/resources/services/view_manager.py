@@ -57,7 +57,7 @@ class ViewManager():
         self.view.done = False
         if self.view == self.views["GAME"]:
             self.view.initiate_level()
-    
+
     def get_scale(self):
         """ Gets the window scale
 
@@ -94,7 +94,7 @@ class View():
 
         self.done = False
         return self.profile, self.play_level, self.scale
-    
+
     def get_scale(self):
         """ Gets the window scale
 

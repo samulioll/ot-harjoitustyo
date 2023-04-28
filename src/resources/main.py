@@ -1,5 +1,5 @@
-from resources.services.engine import Engine
-from resources.services import initialize
+from resources import initialize
+from resources.engine import Engine
 from resources.ui.views import game_view, highscores_view, levelselect_view, resolution_view
 from resources.ui.views import mainmenu_view, postgame_view, profileselect_view
 

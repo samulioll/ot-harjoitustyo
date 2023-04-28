@@ -34,7 +34,7 @@ class Game(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        #print(mouse_pos)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()

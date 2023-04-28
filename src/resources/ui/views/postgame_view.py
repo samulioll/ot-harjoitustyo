@@ -23,7 +23,7 @@ class PostGame(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        #print(mouse_pos)
+        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             self.next, self.play_level, self.done = self.logic.get_next(
                 mouse_pos, self.play_level)
