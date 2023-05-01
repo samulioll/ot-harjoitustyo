@@ -13,6 +13,33 @@ Newest release: [week5](https://github.com/samulioll/ot-harjoitustyo/releases/ta
 - [Vaativuusmäärittely](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 - [Arkkitehtuuri](https://github.com/samulioll/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
+## Installation
+
+1. Clone the repository to your computer and install the dependencies:
+```
+poetry install
+```
+2. Start the program with:
+```
+poetry run invoke start
+```
+
+### Commands
+
+Start the program with:
+```
+poetry run invoke start
+```
+Run tests with:
+```
+poetry run invoke test
+```
+Get test coverage with:
+```
+poetry run invoke coverage-report
+```
+
+
 ## Current state
 
 ### Resolution selection
@@ -47,30 +74,3 @@ Newest release: [week5](https://github.com/samulioll/ot-harjoitustyo/releases/ta
 
 ### Other
 - The game will have 50 levels at release, but currently there are only 39.
-
-
-## Installation
-
-1. Clone the repository to your computer and install the dependencies:
-```
-poetry install
-```
-2. Start the program with:
-```
-poetry run invoke start
-```
-
-### Commands
-
-Start the program with:
-```
-poetry run invoke start
-```
-Run tests with:
-```
-poetry run invoke test
-```
-Get test coverage with:
-```
-poetry run invoke coverage-report
-```
