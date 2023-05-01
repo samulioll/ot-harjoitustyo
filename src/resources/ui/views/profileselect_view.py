@@ -93,7 +93,7 @@ class ProfileSelect(View):
         show = False
 
         if self.user_to_del:
-            for user in self.draw_users():
+            for user in self.draw_users(mouse_pos):
                 surface.blit(user[0], user[1])
             self.draw_delete_confirm(surface)
             return
