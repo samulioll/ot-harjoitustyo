@@ -116,6 +116,7 @@ class Board:
         """
         others = pg.sprite.Group()
         for car in self.cars:
+            print("loop car id", car.car_id, "held car id", car_id)
             if car.car_id != car_id:
                 others.add(car)
             else:
