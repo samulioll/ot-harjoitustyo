@@ -17,13 +17,10 @@ class PostGameLogic():
             if the current view is done.
         """
         if 450 <= mouse_pos[0] <= 580 and 650 <= mouse_pos[1] <= 690:
-            if play_level < 37:
-                next_view = "GAME"
-                play_level += 1
-                done = True
-                return (next_view, play_level, done)
-            print("!! All levels solved !!")
-            return (None, play_level, False)
+            next_view = "GAME"
+            play_level += 1
+            done = True
+            return (next_view, play_level, done)
         if 620 <= mouse_pos[0] <= 725 and 650 <= mouse_pos[1] <= 690:
             next_view = "MAINMENU"
             play_level = None

@@ -42,4 +42,5 @@
 | 28.4. | 2    | resoluutiovaihtoehdot |
 | 28.4. | 1    | dokumentoinnin kirjoittamista |
 | 28.4. | 1    | käyttöohjeiden kirjoittaminen |
-| yht   | 82   | | 
+|  2.5. | 2    | uusien tasojen luominen |
+| yht   | 84   | | 

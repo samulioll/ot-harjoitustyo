@@ -57,3 +57,4 @@
 - Lisätty tason korostus tasovalikkoihin kun hiiri on tason päällä
 - Lisätty resoluutiovalikko
 	- Peli skaalaa UI elementit ja inputit valitun resoluution mukaan
+- Lisätty tasoja

@@ -30,7 +30,7 @@ class LevelSelect(View):
             info = self.logic.get_clicked_button(mouse_pos, self.profile)
             self.next, self.done, self.play_level = info[0], info[1], info[2]
         if event.type == pg.MOUSEMOTION:
-            self.hovering = self.logic.select_level(mouse_pos, self.profile)
+            self.hovering = tools.select_level(mouse_pos, self.profile)
 
     def draw(self, surface):
         """ Draws the level select menu.

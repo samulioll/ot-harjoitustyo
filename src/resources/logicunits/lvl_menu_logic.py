@@ -25,27 +25,10 @@ class LevelsMenuLogic():
             done = True
             level = None
             return (next_view, done, level)
-        selected_level = self.select_level(mouse_pos, profile)
-        if selected_level and selected_level <= 40:
-            if selected_level > 40:
-                print("Level not yet available")
-                return ("MAINMENU", False, None)
+        selected_level = tools.select_level(mouse_pos, profile)
+        if selected_level:
             next_view = "GAME"
             done = True
             level = selected_level
             return (next_view, done, level)
-        print("Unsolved level")
         return ("MAINMENU", False, None)
-
-    def select_level(self, mouse_pos: tuple, profile):
-        """ Gets the numerical value of the clicked level.
-
-        Args:
-            mouse_pos (tuple): Mouse coordinates.
-            profile (Profile): Active profile.
-
-        Returns:
-            level: Value of the clicked level if one is clicked.
-        """
-
-        return tools.select_level(mouse_pos, profile)
