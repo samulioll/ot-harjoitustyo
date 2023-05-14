@@ -31,7 +31,6 @@ class ProfileSelect(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             self.input_box = None
             selected_profile = self.logic.select_user(

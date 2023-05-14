@@ -24,14 +24,12 @@ class MainMenu(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             self.next, self.done = self.logic.get_clicked(mouse_pos)
             if self.next == "GAME":
                 self.play_level = self.profile.current_level()[0]
                 if self.play_level > 50:
                     self.next, self.done = None, False
-                    print("!! All levels solved !!")
 
     def draw(self, surface):
         """ Draws the main menu.

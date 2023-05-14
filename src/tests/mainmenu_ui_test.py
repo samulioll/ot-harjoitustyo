@@ -1,8 +1,9 @@
 import unittest
+from resources.services import tools
 from resources.logicunits.mainmenu_logic import MainMenuLogic
 
 
-class TestMainenuUI(unittest.TestCase):
+class TestMainmenuUI(unittest.TestCase):
     def setUp(self):
         self.logic = MainMenuLogic()
 

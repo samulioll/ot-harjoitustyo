@@ -23,7 +23,6 @@ class Game(View):
         self.next = "POSTGAME"
         if self.profile:
             level_matrix = levels.get_layout(self.play_level)
-            print("Level:", str(self.play_level))
             self.logic = game_logic.Board(level_matrix)
 
     def input_handler(self, event):
@@ -34,7 +33,6 @@ class Game(View):
         """
 
         mouse_pos = tools.scale_mouse_pos(pg.mouse.get_pos(), self.scale)
-        # print(mouse_pos)
         if event.type == pg.MOUSEBUTTONDOWN:
             if self.logic.get_clicked_button(mouse_pos, self.play_level) == "RESET":
                 self.initiate_level()
@@ -53,7 +51,6 @@ class Game(View):
             if self.selected:
                 moved, self.done = self.logic.drop_car(self.selected)
                 self.moves += moved
-                print("Moves:", self.moves)
                 if self.done:
                     self.profile.update_scores(
                         str(self.play_level), self.moves)

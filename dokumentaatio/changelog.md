@@ -58,3 +58,8 @@
 - Lisätty resoluutiovalikko
 	- Peli skaalaa UI elementit ja inputit valitun resoluution mukaan
 - Lisätty tasoja
+
+### Viikko 7
+
+- Putsattu koodista testiprintit pois
+- Muokattu pelilaudan piirtoa

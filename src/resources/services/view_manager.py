@@ -49,7 +49,6 @@ class ViewManager():
             info to the new view. 
         """
 
-        print("View changing to", self.view.next)
         self.start_view = self.view.next
         profile, level, scale = self.view.closure()
         self.view = self.views[self.view.next]

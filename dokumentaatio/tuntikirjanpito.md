@@ -43,4 +43,5 @@
 | 28.4. | 1    | dokumentoinnin kirjoittamista |
 | 28.4. | 1    | käyttöohjeiden kirjoittaminen |
 |  2.5. | 2    | uusien tasojen luominen |
-| yht   | 84   | | 
+| 14.5. | 1    | siistitty projektia palautusta varten |
+| yht   | 85   | | 

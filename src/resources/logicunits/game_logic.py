@@ -116,7 +116,6 @@ class Board:
         """
         others = pg.sprite.Group()
         for car in self.cars:
-            print("loop car id", car.car_id, "held car id", car_id)
             if car.car_id != car_id:
                 others.add(car)
             else:
@@ -218,7 +217,6 @@ class Board:
         cell = self.layout[row][column]
         old_pos = None
         if cell == car_id:
-            print("Cell", cell, "Car_id", car_id)
             old_pos = (row, column)
             cell = 0
             if sel.move_axis == "x":
@@ -275,7 +273,6 @@ class Board:
                     bonus = "-" + str(i) if i > 0 else ""
                     self.layout[y_cell][x_cell+i] = sel.car_id + bonus
             except IndexError:
-                print("SOLVED")
                 return True
         else:
             for i in range(cells):
