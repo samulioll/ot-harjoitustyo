@@ -73,4 +73,4 @@ poetry run invoke coverage-report
 - The player can go back to the main menu by clicking "EXIT".
 
 ### Other
-- The game will have 50 levels at release, but currently there are only 39.
+- The game has 50 levels.
